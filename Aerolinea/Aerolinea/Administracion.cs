@@ -54,7 +54,7 @@ namespace Entidades
 
         public static Avion ObtenerAvion(string matriculaAvion)
         {
-            foreach (Avion avion in Registro.ListaAviones)
+            foreach (Avion avion in Registro.Aviones)
             {
                 if (avion.MatriculaAvion == matriculaAvion)
                 {

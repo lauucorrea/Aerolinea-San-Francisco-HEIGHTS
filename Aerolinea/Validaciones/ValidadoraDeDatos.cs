@@ -29,7 +29,7 @@ namespace Validaciones
 
             if (cadena is not null)
             {
-                if (int.TryParse(cadena, out num))
+                if (int.TryParse(cadena, out num) || ValidarAlfanumerico(cadena))
                 {
                     throw new Exception("Los campos no admiten numeros");
                 }
@@ -50,11 +50,15 @@ namespace Validaciones
                 {
                     if (!char.IsLetter(cadena[i]))
                     {
-                        throw new Exception("No se admiten alfanumericos");
+                        return true;
                     }
                 }
             }
-            throw new NullReferenceException();
+            else
+            {
+                throw new ArgumentNullException();
+            }
+            return false;
         }
 
         public static bool VerificarDni(int dni)

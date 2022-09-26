@@ -93,5 +93,13 @@ namespace Entidades
                 }
             }
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"{OfreceComida}-{CapacidadBodega}-{TotalAsientos}-{MatriculaAvion}");
+
+            return sb.ToString();
+        }
     }
 }
