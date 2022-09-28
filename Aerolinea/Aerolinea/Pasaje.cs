@@ -18,12 +18,7 @@ namespace Entidades
         private int cantidadBolsos;
         private int cantidadValijas;
 
-        public Pasaje()
-        {
-
-        }
-
-        public Pasaje(string nombrePasajero, int dniPasajero, string destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, int cantidadBolsos, int cantidadValijas) : this()
+        public Pasaje(string nombrePasajero, int dniPasajero, string destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, int cantidadBolsos, int cantidadValijas)
         {
             NombrePasajero = nombrePasajero;
             DniPasajero = dniPasajero;

@@ -50,9 +50,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lauta\\source\\repos\\Aerolinea\\Login\\Login.csproj",
-      "projectName": "Login",
-      "projectPath": "C:\\Users\\Lauta\\source\\repos\\Aerolinea\\Login\\Login.csproj",
+      "projectUniqueName": "C:\\Users\\Lauta\\source\\repos\\Aerolinea\\Login\\Vista.csproj",
+      "projectName": "Vista",
+      "projectPath": "C:\\Users\\Lauta\\source\\repos\\Aerolinea\\Login\\Vista.csproj",
       "packagesPath": "C:\\Users\\Lauta\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lauta\\source\\repos\\Aerolinea\\Login\\obj\\",
       "projectStyle": "PackageReference",

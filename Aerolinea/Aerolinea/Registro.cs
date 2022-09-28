@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public enum DestinosNacionales
+    public enum Destinos
     {
-        SantaRosa, Bariloche, Corrientes, Cordoba, Jujuy, Mendoza, Neuquen, Posadas, Iguazu, Salta, SantiagoDelEstero, Trelew, Tucuman, PuertoMadryn, Ushuaia
+        SantaRosa, Bariloche, Corrientes, Cordoba, Jujuy, Mendoza, Neuquen, Posadas, Iguazu, Salta, SantiagoDelEstero, Trelew, Tucuman, PuertoMadryn, Ushuaia, Recife, Roma, Acapulco, Miami
     }
 
-    public enum DestinosInternacionales
-    {
-        Recife, Roma, Acapulco, Miami
-    }
     public static class Registro
     {
         private static List<Persona> ListaPersonas;
         private static List<Pasaje> ListaPasajes;
         private static List<Avion> ListaAviones;
-        private static List<Vendedor> ListaVendedores;
-
+        private static List<Vuelo> ListaVuelos;
+        private static DateTime tiempo = DateTime.Now;
         static Registro()
         {
             ListaPersonas = new List<Persona>();
-            ListaVendedores = new List<Vendedor>();
             ListaPasajes = new List<Pasaje>();
             ListaAviones = new List<Avion>();
+            ListaVuelos = new List<Vuelo>();
             HardcodeListas();
         }
 
@@ -46,9 +42,9 @@ namespace Entidades
             get => ListaAviones;
         }
 
-        public static List<Vendedor> Vendedores
+        public static List<Vuelo> Vuelos
         {
-            get => ListaVendedores;
+            get => ListaVuelos;
         }
         public static void HardcodeListas()
         {
@@ -67,6 +63,11 @@ namespace Entidades
             ListaAviones.Add(new Avion(true, 2, 80, 60,  "o03l285jfg6"));
             ListaAviones.Add(new Avion(false, 1, 40, 30, "we345fhi938"));
             ListaAviones.Add(new Avion(true, 1, 45, 22,  "qho3ol503f9"));
+
+            ListaVuelos.Add(new Vuelo("BSAS", Destinos.SantaRosa.ToString(), Pasajes, 182000, "a2e3df45gg5"));
+            ListaVuelos.Add(new Vuelo("BSAS", Destinos.Roma.ToString(), Pasajes, 182000, "we345fhi938"));
+            ListaVuelos.Add(new Vuelo("BSAS", Destinos.PuertoMadryn.ToString(), Pasajes, 182000, "2ls9384l58t"));
+            ListaVuelos.Add(new Vuelo("BSAS", Destinos.Neuquen.ToString(), Pasajes, 182000, "qho3ol503f9"));
 
         }
     }

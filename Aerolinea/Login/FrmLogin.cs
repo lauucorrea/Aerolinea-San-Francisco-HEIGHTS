@@ -20,10 +20,19 @@ namespace Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
-            if (Administracion.AdministrarLogIn(txtUsuario.Text, txtPasswd.Text))
-            { 
-                FrmMenu menu = new FrmMenu(Administracion.ObtenerVendedor(txtUsuario.Text, txtPasswd.Text));
+          LogCredenciales(txtUsuario.Text,txtPasswd.Text);
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            txtUsuario.Text = "lau123";
+            txtPasswd.Text = "asd123";
+        }
+        private void LogCredenciales(string usuario,string passwd)
+        {
+            if (Administracion.AdministrarLogIn(usuario, passwd))
+            {
+                FrmMenuPrincipal menu = new FrmMenuPrincipal(Administracion.ObtenerVendedor(usuario, passwd));
 
                 menu.Show();
                 Hide();
@@ -32,13 +41,8 @@ namespace Login
             {
                 txtUsuario.Text = String.Empty;
                 txtPasswd.Text = String.Empty;
-                
-            }
-        }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-            
+            }
         }
     }
 }

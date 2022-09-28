@@ -38,10 +38,13 @@ namespace Login
             }
 
 
-            foreach (Avion avion in Registro.Aviones)
+            foreach (Persona persona in Registro.Personas)
             {
-                   datosPasajero = avion.ToString();
+                if(persona is Cliente)
+                {
+                   datosPasajero = ((Cliente)persona).ToString();
                    lstPasajeros.Items.Add(datosPasajero);
+                }
             }
         }
 

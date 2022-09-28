@@ -5,9 +5,9 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Aerolinea\Entidades.csproj", "{24254ACA-C1F2-4F52-986E-DABF35A9A29C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login", "Login\Login.csproj", "{8FEC1B1E-56D3-42A9-87D0-E1B2300E48FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vista", "Login\Vista.csproj", "{8FEC1B1E-56D3-42A9-87D0-E1B2300E48FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validaciones", "Validaciones\Validaciones.csproj", "{5CBFFB5C-6242-477B-A222-D4AB59D3BDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validaciones", "Validaciones\Validaciones.csproj", "{5CBFFB5C-6242-477B-A222-D4AB59D3BDA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
