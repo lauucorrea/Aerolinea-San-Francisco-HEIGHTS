@@ -27,6 +27,7 @@ namespace Entidades
             HardcodeListas();
         }
 
+
         public static List <Pasaje> Pasajes
         {
             get => ListaPasajes;
@@ -56,18 +57,14 @@ namespace Entidades
             ListaPersonas.Add(new Cliente("Prodi", "Sarapa", 41100624, 50));
             ListaPersonas.Add(new Cliente("Montaner", "Cecilia", 41105244, 50));
 
-            ListaAviones.Add(new Avion(true, 2, 50, 22,  "a2e3df45gg5"));
-            ListaAviones.Add(new Avion(true, 1, 40, 100, "u73we94fr23"));
-            ListaAviones.Add(new Avion(false, 3, 110, 45,"o30rjf340f4"));
-            ListaAviones.Add(new Avion(false, 2, 50, 12, "2ls9384l58t"));
-            ListaAviones.Add(new Avion(true, 2, 80, 60,  "o03l285jfg6"));
-            ListaAviones.Add(new Avion(false, 1, 40, 30, "we345fhi938"));
-            ListaAviones.Add(new Avion(true, 1, 45, 22,  "qho3ol503f9"));
+            ListaAviones.Add(new Avion(true, 2, 50, 22,  "A2E3DE5A"));
+            ListaAviones.Add(new Avion(true, 1, 40, 100, "U73WE98W"));
+            ListaAviones.Add(new Avion(false, 3, 110, 45,"O23SFF8E"));
+            ListaAviones.Add(new Avion(false, 2, 50, 12, "2LS9384L"));
+            ListaAviones.Add(new Avion(true, 2, 80, 60,  "O0O25AFF"));
+            ListaAviones.Add(new Avion(false, 1, 40, 30, "WE345FHI"));
+            ListaAviones.Add(new Avion(true, 1, 45, 22,  "QHO0E4F5"));
 
-            ListaVuelos.Add(new Vuelo("BSAS", Destinos.SantaRosa.ToString(), Pasajes, 182000, "a2e3df45gg5"));
-            ListaVuelos.Add(new Vuelo("BSAS", Destinos.Roma.ToString(), Pasajes, 182000, "we345fhi938"));
-            ListaVuelos.Add(new Vuelo("BSAS", Destinos.PuertoMadryn.ToString(), Pasajes, 182000, "2ls9384l58t"));
-            ListaVuelos.Add(new Vuelo("BSAS", Destinos.Neuquen.ToString(), Pasajes, 182000, "qho3ol503f9"));
 
         }
     }

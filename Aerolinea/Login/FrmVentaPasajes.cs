@@ -26,7 +26,7 @@ namespace Vista
 
         private void FrmVentaPasajes_Load(object sender, EventArgs e)
         {
-            cmbDestino.DataSource = Enum.GetValues(typeof(Destinos));
+            //cmbDestino.DataSource = Enum.GetValues(typeof(Destinos));
             txtNombre.Text = clienteAtendido.Nombre;
             txtDni.Text = clienteAtendido.Dni.ToString();
             MostrarVuelos();
@@ -49,7 +49,9 @@ namespace Vista
                 txtMatricula.Clear();
                 vueloSeleccionado = (Vuelo)lstVuelos.SelectedItem;
                 txtMatricula.Text = vueloSeleccionado.MatriculaAvion;
+                txtDestino.Text = vueloSeleccionado.Destino.ToString();
                 lblValorTotal.Text = vueloSeleccionado.Costo.ToString();
+
             }
             
         }

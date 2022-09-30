@@ -24,3 +24,4 @@ C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\refint\Vist
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.pdb
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.genruntimeconfig.cache
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\ref\Vista.dll
+C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmRegistroVuelo.resources

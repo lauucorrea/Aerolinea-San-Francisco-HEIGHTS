@@ -97,7 +97,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"{OfreceComida}-{CapacidadBodega}-{TotalAsientos}-{MatriculaAvion}");
+            sb.Append($"Ofrece Comida? {OfreceComida}- Capacidad Bodega: {CapacidadBodega}- Total Asientos: {TotalAsientos}-Matricula: {MatriculaAvion}");
 
             return sb.ToString();
         }

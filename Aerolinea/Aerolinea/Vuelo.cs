@@ -9,25 +9,26 @@ namespace Entidades
 
     public class Vuelo
     {
+        private bool esInternacional;
         private string origen;
-        private string destino;
+        private Enum destino;
         private DateTime horaPartida;
         private DateTime horaLlegada;
         private List<Pasaje> listaPasajes;
         private float costo;
         private string matriculaAvion;
 
-        public Vuelo(string origen,string destino, List<Pasaje> listaPasajes, float costo, string matriculaAvion)
+        public Vuelo(string origen,DateTime horaPartida,DateTime horaLlegada, Enum destino, bool esInternacional, float costo, string matriculaAvion)
         {
             Origen = origen;
             Destino = destino;
-            HoraPartida = DateTime.Now;
-            HoraLlegada = CrearHoraLlegada();
-            ListaPasajes = listaPasajes;
+            EsInternacional = esInternacional;
+            HoraPartida = horaPartida;
+            HoraLlegada = horaLlegada;
             Costo = costo;
             MatriculaAvion = matriculaAvion;
         }
-
+        
         public string Origen
         {
             get => origen;
@@ -46,20 +47,13 @@ namespace Entidades
             }
 
         }
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append($"Origen: {Origen}- Destino: {Destino}- Partida: {HoraPartida.ToString("HH:mm")}-Llegada: {HoraLlegada.ToString("HH:mm")}-Costo: ${Costo}-Matricula Avion: {MatriculaAvion}");
-
-            return sb.ToString();
-        }
-        public string Destino
+       
+        public Enum Destino
         {
             get => destino;
             private set
             {
-                if (ValidadoraDeDatos.ValidarString(value.ToLower()))
+                if (value is not null)
                 {
                     destino = value;
                 }
@@ -116,21 +110,24 @@ namespace Entidades
             }
         }
 
-        public DateTime CrearHoraLlegada()
+        public bool EsInternacional
         {
-            
-            Random numHoraRandomNacional = new Random();
-            Random numHoraRandomInternacional = new Random();
-            Random minutos = new Random();
-
-            int numeroNacional = numHoraRandomNacional.Next(2,4);
-            int numeroInternacional = numHoraRandomInternacional.Next(8,12);
-
-            DateTime horaLlegadaNacional = HoraPartida.AddHours(numeroNacional);
-            
-            return horaLlegadaNacional;
-            
+            get => esInternacional;
+            set => esInternacional = value;
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Origen: {Origen}- Destino: {Destino}- Partida: {HoraPartida.ToString("HH:mm")}-Llegada: {HoraLlegada.ToString("HH:mm")}-Costo: ${Costo}-Matricula Avion: {MatriculaAvion}");
+
+            return sb.ToString();
+        }
+
+        
+
+        
     }
 
 }

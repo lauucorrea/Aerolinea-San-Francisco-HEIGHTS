@@ -75,5 +75,12 @@ namespace Login
             
 
         }
+
+        private void btnAgregarVuelo_Click(object sender, EventArgs e)
+        {
+            FrmRegistroVuelo menu = new FrmRegistroVuelo();
+
+            menu.ShowDialog();
+        }
     }
 }

@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.cmbDestino = new System.Windows.Forms.ComboBox();
             this.lblDestino = new System.Windows.Forms.Label();
             this.grpCategoria = new System.Windows.Forms.GroupBox();
             this.rbtCategoriaPremium = new System.Windows.Forms.RadioButton();
@@ -52,6 +51,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblLimiteValija = new System.Windows.Forms.Label();
             this.lblTituloVentas = new System.Windows.Forms.Label();
+            this.txtDestino = new System.Windows.Forms.TextBox();
             this.grpCategoria.SuspendLayout();
             this.grpBolso.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,7 @@
             this.txtNombre.Location = new System.Drawing.Point(747, 189);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "NOMBRE PASAJERO";
+            this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(149, 23);
             this.txtNombre.TabIndex = 3;
             // 
@@ -99,16 +100,9 @@
             this.txtDni.Location = new System.Drawing.Point(933, 189);
             this.txtDni.Name = "txtDni";
             this.txtDni.PlaceholderText = "DNI PASAJERO";
+            this.txtDni.ReadOnly = true;
             this.txtDni.Size = new System.Drawing.Size(149, 23);
             this.txtDni.TabIndex = 4;
-            // 
-            // cmbDestino
-            // 
-            this.cmbDestino.FormattingEnabled = true;
-            this.cmbDestino.Location = new System.Drawing.Point(747, 260);
-            this.cmbDestino.Name = "cmbDestino";
-            this.cmbDestino.Size = new System.Drawing.Size(149, 23);
-            this.cmbDestino.TabIndex = 5;
             // 
             // lblDestino
             // 
@@ -116,9 +110,9 @@
             this.lblDestino.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDestino.Location = new System.Drawing.Point(747, 244);
             this.lblDestino.Name = "lblDestino";
-            this.lblDestino.Size = new System.Drawing.Size(107, 13);
+            this.lblDestino.Size = new System.Drawing.Size(47, 13);
             this.lblDestino.TabIndex = 6;
-            this.lblDestino.Text = "Seleccionar destino";
+            this.lblDestino.Text = "Destino";
             // 
             // grpCategoria
             // 
@@ -193,7 +187,7 @@
             this.grpBolso.Controls.Add(this.rbtBolsoSi);
             this.grpBolso.Location = new System.Drawing.Point(747, 381);
             this.grpBolso.Name = "grpBolso";
-            this.grpBolso.Size = new System.Drawing.Size(149, 40);
+            this.grpBolso.Size = new System.Drawing.Size(149, 39);
             this.grpBolso.TabIndex = 11;
             this.grpBolso.TabStop = false;
             this.grpBolso.Text = "Lleva bolso?";
@@ -261,6 +255,7 @@
             this.txtMatricula.Location = new System.Drawing.Point(933, 397);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.PlaceholderText = "MATRICULA";
+            this.txtMatricula.ReadOnly = true;
             this.txtMatricula.Size = new System.Drawing.Size(149, 23);
             this.txtMatricula.TabIndex = 16;
             // 
@@ -295,11 +290,20 @@
             this.lblTituloVentas.TabIndex = 20;
             this.lblTituloVentas.Text = "GESTION DE PASAJES";
             // 
+            // txtDestino
+            // 
+            this.txtDestino.Location = new System.Drawing.Point(747, 259);
+            this.txtDestino.Name = "txtDestino";
+            this.txtDestino.ReadOnly = true;
+            this.txtDestino.Size = new System.Drawing.Size(149, 23);
+            this.txtDestino.TabIndex = 21;
+            // 
             // FrmVentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 649);
+            this.Controls.Add(this.txtDestino);
             this.Controls.Add(this.lblTituloVentas);
             this.Controls.Add(this.lblRecargoPremium);
             this.Controls.Add(this.lblLimiteValija);
@@ -314,7 +318,6 @@
             this.Controls.Add(this.lblValorTotal);
             this.Controls.Add(this.grpCategoria);
             this.Controls.Add(this.lblDestino);
-            this.Controls.Add(this.cmbDestino);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
@@ -339,7 +342,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.ComboBox cmbDestino;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.GroupBox grpCategoria;
         private System.Windows.Forms.RadioButton rbtCategoriaPremium;
@@ -358,5 +360,6 @@
         private System.Windows.Forms.Label lblLimiteValija;
         private System.Windows.Forms.Label lblRecargoPremium;
         private System.Windows.Forms.Label lblTituloVentas;
+        private System.Windows.Forms.TextBox txtDestino;
     }
 }
