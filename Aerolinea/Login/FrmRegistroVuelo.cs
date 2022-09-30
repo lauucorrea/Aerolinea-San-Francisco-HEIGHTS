@@ -50,17 +50,25 @@ namespace Vista
             {
                 if (Administracion.CheckearSiAvionExiste(txtMatricula.Text))
                 {
-                    esInternacional = EsInternacional(cmbDestinos.SelectedIndex);
-                    horasDeVuelo = Administracion.CalcularCantidadDeHorasDeVuelo(esInternacional, (int)numHora.Value);
-                    costoVuelo = Administracion.CalcularCostoDelVuelo(esInternacional, (int)numHora.Value, horasDeVuelo);
-
-                    if (Administracion.AgregarVueloALista(txtOrigen.Text, cmbDestinos.SelectedIndex, esInternacional, (int)numHora.Value, (int)numMinutos.Value, horasDeVuelo, costoVuelo, txtMatricula.Text))
+                    if (numHora.Value != 0 && numMinutos.Value != 0)
                     {
-                        result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
-                        if (result == DialogResult.OK)
+
+                        esInternacional = EsInternacional(cmbDestinos.SelectedIndex);
+                        horasDeVuelo = Administracion.CalcularCantidadDeHorasDeVuelo(esInternacional);
+                        costoVuelo = Administracion.CalcularCostoDelVuelo(esInternacional, (int)numHora.Value);
+
+                        if (Administracion.AgregarVueloALista(txtOrigen.Text, cmbDestinos.SelectedIndex, esInternacional, (int)numHora.Value, (int)numMinutos.Value, horasDeVuelo, costoVuelo, txtMatricula.Text))
                         {
-                            Close();
+                            result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
+                            if (result == DialogResult.OK)
+                            {
+                                Close();
+                            }
                         }
+                    }
+                    else
+                    {
+                        throw new Exception("Los campos numericos deben ser completados");
                     }
                 }
                 else

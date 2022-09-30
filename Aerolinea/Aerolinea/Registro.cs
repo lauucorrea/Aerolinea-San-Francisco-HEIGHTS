@@ -17,7 +17,6 @@ namespace Entidades
         private static List<Pasaje> ListaPasajes;
         private static List<Avion> ListaAviones;
         private static List<Vuelo> ListaVuelos;
-        private static DateTime tiempo = DateTime.Now;
         static Registro()
         {
             ListaPersonas = new List<Persona>();
@@ -47,6 +46,13 @@ namespace Entidades
         {
             get => ListaVuelos;
         }
+
+        public static int GetIndex(this Enum Destino)
+        {
+            Array values = Enum.GetValues(Destino.GetType());
+            return Array.IndexOf(values, Destino);
+        }
+
         public static void HardcodeListas()
         {
             ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123"));

@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtDni = new System.Windows.Forms.TextBox();
             this.lblDestino = new System.Windows.Forms.Label();
             this.grpCategoria = new System.Windows.Forms.GroupBox();
             this.rbtCategoriaPremium = new System.Windows.Forms.RadioButton();
@@ -44,16 +43,21 @@
             this.rbtBolsoNo = new System.Windows.Forms.RadioButton();
             this.rbtBolsoSi = new System.Windows.Forms.RadioButton();
             this.lblValija1 = new System.Windows.Forms.Label();
-            this.cmbValija1 = new System.Windows.Forms.ComboBox();
-            this.cmbValija2 = new System.Windows.Forms.ComboBox();
             this.lblValija2 = new System.Windows.Forms.Label();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblLimiteValija = new System.Windows.Forms.Label();
             this.lblTituloVentas = new System.Windows.Forms.Label();
-            this.txtDestino = new System.Windows.Forms.TextBox();
+            this.btnVender = new System.Windows.Forms.Button();
+            this.numPeso1 = new System.Windows.Forms.NumericUpDown();
+            this.numPeso2 = new System.Windows.Forms.NumericUpDown();
+            this.cmbDestinos = new System.Windows.Forms.ComboBox();
+            this.lblErrores = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.grpCategoria.SuspendLayout();
             this.grpBolso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPeso2)).BeginInit();
             this.SuspendLayout();
             // 
             // lstVuelos
@@ -94,15 +98,6 @@
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(149, 23);
             this.txtNombre.TabIndex = 3;
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(933, 189);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.PlaceholderText = "DNI PASAJERO";
-            this.txtDni.ReadOnly = true;
-            this.txtDni.Size = new System.Drawing.Size(149, 23);
-            this.txtDni.TabIndex = 4;
             // 
             // lblDestino
             // 
@@ -224,22 +219,6 @@
             this.lblValija1.TabIndex = 12;
             this.lblValija1.Text = "Peso Valija 1";
             // 
-            // cmbValija1
-            // 
-            this.cmbValija1.FormattingEnabled = true;
-            this.cmbValija1.Location = new System.Drawing.Point(747, 334);
-            this.cmbValija1.Name = "cmbValija1";
-            this.cmbValija1.Size = new System.Drawing.Size(149, 23);
-            this.cmbValija1.TabIndex = 13;
-            // 
-            // cmbValija2
-            // 
-            this.cmbValija2.FormattingEnabled = true;
-            this.cmbValija2.Location = new System.Drawing.Point(933, 334);
-            this.cmbValija2.Name = "cmbValija2";
-            this.cmbValija2.Size = new System.Drawing.Size(149, 23);
-            this.cmbValija2.TabIndex = 14;
-            // 
             // lblValija2
             // 
             this.lblValija2.AutoSize = true;
@@ -290,35 +269,77 @@
             this.lblTituloVentas.TabIndex = 20;
             this.lblTituloVentas.Text = "GESTION DE PASAJES";
             // 
-            // txtDestino
+            // btnVender
             // 
-            this.txtDestino.Location = new System.Drawing.Point(747, 259);
-            this.txtDestino.Name = "txtDestino";
-            this.txtDestino.ReadOnly = true;
-            this.txtDestino.Size = new System.Drawing.Size(149, 23);
-            this.txtDestino.TabIndex = 21;
+            this.btnVender.Location = new System.Drawing.Point(1008, 583);
+            this.btnVender.Name = "btnVender";
+            this.btnVender.Size = new System.Drawing.Size(119, 41);
+            this.btnVender.TabIndex = 22;
+            this.btnVender.Text = "Efectuar Venta";
+            this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
+            // 
+            // numPeso1
+            // 
+            this.numPeso1.Location = new System.Drawing.Point(747, 333);
+            this.numPeso1.Name = "numPeso1";
+            this.numPeso1.Size = new System.Drawing.Size(120, 23);
+            this.numPeso1.TabIndex = 23;
+            // 
+            // numPeso2
+            // 
+            this.numPeso2.Location = new System.Drawing.Point(933, 333);
+            this.numPeso2.Name = "numPeso2";
+            this.numPeso2.Size = new System.Drawing.Size(120, 23);
+            this.numPeso2.TabIndex = 24;
+            // 
+            // cmbDestinos
+            // 
+            this.cmbDestinos.FormattingEnabled = true;
+            this.cmbDestinos.Location = new System.Drawing.Point(747, 260);
+            this.cmbDestinos.Name = "cmbDestinos";
+            this.cmbDestinos.Size = new System.Drawing.Size(149, 23);
+            this.cmbDestinos.TabIndex = 25;
+            // 
+            // lblErrores
+            // 
+            this.lblErrores.AutoSize = true;
+            this.lblErrores.ForeColor = System.Drawing.Color.Red;
+            this.lblErrores.Location = new System.Drawing.Point(569, 596);
+            this.lblErrores.Name = "lblErrores";
+            this.lblErrores.Size = new System.Drawing.Size(0, 15);
+            this.lblErrores.TabIndex = 27;
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(933, 189);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(149, 23);
+            this.txtDni.TabIndex = 28;
             // 
             // FrmVentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 649);
-            this.Controls.Add(this.txtDestino);
+            this.Controls.Add(this.txtDni);
+            this.Controls.Add(this.lblErrores);
+            this.Controls.Add(this.cmbDestinos);
+            this.Controls.Add(this.numPeso2);
+            this.Controls.Add(this.numPeso1);
+            this.Controls.Add(this.btnVender);
             this.Controls.Add(this.lblTituloVentas);
             this.Controls.Add(this.lblRecargoPremium);
             this.Controls.Add(this.lblLimiteValija);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.lblValija2);
-            this.Controls.Add(this.cmbValija2);
-            this.Controls.Add(this.cmbValija1);
             this.Controls.Add(this.lblValija1);
             this.Controls.Add(this.grpBolso);
             this.Controls.Add(this.lblTextoValorPasaje);
             this.Controls.Add(this.lblValorTotal);
             this.Controls.Add(this.grpCategoria);
             this.Controls.Add(this.lblDestino);
-            this.Controls.Add(this.txtDni);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -330,6 +351,8 @@
             this.grpCategoria.PerformLayout();
             this.grpBolso.ResumeLayout(false);
             this.grpBolso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPeso2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +364,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.GroupBox grpCategoria;
         private System.Windows.Forms.RadioButton rbtCategoriaPremium;
@@ -352,14 +374,17 @@
         private System.Windows.Forms.RadioButton rbtBolsoNo;
         private System.Windows.Forms.RadioButton rbtBolsoSi;
         private System.Windows.Forms.Label lblValija1;
-        private System.Windows.Forms.ComboBox cmbValija1;
-        private System.Windows.Forms.ComboBox cmbValija2;
         private System.Windows.Forms.Label lblValija2;
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblLimiteValija;
         private System.Windows.Forms.Label lblRecargoPremium;
         private System.Windows.Forms.Label lblTituloVentas;
-        private System.Windows.Forms.TextBox txtDestino;
+        private System.Windows.Forms.Button btnVender;
+        private System.Windows.Forms.NumericUpDown numPeso1;
+        private System.Windows.Forms.NumericUpDown numPeso2;
+        private System.Windows.Forms.ComboBox cmbDestinos;
+        private System.Windows.Forms.Label lblErrores;
+        private System.Windows.Forms.TextBox txtDni;
     }
 }

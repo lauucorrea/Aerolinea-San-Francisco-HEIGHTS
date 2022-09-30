@@ -17,6 +17,12 @@ namespace Entidades
         private List<Pasaje> listaPasajes;
         private float costo;
         private string matriculaAvion;
+        private static int idVuelo;
+
+        static Vuelo()
+        {
+            IdVuelo = 0000;
+        }
 
         public Vuelo(string origen,DateTime horaPartida,DateTime horaLlegada, Enum destino, bool esInternacional, float costo, string matriculaAvion)
         {
@@ -27,6 +33,8 @@ namespace Entidades
             HoraLlegada = horaLlegada;
             Costo = costo;
             MatriculaAvion = matriculaAvion;
+            IdVuelo = IdVuelo++;
+            ListaPasajes = new List<Pasaje>();
         }
         
         public string Origen
@@ -47,7 +55,13 @@ namespace Entidades
             }
 
         }
-       
+        
+        public static int IdVuelo
+        {
+            get => idVuelo;
+            private set => idVuelo = value;
+        }
+
         public Enum Destino
         {
             get => destino;
@@ -80,7 +94,7 @@ namespace Entidades
         public List<Pasaje> ListaPasajes
         {
             get => listaPasajes;
-            set
+            private set
             {
                 listaPasajes = value;
             }
@@ -125,9 +139,14 @@ namespace Entidades
             return sb.ToString();
         }
 
-        
+        public override int GetHashCode()
+        {
+            return IdVuelo;
+        }
 
-        
+
+
+
     }
 
 }

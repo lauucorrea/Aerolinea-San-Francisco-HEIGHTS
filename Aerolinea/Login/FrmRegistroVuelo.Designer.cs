@@ -192,9 +192,8 @@
             this.lblErrores.AutoSize = true;
             this.lblErrores.Location = new System.Drawing.Point(291, 413);
             this.lblErrores.Name = "lblErrores";
-            this.lblErrores.Size = new System.Drawing.Size(38, 15);
+            this.lblErrores.Size = new System.Drawing.Size(0, 15);
             this.lblErrores.TabIndex = 16;
-            this.lblErrores.Text = "label2";
             // 
             // FrmRegistroVuelo
             // 

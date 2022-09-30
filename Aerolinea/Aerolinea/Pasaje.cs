@@ -10,24 +10,24 @@ namespace Entidades
     {
         private string nombrePasajero;
         private int dniPasajero;
-        private string destino;
+        private Enum destino;
         private float valorPasaje;
         private bool esPremium;
         private bool esInternacional;
         private string matriculaAvion;
-        private int cantidadBolsos;
+        private bool traeBolsos;
         private int cantidadValijas;
 
-        public Pasaje(string nombrePasajero, int dniPasajero, string destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, int cantidadBolsos, int cantidadValijas)
+        public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
         {
             NombrePasajero = nombrePasajero;
             DniPasajero = dniPasajero;
-            this.destino = destino;
+            Destino = destino;
             ValorPasaje = valorPasaje;
-            this.esPremium = esPremium;
-            this.esInternacional = esInternacional;
-            this.matriculaAvion = matriculaAvion;
-            CantidadBolsos = cantidadBolsos;
+            EsPremium = esPremium;
+            EsInternacional = esInternacional;
+            MatriculaAvion = matriculaAvion;
+            TraeBolsos = traeBolsos;
             CantidadValijas = cantidadValijas;
         }
 
@@ -48,6 +48,7 @@ namespace Entidades
             }
         }
 
+
         public int DniPasajero
         {
             get => dniPasajero;
@@ -63,14 +64,27 @@ namespace Entidades
                 }
             }
         }
+        public Enum Destino
+        {
+            get => destino;
+            private set
+            {
+                if (value is not null)
+                {
+                    destino = (Destinos)value;
+                }
+                else
+                {
+                    throw new NullReferenceException();
+                }
+            }
+        }
         public float ValorPasaje
         {
             get => valorPasaje;
             private set
             {
-                int valorConvertido;
-
-                if (int.TryParse(value.ToString(), out valorConvertido))
+                if (value > 0)
                 {
                     valorPasaje = value;
                 }
@@ -81,20 +95,36 @@ namespace Entidades
             }
         }
 
-        public int CantidadBolsos
+        public bool EsPremium
         {
-            get => cantidadBolsos;
+            get => esPremium;
+            private set => esPremium = value;
+        }
+
+        public bool EsInternacional
+        {
+            get => esInternacional;
+            private set => esInternacional = value;
+        }
+
+        public bool TraeBolsos
+        {
+            get => traeBolsos;
+            private set => traeBolsos = value;
+        }
+
+        public string MatriculaAvion
+        {
+            get => matriculaAvion;
             private set
             {
-                int valorConvertido;
-
-                if (int.TryParse(value.ToString(), out valorConvertido))
+                if (Administracion.CheckearSiAvionExiste(value))
                 {
-                    cantidadBolsos = value;
+                    matriculaAvion = value;
                 }
                 else
                 {
-                    throw new Exception("Cantidad de bolsos invalida");
+                    throw new Exception("La matricula del avion no existe");
                 }
             }
         }
@@ -104,9 +134,7 @@ namespace Entidades
             get => cantidadValijas;
             private set
             {
-                int valorConvertido;
-
-                if (int.TryParse(value.ToString(), out valorConvertido))
+                if (value <= 2 && value > 0)
                 {
                     cantidadValijas = value;
                 }
@@ -115,8 +143,18 @@ namespace Entidades
                     throw new Exception("Cantidad de valijas invalida");
                 }
             }
+        }
+        // public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
+        public override string ToString()
+        {
+            string esPremium = EsPremium ? "Premium" : "Turista";
+            string esInternacional = EsInternacional ? "Internacional" : "Nacional";
+            string traeBolsos = TraeBolsos ? "Si" : "No";
+            StringBuilder sb = new StringBuilder();
 
+            sb.Append($"Nombre pasajero: {NombrePasajero} Dni: {DniPasajero} Destino : {Destino} Valor del pasaje: {ValorPasaje} Categoria: {esPremium} Alcance: {esInternacional} Valijas: {CantidadValijas} Bolsos: {traeBolsos} Avion: {MatriculaAvion} ");
 
+            return sb.ToString();
         }
     }
 }

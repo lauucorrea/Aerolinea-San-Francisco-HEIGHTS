@@ -50,7 +50,7 @@ namespace Entidades
                 }
                 else
                 {
-                    throw new Exception("Dni incorrecto");
+                    throw new Exception("Edad incorrecta");
                 }
             }
         }

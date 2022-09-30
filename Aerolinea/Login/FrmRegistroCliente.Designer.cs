@@ -31,15 +31,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombrePasajero = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtEdad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblEdad = new System.Windows.Forms.Label();
             this.lblDni = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtErrores = new System.Windows.Forms.Label();
+            this.numDni = new System.Windows.Forms.NumericUpDown();
+            this.numEdad = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numDni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEdad)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,14 +71,6 @@
             this.txtApellido.PlaceholderText = "Apellido";
             this.txtApellido.Size = new System.Drawing.Size(285, 27);
             this.txtApellido.TabIndex = 2;
-            // 
-            // txtEdad
-            // 
-            this.txtEdad.AllowDrop = true;
-            this.txtEdad.Location = new System.Drawing.Point(123, 211);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(100, 23);
-            this.txtEdad.TabIndex = 3;
             // 
             // label2
             // 
@@ -114,14 +108,6 @@
             this.lblDni.TabIndex = 7;
             this.lblDni.Text = "Ingrese DNI";
             // 
-            // txtDni
-            // 
-            this.txtDni.AllowDrop = true;
-            this.txtDni.Location = new System.Drawing.Point(123, 263);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(145, 23);
-            this.txtDni.TabIndex = 8;
-            // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(268, 351);
@@ -152,26 +138,42 @@
             this.txtErrores.Size = new System.Drawing.Size(0, 17);
             this.txtErrores.TabIndex = 11;
             // 
+            // numDni
+            // 
+            this.numDni.Location = new System.Drawing.Point(123, 263);
+            this.numDni.Name = "numDni";
+            this.numDni.Size = new System.Drawing.Size(120, 23);
+            this.numDni.TabIndex = 12;
+            // 
+            // numEdad
+            // 
+            this.numEdad.Location = new System.Drawing.Point(123, 206);
+            this.numEdad.Name = "numEdad";
+            this.numEdad.Size = new System.Drawing.Size(120, 23);
+            this.numEdad.TabIndex = 13;
+            // 
             // FrmRegistroPasajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 450);
+            this.Controls.Add(this.numEdad);
+            this.Controls.Add(this.numDni);
             this.Controls.Add(this.txtErrores);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtDni);
             this.Controls.Add(this.lblDni);
             this.Controls.Add(this.lblEdad);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtEdad);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombrePasajero);
             this.Controls.Add(this.label1);
             this.Name = "FrmRegistroPasajero";
             this.Text = "FrmRegistroPasajero";
             this.Load += new System.EventHandler(this.RegistroPasajero_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numDni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEdad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,14 +184,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombrePasajero;
         private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label txtErrores;
+        private System.Windows.Forms.NumericUpDown numDni;
+        private System.Windows.Forms.NumericUpDown numEdad;
     }
 }

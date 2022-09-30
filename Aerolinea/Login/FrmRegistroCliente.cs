@@ -24,32 +24,24 @@ namespace Login
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int dni;
             MessageBoxButtons botonesOpciones = MessageBoxButtons.OK;
             DialogResult result;
             try
             {
-                if (int.TryParse(txtDni.Text, out dni))
+                if (!Administracion.CheckearSiPersonaExiste((int)numDni.Value))
                 {
-                    if (!Administracion.CheckearSiPersonaExiste(dni))
+                    if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, (int)numDni.Value, (int)numEdad.Value))
                     {
-                        if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, txtDni.Text, txtEdad.Text))
+                        result = MessageBox.Show("Persona agregada con exito!", "", botonesOpciones);
+                        if (result == DialogResult.OK)
                         {
-                            result = MessageBox.Show("Persona agregada con exito!", "", botonesOpciones);
-                            if (result == DialogResult.OK)
-                            {
-                                Close();
-                            }
+                            Close();
                         }
-                    }
-                    else
-                    {
-                      throw new Exception("El cliente no existe en nuestros registros");
                     }
                 }
                 else
                 {
-                    throw new Exception("El tipo de dato del dni es incorrecto");
+                    throw new Exception("El cliente no existe en nuestros registros");
                 }
             }
             catch (Exception ex)
