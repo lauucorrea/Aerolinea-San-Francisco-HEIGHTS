@@ -34,6 +34,8 @@
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnVerHistorial = new System.Windows.Forms.Button();
             this.btnAgregarVuelo = new System.Windows.Forms.Button();
+            this.lblErrores = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTituloMenu
@@ -97,11 +99,33 @@
             this.btnAgregarVuelo.UseVisualStyleBackColor = true;
             this.btnAgregarVuelo.Click += new System.EventHandler(this.btnAgregarVuelo_Click);
             // 
+            // lblErrores
+            // 
+            this.lblErrores.AutoSize = true;
+            this.lblErrores.ForeColor = System.Drawing.Color.Red;
+            this.lblErrores.Location = new System.Drawing.Point(390, 549);
+            this.lblErrores.Name = "lblErrores";
+            this.lblErrores.Size = new System.Drawing.Size(0, 15);
+            this.lblErrores.TabIndex = 10;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFecha.Location = new System.Drawing.Point(443, 9);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(0, 32);
+            this.lblFecha.TabIndex = 11;
+            this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 610);
+            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.btnAgregarVuelo);
             this.Controls.Add(this.btnVerHistorial);
             this.Controls.Add(this.btnAgregarCliente);
@@ -124,5 +148,7 @@
         private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Button btnVerHistorial;
         private System.Windows.Forms.Button btnAgregarVuelo;
+        private System.Windows.Forms.Label lblErrores;
+        private System.Windows.Forms.Label lblFecha;
     }
 }

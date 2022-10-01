@@ -37,9 +37,9 @@
             this.lblDni = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtErrores = new System.Windows.Forms.Label();
             this.numDni = new System.Windows.Forms.NumericUpDown();
             this.numEdad = new System.Windows.Forms.NumericUpDown();
+            this.lblErrores = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numDni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEdad)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.txtNombrePasajero.PlaceholderText = "Nombre";
             this.txtNombrePasajero.Size = new System.Drawing.Size(285, 27);
             this.txtNombrePasajero.TabIndex = 1;
+            this.txtNombrePasajero.TextChanged += new System.EventHandler(this.txtNombrePasajero_TextChanged);
             // 
             // txtApellido
             // 
@@ -71,6 +72,7 @@
             this.txtApellido.PlaceholderText = "Apellido";
             this.txtApellido.Size = new System.Drawing.Size(285, 27);
             this.txtApellido.TabIndex = 2;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // label2
             // 
@@ -128,22 +130,18 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtErrores
-            // 
-            this.txtErrores.AutoSize = true;
-            this.txtErrores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtErrores.ForeColor = System.Drawing.Color.Red;
-            this.txtErrores.Location = new System.Drawing.Point(158, 424);
-            this.txtErrores.Name = "txtErrores";
-            this.txtErrores.Size = new System.Drawing.Size(0, 17);
-            this.txtErrores.TabIndex = 11;
-            // 
             // numDni
             // 
             this.numDni.Location = new System.Drawing.Point(123, 263);
+            this.numDni.Maximum = new decimal(new int[] {
+            59999999,
+            0,
+            0,
+            0});
             this.numDni.Name = "numDni";
             this.numDni.Size = new System.Drawing.Size(120, 23);
             this.numDni.TabIndex = 12;
+            this.numDni.ValueChanged += new System.EventHandler(this.numDni_ValueChanged);
             // 
             // numEdad
             // 
@@ -151,6 +149,17 @@
             this.numEdad.Name = "numEdad";
             this.numEdad.Size = new System.Drawing.Size(120, 23);
             this.numEdad.TabIndex = 13;
+            this.numEdad.ValueChanged += new System.EventHandler(this.numEdad_ValueChanged);
+            // 
+            // lblErrores
+            // 
+            this.lblErrores.AutoSize = true;
+            this.lblErrores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblErrores.ForeColor = System.Drawing.Color.Red;
+            this.lblErrores.Location = new System.Drawing.Point(158, 424);
+            this.lblErrores.Name = "lblErrores";
+            this.lblErrores.Size = new System.Drawing.Size(0, 17);
+            this.lblErrores.TabIndex = 11;
             // 
             // FrmRegistroPasajero
             // 
@@ -159,7 +168,7 @@
             this.ClientSize = new System.Drawing.Size(469, 450);
             this.Controls.Add(this.numEdad);
             this.Controls.Add(this.numDni);
-            this.Controls.Add(this.txtErrores);
+            this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblDni);
@@ -190,8 +199,8 @@
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label txtErrores;
         private System.Windows.Forms.NumericUpDown numDni;
         private System.Windows.Forms.NumericUpDown numEdad;
+        private System.Windows.Forms.Label lblErrores;
     }
 }

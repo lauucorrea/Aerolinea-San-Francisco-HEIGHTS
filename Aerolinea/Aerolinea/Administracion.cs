@@ -12,7 +12,7 @@ namespace Entidades
                     return true;
                 }
             }
-            return false;
+            throw new Exception("No encontramos un vendedor con estas credenciales");
         }
         public static bool CheckearSiPersonaExiste(int dniPersona)
         {
@@ -25,12 +25,27 @@ namespace Entidades
             }
             return false;
         }
+        public static bool CheckearSiClienteExiste(Cliente clienteRecibido)
+        {
+            foreach (Persona persona in Registro.Personas)
+            {
+                if (persona is Cliente)
+                {
+                    if (((Cliente)persona).Equals(clienteRecibido))
+                    {
+                        return true;
+                    }
 
-        public static bool CheckearSiAvionExiste(string matriculaAvion)
+                }
+            }
+            return false;
+        }
+
+        public static bool CheckearSiAvionExiste(Avion avionRecibido)
         {
             foreach (Avion avion in Registro.Aviones)
             {
-                if (avion.MatriculaAvion == matriculaAvion)
+                if (avion.Equals(avionRecibido))
                 {
                     return true;
                 }
@@ -38,11 +53,11 @@ namespace Entidades
             return false;
         }
 
-        public static bool CheckearSiVueloExiste(int idVuelo)
+        public static bool CheckearSiVueloExiste(Vuelo vueloRecibido)
         {
             foreach (Vuelo vuelo in Registro.Vuelos)
             {
-                if (vuelo.GetHashCode() == idVuelo)
+                if (vuelo.GetHashCode() == vueloRecibido.GetHashCode())
                 {
                     return true;
                 }
@@ -108,13 +123,13 @@ namespace Entidades
 
         public static bool AgregarClienteALista(string nombre, string apellido, int dni, int edad)
         {
+            Cliente ClienteCreado = new Cliente(nombre, apellido, dni, edad);
 
-            if (!CheckearSiPersonaExiste(dni))
+            if (!CheckearSiClienteExiste(ClienteCreado))
             {
-                Persona PersonaCreada = new Cliente(nombre, apellido, dni, edad);
-                if (PersonaCreada is not null)
+                if (ClienteCreado is not null)
                 {
-                    Registro.Personas.Add(PersonaCreada);
+                    Registro.Personas.Add(ClienteCreado);
                     return true;
                 }
                 else
@@ -131,16 +146,16 @@ namespace Entidades
 
         }
 
-        public static bool AgregarVueloALista(string origen, int indice, bool esInternacional, int horaPartida, int minutosPartida, int duracionVuelo, float costo, string matriculaAvion)
+        public static bool AgregarVueloALista(Avion avionElegido, string origen, int indice, bool esInternacional, int horaPartida, int minutosPartida, int duracionVuelo, float costo)
         {
             DateTime horaDespegue;
             DateTime horaLlegada;
-            if (CheckearSiAvionExiste(matriculaAvion))
+            if (CheckearSiAvionExiste(avionElegido))
             {
                 horaDespegue = new DateTime(2022, 10, 01, horaPartida, minutosPartida, 0);
                 horaLlegada = horaDespegue.AddHours(duracionVuelo);
 
-                Vuelo vueloCreado = new Vuelo(origen, horaDespegue, horaLlegada, (Destinos)indice, esInternacional, costo, matriculaAvion);
+                Vuelo vueloCreado = new Vuelo(avionElegido, origen, horaDespegue, horaLlegada, (Destinos)indice, esInternacional, costo);
                 if (vueloCreado is not null)
                 {
                     Registro.Vuelos.Add(vueloCreado);
@@ -155,23 +170,29 @@ namespace Entidades
 
         }
 
-        public static bool AgregarPasajeALista(Vuelo vueloSeleccionado, string nombrePasajero, int cantidadValijas, int dniPasajero, int indice, float valorPasaje, bool esPremium, bool esInternacional, bool traeBolsos)
+        public static bool AgregarPasajeALista(Vuelo vueloSeleccionado, string nombrePasajero, int cantidadValijas, int dniPasajero, int indice, decimal valorPasaje, bool esPremium, bool esInternacional, bool traeBolsos)
         {
-            if (!CheckearSiPasajeExiste(dniPasajero, vueloSeleccionado))
+            if (vueloSeleccionado is not null)
             {
-                Pasaje pasajeCreado = new Pasaje(nombrePasajero, dniPasajero, (Destinos)indice, valorPasaje, esPremium, esInternacional, vueloSeleccionado.MatriculaAvion, traeBolsos, cantidadValijas);
-                if (pasajeCreado is not null)
+                if (!CheckearSiPasajeExiste(dniPasajero, vueloSeleccionado))
                 {
-                    vueloSeleccionado.ListaPasajes.Add(pasajeCreado);
-                    Registro.Pasajes.Add(pasajeCreado);
-                    return true;
+                    Pasaje pasajeCreado = new Pasaje(nombrePasajero, dniPasajero, (Destinos)indice, valorPasaje, esPremium, esInternacional, vueloSeleccionado.AvionVuelo.MatriculaAvion, traeBolsos, cantidadValijas);
+                    if (pasajeCreado is not null)
+                    {
+                        vueloSeleccionado.ListaPasajes.Add(pasajeCreado);
+                        Registro.Pasajes.Add(pasajeCreado);
+
+                        return true;
+                    }
+                    else
+                    {
+                        throw new NullReferenceException("El programa fallo al crear un pasaje");
+                    }
                 }
-                else
-                {
-                    throw new Exception("El programa fallo al crear un vuelo");
-                }
+                throw new Exception("Ya existe un pasaje para esta persona en este vuelo");
             }
-            throw new Exception("El avion seleccionado ya no existe");
+            throw new ArgumentNullException("No se ha seleccionado ningun avion");
+
         }
 
         public static float CalcularCostoDelVuelo(bool esInternacional, int duracionDeVuelo)
@@ -187,7 +208,7 @@ namespace Entidades
                 costoNeto = duracionDeVuelo * 50;
             }
 
-            return costoNeto;
+            return (float)Math.Round((double)costoNeto, 2);
         }
 
         public static int CalcularCantidadDeHorasDeVuelo(bool esInternacional)
@@ -205,6 +226,24 @@ namespace Entidades
             return numeroRandom;
 
         }
+
+       
+
+        public static bool AvionPuedeCargarValijas(Avion avion,decimal pesoValijas)
+        {
+            decimal proximoPeso = avion.CargaActualBodega + pesoValijas;
+            if (avion is not null)
+            {
+                if (proximoPeso <= avion.CapacidadBodega)
+                {
+                    return true;
+                }
+                throw new Exception("La cantidad de peso a cargar Excede los limites del avion");
+            }
+            throw new Exception("El avion seleccionado es nulo");
+        }
+
+
 
 
 

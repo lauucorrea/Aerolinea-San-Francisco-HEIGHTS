@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entidades;
+using System;
 using System.Windows.Forms;
-using Entidades;
 using Vista;
 namespace Login
 {
     public partial class FrmMenuPrincipal : Form
     {
         Vendedor vendedorDeTurno;
-        
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -28,6 +21,7 @@ namespace Login
         private void FrmMenu_Load(object sender, EventArgs e)
         {
             lblTituloMenu.Text += vendedorDeTurno.NombreApellido();
+            
             MostrarClientes();
         }
 
@@ -35,8 +29,9 @@ namespace Login
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             FrmRegistroPasajero menu = new FrmRegistroPasajero(vendedorDeTurno);
-            
+
             menu.ShowDialog();
+            MostrarClientes();
         }
 
         private void MostrarClientes()
@@ -48,7 +43,7 @@ namespace Login
 
             foreach (Persona persona in Registro.Personas)
             {
-                if(persona is Cliente)
+                if (persona is Cliente)
                 {
                     lstPasajeros.Items.Add((Cliente)persona);
 
@@ -64,15 +59,29 @@ namespace Login
 
         private void btnGestionPasaje_Click(object sender, EventArgs e)
         {
-            if(lstPasajeros.Items.Count > 0 && lstPasajeros.SelectedItems.Count != 0)
+            if (lstPasajeros.Items.Count > 0 && lstPasajeros.SelectedItems.Count != 0)
             {
-                Cliente clienteSeleccionado = (Cliente)lstPasajeros.SelectedItem;
+                try
+                {
+                    if (Registro.Vuelos.Count > 0)
+                    {
+                        Cliente clienteSeleccionado = (Cliente)lstPasajeros.SelectedItem;
 
-                FrmVentaPasajes menu = new FrmVentaPasajes(clienteSeleccionado);
+                        FrmVentaPasajes menu = new FrmVentaPasajes(clienteSeleccionado);
 
-                menu.ShowDialog();
+                        menu.ShowDialog();
+                    }
+                    else
+                    {
+                        throw new Exception("No hay vuelos cargados en el sistema");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    lblErrores.Text = ex.Message;
+                }
             }
-            
+
 
         }
 

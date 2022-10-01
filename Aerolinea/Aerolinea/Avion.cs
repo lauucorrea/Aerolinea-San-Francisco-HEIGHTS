@@ -10,19 +10,21 @@ namespace Entidades
     {
         private bool ofreceComida;
         private int cantidadDeToilets;
-        private int capacidadBodega;
+        private decimal capacidadBodega;
+        private decimal cargaActualBodega;
         private int totalAsientos;
         private string matriculaAvion;
 
-        public Avion(bool ofreceComida, int cantidadDeToilets, int capacidadBodega, int totalAsientos, string matriculaAvion)
+        public Avion(bool ofreceComida, int cantidadDeToilets, decimal capacidadBodega, int totalAsientos, string matriculaAvion)
         {
             OfreceComida = ofreceComida;
             CantidadDeToilets = cantidadDeToilets;
             CapacidadBodega = capacidadBodega;
             TotalAsientos = totalAsientos;
             MatriculaAvion = matriculaAvion;
+            CargaActualBodega = 0;
         }
-
+        #region setters/getters
         public bool OfreceComida
         {
             get => ofreceComida;
@@ -35,9 +37,9 @@ namespace Entidades
             private set
             {
                 int numeroConvertido;
-                if (int.TryParse(value.ToString(), out numeroConvertido))
+                if (int.TryParse(value.ToString(), out numeroConvertido) && numeroConvertido > 0)
                 {
-                    cantidadDeToilets = value;
+                    cantidadDeToilets = numeroConvertido;
                 }
                 else
                 {
@@ -46,15 +48,39 @@ namespace Entidades
             }
         }
 
-        public int CapacidadBodega
+        public decimal CapacidadBodega
         {
             get => capacidadBodega;
             private set
             {
-                int numeroConvertido;
-                if (int.TryParse(value.ToString(), out numeroConvertido))
+                decimal numeroConvertido;
+                if (decimal.TryParse(value.ToString(), out numeroConvertido) && numeroConvertido > 0)
                 {
-                    capacidadBodega = value;
+                    capacidadBodega = Math.Round(numeroConvertido, 2);
+                }
+                else
+                {
+                    throw new Exception("Formato de capacidad de bodega incorrecto");
+                }
+            }
+        }
+        public decimal CargaActualBodega
+        {
+            get => cargaActualBodega;
+            set
+            {
+                decimal numeroConvertido;
+                if (decimal.TryParse(value.ToString(), out numeroConvertido))
+                {
+                    if(value <= CapacidadBodega)
+                    {
+                        cargaActualBodega = Math.Round(numeroConvertido, 2);
+                    }
+                    else
+                    {
+                        throw new Exception("La carga actual superaria la capacidad del avion");
+                    }
+                   
                 }
                 else
                 {
@@ -70,7 +96,7 @@ namespace Entidades
                 int numeroConvertido;
                 if (int.TryParse(value.ToString(), out numeroConvertido))
                 {
-                    totalAsientos = value;
+                    totalAsientos = numeroConvertido;
                 }
                 else
                 {
@@ -93,13 +119,24 @@ namespace Entidades
                 }
             }
         }
+        #endregion
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Ofrece Comida? {OfreceComida}- Capacidad Bodega: {CapacidadBodega}- Total Asientos: {TotalAsientos}-Matricula: {MatriculaAvion}");
+            sb.Append($"Ofrece Comida? {OfreceComida}- Capacidad Bodega: {CapacidadBodega} Carga Actual: {CargaActualBodega}- Total Asientos: {TotalAsientos}-Matricula: {MatriculaAvion}");
 
             return sb.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            Avion avion = obj as Avion;
+
+            return avion is not null && MatriculaAvion == avion.MatriculaAvion;
+        }
+
+       
+
     }
 }

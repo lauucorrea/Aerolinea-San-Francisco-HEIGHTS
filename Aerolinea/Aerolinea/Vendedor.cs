@@ -18,15 +18,7 @@ namespace Entidades
             Password = contraseña;
         }
 
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append($"VENDEDOR {Usuario}-{Nombre}-{Apellido}-{Dni}-{Edad}");
-
-            return sb.ToString();
-        }
-
+        #region setters
         public string NombreApellido()
         {
             StringBuilder sb = new StringBuilder();
@@ -46,6 +38,15 @@ namespace Entidades
             private set => usuario = value;
             get => usuario;
         }
+        #endregion
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"VENDEDOR {Usuario}-{Nombre}-{Apellido}-{Dni}-{Edad}");
+
+            return sb.ToString();
+        }
     }
 }

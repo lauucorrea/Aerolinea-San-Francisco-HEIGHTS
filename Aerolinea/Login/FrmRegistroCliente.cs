@@ -28,25 +28,19 @@ namespace Login
             DialogResult result;
             try
             {
-                if (!Administracion.CheckearSiPersonaExiste((int)numDni.Value))
+                if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, (int)numDni.Value, (int)numEdad.Value))
                 {
-                    if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, (int)numDni.Value, (int)numEdad.Value))
+                    result = MessageBox.Show("Persona agregada con exito!", "", botonesOpciones);
+                    if (result == DialogResult.OK)
                     {
-                        result = MessageBox.Show("Persona agregada con exito!", "", botonesOpciones);
-                        if (result == DialogResult.OK)
-                        {
-                            Close();
-                        }
+                        Close();
                     }
                 }
-                else
-                {
-                    throw new Exception("El cliente no existe en nuestros registros");
-                }
+
             }
             catch (Exception ex)
             {
-                txtErrores.Text = ex.Message;
+                lblErrores.Text = ex.Message;
             }
         }
 
@@ -55,5 +49,32 @@ namespace Login
             Close();
         }
 
+        private void EvaluarCampos()
+        {
+            if (!string.IsNullOrEmpty(txtNombrePasajero.Text) && !string.IsNullOrEmpty(txtApellido.Text) && numEdad.Value != 0 && numDni.Value != 0)
+            {
+                btnAceptar.Enabled = true;
+            }
+        }
+
+        private void txtNombrePasajero_TextChanged(object sender, EventArgs e)
+        {
+            EvaluarCampos();
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            EvaluarCampos();
+        }
+
+        private void numEdad_ValueChanged(object sender, EventArgs e)
+        {
+            EvaluarCampos();
+        }
+
+        private void numDni_ValueChanged(object sender, EventArgs e)
+        {
+            EvaluarCampos();
+        }
     }
 }

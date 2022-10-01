@@ -48,32 +48,25 @@ namespace Vista
             int horasDeVuelo;
             try
             {
-                if (Administracion.CheckearSiAvionExiste(txtMatricula.Text))
+                if (numHora.Value != 0)
                 {
-                    if (numHora.Value != 0 && numMinutos.Value != 0)
+
+                    esInternacional = EsInternacional(cmbDestinos.SelectedIndex);
+                    horasDeVuelo = Administracion.CalcularCantidadDeHorasDeVuelo(esInternacional);
+                    costoVuelo = Administracion.CalcularCostoDelVuelo(esInternacional, (int)numHora.Value);
+
+                    if (Administracion.AgregarVueloALista(avionSeleccionado, txtOrigen.Text, cmbDestinos.SelectedIndex, esInternacional, (int)numHora.Value, (int)numMinutos.Value, horasDeVuelo, costoVuelo))
                     {
-
-                        esInternacional = EsInternacional(cmbDestinos.SelectedIndex);
-                        horasDeVuelo = Administracion.CalcularCantidadDeHorasDeVuelo(esInternacional);
-                        costoVuelo = Administracion.CalcularCostoDelVuelo(esInternacional, (int)numHora.Value);
-
-                        if (Administracion.AgregarVueloALista(txtOrigen.Text, cmbDestinos.SelectedIndex, esInternacional, (int)numHora.Value, (int)numMinutos.Value, horasDeVuelo, costoVuelo, txtMatricula.Text))
+                        result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
+                        if (result == DialogResult.OK)
                         {
-                            result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
-                            if (result == DialogResult.OK)
-                            {
-                                Close();
-                            }
+                            Close();
                         }
-                    }
-                    else
-                    {
-                        throw new Exception("Los campos numericos deben ser completados");
                     }
                 }
                 else
                 {
-                    throw new Exception("El cliente no existe en nuestros registros");
+                    throw new Exception("Los campos numericos deben ser completados");
                 }
 
             }

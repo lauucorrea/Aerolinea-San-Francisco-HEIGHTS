@@ -54,6 +54,7 @@
             this.cmbDestinos = new System.Windows.Forms.ComboBox();
             this.lblErrores = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpCategoria.SuspendLayout();
             this.grpBolso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).BeginInit();
@@ -66,7 +67,7 @@
             this.lstVuelos.ItemHeight = 15;
             this.lstVuelos.Location = new System.Drawing.Point(12, 108);
             this.lstVuelos.Name = "lstVuelos";
-            this.lstVuelos.Size = new System.Drawing.Size(693, 424);
+            this.lstVuelos.Size = new System.Drawing.Size(958, 424);
             this.lstVuelos.TabIndex = 0;
             this.lstVuelos.SelectedIndexChanged += new System.EventHandler(this.lstVuelos_SelectedIndexChanged);
             // 
@@ -84,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(800, 66);
+            this.label2.Location = new System.Drawing.Point(1082, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(203, 25);
             this.label2.TabIndex = 2;
@@ -92,7 +93,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(747, 189);
+            this.txtNombre.Location = new System.Drawing.Point(1029, 189);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "NOMBRE PASAJERO";
             this.txtNombre.ReadOnly = true;
@@ -103,7 +104,7 @@
             // 
             this.lblDestino.AutoSize = true;
             this.lblDestino.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDestino.Location = new System.Drawing.Point(747, 244);
+            this.lblDestino.Location = new System.Drawing.Point(1029, 244);
             this.lblDestino.Name = "lblDestino";
             this.lblDestino.Size = new System.Drawing.Size(47, 13);
             this.lblDestino.TabIndex = 6;
@@ -113,7 +114,7 @@
             // 
             this.grpCategoria.Controls.Add(this.rbtCategoriaPremium);
             this.grpCategoria.Controls.Add(this.rbtCategoriaTurista);
-            this.grpCategoria.Location = new System.Drawing.Point(933, 244);
+            this.grpCategoria.Location = new System.Drawing.Point(1215, 244);
             this.grpCategoria.Name = "grpCategoria";
             this.grpCategoria.Size = new System.Drawing.Size(196, 39);
             this.grpCategoria.TabIndex = 8;
@@ -123,14 +124,13 @@
             // rbtCategoriaPremium
             // 
             this.rbtCategoriaPremium.AutoSize = true;
-            this.rbtCategoriaPremium.Location = new System.Drawing.Point(75, 15);
+            this.rbtCategoriaPremium.Location = new System.Drawing.Point(85, 15);
             this.rbtCategoriaPremium.Name = "rbtCategoriaPremium";
             this.rbtCategoriaPremium.Size = new System.Drawing.Size(74, 19);
             this.rbtCategoriaPremium.TabIndex = 10;
             this.rbtCategoriaPremium.TabStop = true;
             this.rbtCategoriaPremium.Text = "Premium";
             this.rbtCategoriaPremium.UseVisualStyleBackColor = true;
-            this.rbtCategoriaPremium.Click += new System.EventHandler(this.rbtCategoriaPremium_Click);
             // 
             // rbtCategoriaTurista
             // 
@@ -143,14 +143,13 @@
             this.rbtCategoriaTurista.Text = "Turista";
             this.rbtCategoriaTurista.UseVisualStyleBackColor = true;
             this.rbtCategoriaTurista.CheckedChanged += new System.EventHandler(this.rbtCategoriaTurista_CheckedChanged);
-            this.rbtCategoriaTurista.Click += new System.EventHandler(this.rbtCategoriaTurista_Click);
             // 
             // lblRecargoPremium
             // 
             this.lblRecargoPremium.AutoSize = true;
             this.lblRecargoPremium.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblRecargoPremium.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRecargoPremium.Location = new System.Drawing.Point(933, 286);
+            this.lblRecargoPremium.Location = new System.Drawing.Point(1215, 286);
             this.lblRecargoPremium.Name = "lblRecargoPremium";
             this.lblRecargoPremium.Size = new System.Drawing.Size(196, 13);
             this.lblRecargoPremium.TabIndex = 19;
@@ -160,7 +159,7 @@
             // 
             this.lblValorTotal.AutoSize = true;
             this.lblValorTotal.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValorTotal.Location = new System.Drawing.Point(963, 487);
+            this.lblValorTotal.Location = new System.Drawing.Point(1245, 487);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(129, 45);
             this.lblValorTotal.TabIndex = 9;
@@ -170,7 +169,7 @@
             // 
             this.lblTextoValorPasaje.AutoSize = true;
             this.lblTextoValorPasaje.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTextoValorPasaje.Location = new System.Drawing.Point(730, 493);
+            this.lblTextoValorPasaje.Location = new System.Drawing.Point(1012, 493);
             this.lblTextoValorPasaje.Name = "lblTextoValorPasaje";
             this.lblTextoValorPasaje.Size = new System.Drawing.Size(227, 37);
             this.lblTextoValorPasaje.TabIndex = 10;
@@ -180,7 +179,7 @@
             // 
             this.grpBolso.Controls.Add(this.rbtBolsoNo);
             this.grpBolso.Controls.Add(this.rbtBolsoSi);
-            this.grpBolso.Location = new System.Drawing.Point(747, 381);
+            this.grpBolso.Location = new System.Drawing.Point(1029, 381);
             this.grpBolso.Name = "grpBolso";
             this.grpBolso.Size = new System.Drawing.Size(149, 39);
             this.grpBolso.TabIndex = 11;
@@ -197,6 +196,7 @@
             this.rbtBolsoNo.TabStop = true;
             this.rbtBolsoNo.Text = "No";
             this.rbtBolsoNo.UseVisualStyleBackColor = true;
+            this.rbtBolsoNo.CheckedChanged += new System.EventHandler(this.rbtBolsoNo_CheckedChanged);
             // 
             // rbtBolsoSi
             // 
@@ -208,12 +208,13 @@
             this.rbtBolsoSi.TabStop = true;
             this.rbtBolsoSi.Text = "Si";
             this.rbtBolsoSi.UseVisualStyleBackColor = true;
+            this.rbtBolsoSi.CheckedChanged += new System.EventHandler(this.rbtBolsoSi_CheckedChanged);
             // 
             // lblValija1
             // 
             this.lblValija1.AutoSize = true;
             this.lblValija1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValija1.Location = new System.Drawing.Point(747, 317);
+            this.lblValija1.Location = new System.Drawing.Point(1029, 317);
             this.lblValija1.Name = "lblValija1";
             this.lblValija1.Size = new System.Drawing.Size(70, 13);
             this.lblValija1.TabIndex = 12;
@@ -223,7 +224,7 @@
             // 
             this.lblValija2.AutoSize = true;
             this.lblValija2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValija2.Location = new System.Drawing.Point(933, 317);
+            this.lblValija2.Location = new System.Drawing.Point(1215, 317);
             this.lblValija2.Name = "lblValija2";
             this.lblValija2.Size = new System.Drawing.Size(70, 13);
             this.lblValija2.TabIndex = 15;
@@ -231,7 +232,7 @@
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(933, 397);
+            this.txtMatricula.Location = new System.Drawing.Point(1215, 397);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.PlaceholderText = "MATRICULA";
             this.txtMatricula.ReadOnly = true;
@@ -242,7 +243,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(933, 381);
+            this.label8.Location = new System.Drawing.Point(1215, 381);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 13);
             this.label8.TabIndex = 17;
@@ -253,7 +254,7 @@
             this.lblLimiteValija.AutoSize = true;
             this.lblLimiteValija.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLimiteValija.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblLimiteValija.Location = new System.Drawing.Point(913, 360);
+            this.lblLimiteValija.Location = new System.Drawing.Point(1195, 360);
             this.lblLimiteValija.Name = "lblLimiteValija";
             this.lblLimiteValija.Size = new System.Drawing.Size(232, 13);
             this.lblLimiteValija.TabIndex = 18;
@@ -263,7 +264,7 @@
             // 
             this.lblTituloVentas.AutoSize = true;
             this.lblTituloVentas.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTituloVentas.Location = new System.Drawing.Point(333, 9);
+            this.lblTituloVentas.Location = new System.Drawing.Point(626, 9);
             this.lblTituloVentas.Name = "lblTituloVentas";
             this.lblTituloVentas.Size = new System.Drawing.Size(193, 25);
             this.lblTituloVentas.TabIndex = 20;
@@ -271,7 +272,8 @@
             // 
             // btnVender
             // 
-            this.btnVender.Location = new System.Drawing.Point(1008, 583);
+            this.btnVender.Enabled = false;
+            this.btnVender.Location = new System.Drawing.Point(1290, 583);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(119, 41);
             this.btnVender.TabIndex = 22;
@@ -281,25 +283,28 @@
             // 
             // numPeso1
             // 
-            this.numPeso1.Location = new System.Drawing.Point(747, 333);
+            this.numPeso1.Location = new System.Drawing.Point(1029, 333);
             this.numPeso1.Name = "numPeso1";
             this.numPeso1.Size = new System.Drawing.Size(120, 23);
             this.numPeso1.TabIndex = 23;
+            this.numPeso1.ValueChanged += new System.EventHandler(this.numPeso1_ValueChanged);
             // 
             // numPeso2
             // 
-            this.numPeso2.Location = new System.Drawing.Point(933, 333);
+            this.numPeso2.Location = new System.Drawing.Point(1215, 333);
             this.numPeso2.Name = "numPeso2";
             this.numPeso2.Size = new System.Drawing.Size(120, 23);
             this.numPeso2.TabIndex = 24;
+            this.numPeso2.ValueChanged += new System.EventHandler(this.numPeso2_ValueChanged);
             // 
             // cmbDestinos
             // 
             this.cmbDestinos.FormattingEnabled = true;
-            this.cmbDestinos.Location = new System.Drawing.Point(747, 260);
+            this.cmbDestinos.Location = new System.Drawing.Point(1029, 260);
             this.cmbDestinos.Name = "cmbDestinos";
             this.cmbDestinos.Size = new System.Drawing.Size(149, 23);
             this.cmbDestinos.TabIndex = 25;
+            this.cmbDestinos.SelectedIndexChanged += new System.EventHandler(this.cmbDestinos_SelectedIndexChanged);
             // 
             // lblErrores
             // 
@@ -312,16 +317,26 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(933, 189);
+            this.txtDni.Location = new System.Drawing.Point(1215, 189);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(149, 23);
             this.txtDni.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "label3";
             // 
             // FrmVentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 649);
+            this.ClientSize = new System.Drawing.Size(1464, 679);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.cmbDestinos);
@@ -386,5 +401,6 @@
         private System.Windows.Forms.ComboBox cmbDestinos;
         private System.Windows.Forms.Label lblErrores;
         private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.Label label3;
     }
 }

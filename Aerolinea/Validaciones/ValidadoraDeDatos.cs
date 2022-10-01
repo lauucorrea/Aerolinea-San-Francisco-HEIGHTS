@@ -69,7 +69,7 @@ namespace Validaciones
             }
             else
             {
-                throw new Exception("La edad no es considerada correcta segun su DNI");
+                throw new Exception($"El dni debe ser mayor a 29.999.999 y menor a 59.999.999");
             }
         }
     }

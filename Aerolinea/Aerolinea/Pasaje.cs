@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Validaciones;
 namespace Entidades
 {
@@ -11,14 +8,14 @@ namespace Entidades
         private string nombrePasajero;
         private int dniPasajero;
         private Enum destino;
-        private float valorPasaje;
+        private decimal valorPasaje;
         private bool esPremium;
         private bool esInternacional;
         private string matriculaAvion;
         private bool traeBolsos;
         private int cantidadValijas;
 
-        public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
+        public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, decimal valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
         {
             NombrePasajero = nombrePasajero;
             DniPasajero = dniPasajero;
@@ -79,7 +76,7 @@ namespace Entidades
                 }
             }
         }
-        public float ValorPasaje
+        public decimal ValorPasaje
         {
             get => valorPasaje;
             private set
@@ -118,14 +115,7 @@ namespace Entidades
             get => matriculaAvion;
             private set
             {
-                if (Administracion.CheckearSiAvionExiste(value))
-                {
-                    matriculaAvion = value;
-                }
-                else
-                {
-                    throw new Exception("La matricula del avion no existe");
-                }
+                matriculaAvion = value;
             }
         }
 

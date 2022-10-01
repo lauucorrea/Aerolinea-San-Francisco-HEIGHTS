@@ -1,25 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Cliente:Persona
+    public class Cliente : Persona
     {
         private bool tieneVuelosComprados;
 
-        public Cliente(string nombre,string apellido,int dni, int edad):base(nombre, apellido, dni, edad)
+        public Cliente(string nombre, string apellido, int dni, int edad) : base(nombre, apellido, dni, edad)
         {
             TieneVuelosComprados = false;
         }
-
+        #region setters
         public bool TieneVuelosComprados
         {
             get => tieneVuelosComprados;
             private set => tieneVuelosComprados = value;
         }
+        public override int GetHashCode()
+        {
+            return Dni;
+        }
+        #endregion
+
+        #region sobrecargas
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -28,6 +33,16 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            Cliente cliente = obj as Cliente;
+
+            return cliente is not null && Dni == cliente.Dni;
+        }
+
+        #endregion
+
         public bool ObtenerListaDePasajes(int dni, List<Pasaje> vuelosRealizados)
         {
             bool seEncontroVuelo = false;
@@ -45,5 +60,5 @@ namespace Entidades
         }
     }
 
-   
+
 }

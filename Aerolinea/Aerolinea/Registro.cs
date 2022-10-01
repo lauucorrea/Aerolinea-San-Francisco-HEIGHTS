@@ -64,13 +64,12 @@ namespace Entidades
             ListaPersonas.Add(new Cliente("Montaner", "Cecilia", 41105244, 50));
 
             ListaAviones.Add(new Avion(true, 2, 50, 22,  "A2E3DE5A"));
-            ListaAviones.Add(new Avion(true, 1, 40, 100, "U73WE98W"));
+            ListaAviones.Add(new Avion(true, 1, 40, 5, "U73WE98W"));
             ListaAviones.Add(new Avion(false, 3, 110, 45,"O23SFF8E"));
             ListaAviones.Add(new Avion(false, 2, 50, 12, "2LS9384L"));
             ListaAviones.Add(new Avion(true, 2, 80, 60,  "O0O25AFF"));
             ListaAviones.Add(new Avion(false, 1, 40, 30, "WE345FHI"));
             ListaAviones.Add(new Avion(true, 1, 45, 22,  "QHO0E4F5"));
-
 
         }
     }
