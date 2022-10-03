@@ -40,6 +40,8 @@
             this.numDni = new System.Windows.Forms.NumericUpDown();
             this.numEdad = new System.Windows.Forms.NumericUpDown();
             this.lblErrores = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblSalir = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numDni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEdad)).BeginInit();
             this.SuspendLayout();
@@ -47,17 +49,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Corbel", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(94, 9);
+            this.label1.Font = new System.Drawing.Font("Corbel", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(127, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 36);
+            this.label1.Size = new System.Drawing.Size(228, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registro de pasajeros";
             // 
             // txtNombrePasajero
             // 
             this.txtNombrePasajero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNombrePasajero.Location = new System.Drawing.Point(123, 92);
+            this.txtNombrePasajero.Location = new System.Drawing.Point(158, 112);
             this.txtNombrePasajero.Name = "txtNombrePasajero";
             this.txtNombrePasajero.PlaceholderText = "Nombre";
             this.txtNombrePasajero.Size = new System.Drawing.Size(285, 27);
@@ -67,7 +69,7 @@
             // txtApellido
             // 
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtApellido.Location = new System.Drawing.Point(123, 149);
+            this.txtApellido.Location = new System.Drawing.Point(158, 169);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PlaceholderText = "Apellido";
             this.txtApellido.Size = new System.Drawing.Size(285, 27);
@@ -77,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 156);
+            this.label2.Location = new System.Drawing.Point(30, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 15);
             this.label2.TabIndex = 4;
@@ -86,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 99);
+            this.label3.Location = new System.Drawing.Point(30, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 15);
             this.label3.TabIndex = 5;
@@ -95,7 +97,7 @@
             // lblEdad
             // 
             this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(21, 214);
+            this.lblEdad.Location = new System.Drawing.Point(30, 228);
             this.lblEdad.Name = "lblEdad";
             this.lblEdad.Size = new System.Drawing.Size(86, 15);
             this.lblEdad.TabIndex = 6;
@@ -104,7 +106,7 @@
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(21, 271);
+            this.lblDni.Location = new System.Drawing.Point(30, 285);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(68, 15);
             this.lblDni.TabIndex = 7;
@@ -112,7 +114,8 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(268, 351);
+            this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAceptar.Location = new System.Drawing.Point(307, 395);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(105, 46);
             this.btnAceptar.TabIndex = 9;
@@ -122,7 +125,8 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(73, 351);
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelar.Location = new System.Drawing.Point(164, 395);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(105, 46);
             this.btnCancelar.TabIndex = 10;
@@ -132,7 +136,7 @@
             // 
             // numDni
             // 
-            this.numDni.Location = new System.Drawing.Point(123, 263);
+            this.numDni.Location = new System.Drawing.Point(158, 283);
             this.numDni.Maximum = new decimal(new int[] {
             59999999,
             0,
@@ -145,7 +149,7 @@
             // 
             // numEdad
             // 
-            this.numEdad.Location = new System.Drawing.Point(123, 206);
+            this.numEdad.Location = new System.Drawing.Point(158, 226);
             this.numEdad.Name = "numEdad";
             this.numEdad.Size = new System.Drawing.Size(120, 23);
             this.numEdad.TabIndex = 13;
@@ -161,11 +165,34 @@
             this.lblErrores.Size = new System.Drawing.Size(0, 17);
             this.lblErrores.TabIndex = 11;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Vista.Properties.Resources.Sin_título_1;
+            this.btnSalir.Location = new System.Drawing.Point(30, 373);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(66, 68);
+            this.btnSalir.TabIndex = 31;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // lblSalir
+            // 
+            this.lblSalir.AutoSize = true;
+            this.lblSalir.Font = new System.Drawing.Font("Corbel", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSalir.Location = new System.Drawing.Point(40, 444);
+            this.lblSalir.Name = "lblSalir";
+            this.lblSalir.Size = new System.Drawing.Size(43, 23);
+            this.lblSalir.TabIndex = 32;
+            this.lblSalir.Text = "Salir";
+            // 
             // FrmRegistroPasajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 450);
+            this.ClientSize = new System.Drawing.Size(502, 489);
+            this.ControlBox = false;
+            this.Controls.Add(this.lblSalir);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.numEdad);
             this.Controls.Add(this.numDni);
             this.Controls.Add(this.lblErrores);
@@ -179,6 +206,7 @@
             this.Controls.Add(this.txtNombrePasajero);
             this.Controls.Add(this.label1);
             this.Name = "FrmRegistroPasajero";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRegistroPasajero";
             this.Load += new System.EventHandler(this.RegistroPasajero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numDni)).EndInit();
@@ -202,5 +230,7 @@
         private System.Windows.Forms.NumericUpDown numDni;
         private System.Windows.Forms.NumericUpDown numEdad;
         private System.Windows.Forms.Label lblErrores;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblSalir;
     }
 }

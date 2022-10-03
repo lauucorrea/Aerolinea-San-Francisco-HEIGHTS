@@ -44,6 +44,8 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblAviones = new System.Windows.Forms.Label();
             this.lblErrores = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutos)).BeginInit();
             this.SuspendLayout();
@@ -51,16 +53,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(291, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(320, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 30);
+            this.label1.Size = new System.Drawing.Size(212, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registro de Vuelos";
             // 
             // txtOrigen
             // 
-            this.txtOrigen.Location = new System.Drawing.Point(590, 106);
+            this.txtOrigen.Location = new System.Drawing.Point(681, 107);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.PlaceholderText = "Origen del vuelo";
             this.txtOrigen.ReadOnly = true;
@@ -73,14 +75,14 @@
             this.lstAviones.ItemHeight = 15;
             this.lstAviones.Location = new System.Drawing.Point(12, 89);
             this.lstAviones.Name = "lstAviones";
-            this.lstAviones.Size = new System.Drawing.Size(520, 259);
+            this.lstAviones.Size = new System.Drawing.Size(630, 274);
             this.lstAviones.TabIndex = 2;
             this.lstAviones.SelectedIndexChanged += new System.EventHandler(this.lstAviones_SelectedIndexChanged);
             // 
             // cmbDestinos
             // 
             this.cmbDestinos.FormattingEnabled = true;
-            this.cmbDestinos.Location = new System.Drawing.Point(590, 169);
+            this.cmbDestinos.Location = new System.Drawing.Point(681, 170);
             this.cmbDestinos.Name = "cmbDestinos";
             this.cmbDestinos.Size = new System.Drawing.Size(165, 23);
             this.cmbDestinos.TabIndex = 3;
@@ -89,7 +91,7 @@
             // 
             this.lblDestino.AutoSize = true;
             this.lblDestino.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDestino.Location = new System.Drawing.Point(590, 151);
+            this.lblDestino.Location = new System.Drawing.Point(681, 152);
             this.lblDestino.Name = "lblDestino";
             this.lblDestino.Size = new System.Drawing.Size(98, 15);
             this.lblDestino.TabIndex = 4;
@@ -97,7 +99,7 @@
             // 
             // numHora
             // 
-            this.numHora.Location = new System.Drawing.Point(589, 253);
+            this.numHora.Location = new System.Drawing.Point(680, 254);
             this.numHora.Name = "numHora";
             this.numHora.Size = new System.Drawing.Size(60, 23);
             this.numHora.TabIndex = 6;
@@ -106,7 +108,7 @@
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblHora.Location = new System.Drawing.Point(589, 235);
+            this.lblHora.Location = new System.Drawing.Point(680, 236);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(33, 15);
             this.lblHora.TabIndex = 7;
@@ -116,7 +118,7 @@
             // 
             this.lblMinutos.AutoSize = true;
             this.lblMinutos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMinutos.Location = new System.Drawing.Point(694, 235);
+            this.lblMinutos.Location = new System.Drawing.Point(785, 236);
             this.lblMinutos.Name = "lblMinutos";
             this.lblMinutos.Size = new System.Drawing.Size(51, 15);
             this.lblMinutos.TabIndex = 9;
@@ -124,7 +126,7 @@
             // 
             // numMinutos
             // 
-            this.numMinutos.Location = new System.Drawing.Point(694, 253);
+            this.numMinutos.Location = new System.Drawing.Point(785, 254);
             this.numMinutos.Name = "numMinutos";
             this.numMinutos.Size = new System.Drawing.Size(60, 23);
             this.numMinutos.TabIndex = 8;
@@ -133,7 +135,7 @@
             // 
             this.lblHorarioVuelo.AutoSize = true;
             this.lblHorarioVuelo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblHorarioVuelo.Location = new System.Drawing.Point(617, 209);
+            this.lblHorarioVuelo.Location = new System.Drawing.Point(708, 210);
             this.lblHorarioVuelo.Name = "lblHorarioVuelo";
             this.lblHorarioVuelo.Size = new System.Drawing.Size(96, 15);
             this.lblHorarioVuelo.TabIndex = 10;
@@ -141,7 +143,7 @@
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(590, 308);
+            this.txtMatricula.Location = new System.Drawing.Point(681, 309);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.PlaceholderText = "Matricula del avion";
             this.txtMatricula.ReadOnly = true;
@@ -151,18 +153,19 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(607, 52);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(681, 52);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 20);
+            this.label3.Size = new System.Drawing.Size(177, 30);
             this.label3.TabIndex = 12;
             this.label3.Text = "Detalles del vuelo";
             // 
             // btnCargarVuelo
             // 
-            this.btnCargarVuelo.Location = new System.Drawing.Point(629, 396);
+            this.btnCargarVuelo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCargarVuelo.Location = new System.Drawing.Point(477, 443);
             this.btnCargarVuelo.Name = "btnCargarVuelo";
-            this.btnCargarVuelo.Size = new System.Drawing.Size(126, 32);
+            this.btnCargarVuelo.Size = new System.Drawing.Size(145, 38);
             this.btnCargarVuelo.TabIndex = 13;
             this.btnCargarVuelo.Text = "Cargar Vuelo";
             this.btnCargarVuelo.UseVisualStyleBackColor = true;
@@ -170,36 +173,60 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(12, 396);
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnVolver.Location = new System.Drawing.Point(277, 443);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(126, 32);
+            this.btnVolver.Size = new System.Drawing.Size(145, 38);
             this.btnVolver.TabIndex = 14;
-            this.btnVolver.Text = "Volver";
+            this.btnVolver.Text = "Cancelar";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // lblAviones
             // 
             this.lblAviones.AutoSize = true;
-            this.lblAviones.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAviones.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAviones.Location = new System.Drawing.Point(12, 52);
             this.lblAviones.Name = "lblAviones";
-            this.lblAviones.Size = new System.Drawing.Size(130, 20);
+            this.lblAviones.Size = new System.Drawing.Size(184, 30);
             this.lblAviones.TabIndex = 15;
             this.lblAviones.Text = "Aviones existentes";
             // 
             // lblErrores
             // 
             this.lblErrores.AutoSize = true;
-            this.lblErrores.Location = new System.Drawing.Point(291, 413);
+            this.lblErrores.Location = new System.Drawing.Point(681, 466);
             this.lblErrores.Name = "lblErrores";
             this.lblErrores.Size = new System.Drawing.Size(0, 15);
             this.lblErrores.TabIndex = 16;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Vista.Properties.Resources.Sin_título_1;
+            this.btnSalir.Location = new System.Drawing.Point(12, 413);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(76, 69);
+            this.btnSalir.TabIndex = 31;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(21, 485);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 30);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Salir";
             // 
             // FrmRegistroVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(904, 524);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.lblAviones);
             this.Controls.Add(this.btnVolver);
@@ -217,6 +244,7 @@
             this.Controls.Add(this.txtOrigen);
             this.Controls.Add(this.label1);
             this.Name = "FrmRegistroVuelo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRegistroVuelo";
             this.Load += new System.EventHandler(this.FrmRegistroVuelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numHora)).EndInit();
@@ -244,5 +272,7 @@
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblAviones;
         private System.Windows.Forms.Label lblErrores;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label2;
     }
 }

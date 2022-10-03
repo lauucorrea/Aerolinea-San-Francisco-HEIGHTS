@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 namespace Vista
 {
     public partial class FrmHistorialDestinos : Form
@@ -15,7 +10,7 @@ namespace Vista
         DataTable historialDestinos;
         DataView historialDestinosDataview;
         Dictionary<Destinos, float> dictDestinos;
-        public FrmHistorialDestinos(Dictionary<Destinos,float> diccionario)
+        public FrmHistorialDestinos(Dictionary<Destinos, float> diccionario)
         {
             InitializeComponent();
             dictDestinos = diccionario;
@@ -26,11 +21,9 @@ namespace Vista
             DibujarTabla();
         }
 
-        private void dtgDestinos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Muestra el datagrid con lo recaudado hasta el momento segun su destino
+        /// </summary>
         private void DibujarTabla()
         {
             historialDestinos = new DataTable();
@@ -41,17 +34,23 @@ namespace Vista
 
             foreach (var d in dictDestinos)
             {
-                string nombreDestino = d.Key.ToString();
-                float valor = d.Value;
+                if (d.Value > 0)
+                {
 
-                historialDestinos.Rows.Add(nombreDestino,valor);
+                    string nombreDestino = d.Key.ToString();
+                    float valor = d.Value;
+
+                    historialDestinos.Rows.Add(nombreDestino, valor);
+                }
 
             }
 
             dtgDestinos.DataSource = historialDestinos;
         }
 
-
-
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

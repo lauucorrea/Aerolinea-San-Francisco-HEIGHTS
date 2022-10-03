@@ -340,6 +340,18 @@ namespace Entidades
                 }
             }
         }
+
+        public static string MostrarHorasDeVueloAeronave()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Avion avion in Registro.Aviones)
+            {
+                sb.AppendLine(avion.ToString());
+            }
+
+            return sb.ToString();
+        }
         
     }
 }

@@ -85,12 +85,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 380);
+            this.ControlBox = false;
             this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPasswd);
             this.Controls.Add(this.txtUsuario);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario de Ingreso";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);

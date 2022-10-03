@@ -63,6 +63,9 @@ namespace Entidades
             CrearPasajes();
             CargarFacturacionesPorDestino();
         }
+        /// <summary>
+        /// Inicializa los valores del diccionario en 0
+        /// </summary>
         public static void CargarFacturacionesPorDestino()
         {
             foreach (Destinos destino in Enum.GetValues(typeof(Destinos)))
@@ -134,18 +137,17 @@ namespace Entidades
             ListaVuelos[5].ListaPasajes.Add(Pasaje8);
             ListaVuelos[1].ListaPasajes.Add(Pasaje9);
 
-            HardcodearAsientos();
-          
-
-        }
-
-        private static void HardcodearAsientos()
-        {
+            //aca tuve que agregar las horas de los aviones porque este valor se suma al cargarlo por pantalla
+            TimeSpan resultado;
             for (int i = 0; i <= 6; i++)
             {
                 ListaVuelos[i].AsientosOcupados = ListaVuelos[i].ListaPasajes.Count;
+                resultado = ListaVuelos[i].HoraLlegada.Subtract(ListaVuelos[i].HoraPartida);
+                ListaVuelos[i].AvionVuelo.HorasDeVuelo = resultado.Hours;
             }
+
         }
+
 
 
     }

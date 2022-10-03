@@ -14,9 +14,11 @@ namespace Entidades
         private decimal cargaActualBodega;
         private int totalAsientos;
         private string matriculaAvion;
+        private int horasDeVuelo;
 
         public Avion(bool ofreceComida, int cantidadDeToilets, decimal capacidadBodega, int totalAsientos, string matriculaAvion)
         {
+            horasDeVuelo = 0;
             OfreceComida = ofreceComida;
             CantidadDeToilets = cantidadDeToilets;
             CapacidadBodega = capacidadBodega;
@@ -46,6 +48,11 @@ namespace Entidades
                     throw new Exception("Formato de la cantidad de toilets incorrecto");
                 }
             }
+        }
+        public int HorasDeVuelo
+        {
+            get => horasDeVuelo;
+            set => horasDeVuelo = value;
         }
 
         public decimal CapacidadBodega
@@ -123,8 +130,18 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            string ofrece;
+            if (ofreceComida)
+            {
+                ofrece = "Si";
+            }
+            else
+            {
+                ofrece = "No";
+            }
 
-            sb.Append($"Ofrece Comida? {OfreceComida}- Capacidad Bodega: {CapacidadBodega} Carga Actual: {CargaActualBodega}- Total Asientos: {TotalAsientos}-Matricula: {MatriculaAvion}");
+            sb.AppendLine($"Ofrece Comida? {ofrece} Capacidad Bodega: {CapacidadBodega} Carga Actual: {CargaActualBodega} Total Asientos: {TotalAsientos} Matricula: {MatriculaAvion}");
+            sb.AppendLine($"Horas de vuelo {HorasDeVuelo}");
 
             return sb.ToString();
         }

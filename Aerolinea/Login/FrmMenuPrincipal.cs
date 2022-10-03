@@ -20,6 +20,10 @@ namespace Login
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
+            DateTime fechaActual = DateTime.Now.Date;
+
+            lblFechaActual.Text += fechaActual.ToShortDateString();
+
             lblTituloMenu.Text += vendedorDeTurno.NombreApellido();
 
             MostrarClientes();
@@ -102,6 +106,17 @@ namespace Login
             menu.ShowDialog();
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            const string mensaje = "Estas seguro de que queres cerrar?";
+            const string comentario = "Formulario cerrandose";
+            var result = MessageBox.Show(mensaje, comentario, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 
 

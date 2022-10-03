@@ -22,6 +22,11 @@ namespace Login
         }
 
 
+        /// <summary>
+        /// Intenta agregar un cliente a la Lista Clientes cuando se hace clic en aceptar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             MessageBoxButtons botonesOpciones = MessageBoxButtons.OK;
@@ -44,11 +49,10 @@ namespace Login
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
+        /// <summary>
+        /// chequea que todos los campos esten completos cada vez que se cambia el estado de uno de ellos
+        /// </summary>
         private void EvaluarCampos()
         {
             if (!string.IsNullOrEmpty(txtNombrePasajero.Text) && !string.IsNullOrEmpty(txtApellido.Text) && numEdad.Value != 0 && numDni.Value != 0)
@@ -75,6 +79,23 @@ namespace Login
         private void numDni_ValueChanged(object sender, EventArgs e)
         {
             EvaluarCampos();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            const string mensaje = "Estas seguro de que queres cerrar?";
+            const string comentario = "Formulario cerrandose";
+            var result = MessageBox.Show(mensaje, comentario, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

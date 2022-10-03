@@ -31,15 +31,17 @@
             this.btnVerRecaudacion = new System.Windows.Forms.Button();
             this.btnPasajerosPorVuelo = new System.Windows.Forms.Button();
             this.btnDestinos = new System.Windows.Forms.Button();
-            this.btnGanancias = new System.Windows.Forms.Button();
             this.btnAviones = new System.Windows.Forms.Button();
             this.rchMuestreo = new System.Windows.Forms.RichTextBox();
             this.PasajerosFrecuentes = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblSalir = new System.Windows.Forms.Label();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVerRecaudacion
             // 
-            this.btnVerRecaudacion.Location = new System.Drawing.Point(925, 48);
+            this.btnVerRecaudacion.Location = new System.Drawing.Point(924, 64);
             this.btnVerRecaudacion.Name = "btnVerRecaudacion";
             this.btnVerRecaudacion.Size = new System.Drawing.Size(129, 41);
             this.btnVerRecaudacion.TabIndex = 1;
@@ -49,7 +51,7 @@
             // 
             // btnPasajerosPorVuelo
             // 
-            this.btnPasajerosPorVuelo.Location = new System.Drawing.Point(925, 132);
+            this.btnPasajerosPorVuelo.Location = new System.Drawing.Point(924, 148);
             this.btnPasajerosPorVuelo.Name = "btnPasajerosPorVuelo";
             this.btnPasajerosPorVuelo.Size = new System.Drawing.Size(129, 41);
             this.btnPasajerosPorVuelo.TabIndex = 2;
@@ -59,7 +61,7 @@
             // 
             // btnDestinos
             // 
-            this.btnDestinos.Location = new System.Drawing.Point(925, 280);
+            this.btnDestinos.Location = new System.Drawing.Point(924, 296);
             this.btnDestinos.Name = "btnDestinos";
             this.btnDestinos.Size = new System.Drawing.Size(129, 41);
             this.btnDestinos.TabIndex = 3;
@@ -67,23 +69,15 @@
             this.btnDestinos.UseVisualStyleBackColor = true;
             this.btnDestinos.Click += new System.EventHandler(this.btnDestinos_Click);
             // 
-            // btnGanancias
-            // 
-            this.btnGanancias.Location = new System.Drawing.Point(925, 362);
-            this.btnGanancias.Name = "btnGanancias";
-            this.btnGanancias.Size = new System.Drawing.Size(129, 41);
-            this.btnGanancias.TabIndex = 4;
-            this.btnGanancias.Text = "Ganancias y especificaciones";
-            this.btnGanancias.UseVisualStyleBackColor = true;
-            // 
             // btnAviones
             // 
-            this.btnAviones.Location = new System.Drawing.Point(925, 455);
+            this.btnAviones.Location = new System.Drawing.Point(924, 377);
             this.btnAviones.Name = "btnAviones";
             this.btnAviones.Size = new System.Drawing.Size(129, 41);
             this.btnAviones.TabIndex = 5;
             this.btnAviones.Text = "Historial aviones";
             this.btnAviones.UseVisualStyleBackColor = true;
+            this.btnAviones.Click += new System.EventHandler(this.btnAviones_Click);
             // 
             // rchMuestreo
             // 
@@ -95,7 +89,7 @@
             // 
             // PasajerosFrecuentes
             // 
-            this.PasajerosFrecuentes.Location = new System.Drawing.Point(925, 203);
+            this.PasajerosFrecuentes.Location = new System.Drawing.Point(924, 219);
             this.PasajerosFrecuentes.Name = "PasajerosFrecuentes";
             this.PasajerosFrecuentes.Size = new System.Drawing.Size(129, 41);
             this.PasajerosFrecuentes.TabIndex = 8;
@@ -103,22 +97,58 @@
             this.PasajerosFrecuentes.UseVisualStyleBackColor = true;
             this.PasajerosFrecuentes.Click += new System.EventHandler(this.PasajerosFrecuentes_Click);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Vista.Properties.Resources.Sin_título_1;
+            this.btnSalir.Location = new System.Drawing.Point(28, 495);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 68);
+            this.btnSalir.TabIndex = 32;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // lblSalir
+            // 
+            this.lblSalir.AutoSize = true;
+            this.lblSalir.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSalir.Location = new System.Drawing.Point(41, 566);
+            this.lblSalir.Name = "lblSalir";
+            this.lblSalir.Size = new System.Drawing.Size(49, 25);
+            this.lblSalir.TabIndex = 33;
+            this.lblSalir.Text = "Salir";
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnVolver.Location = new System.Drawing.Point(149, 522);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(107, 41);
+            this.btnVolver.TabIndex = 34;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // FrmHistorial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 564);
+            this.ClientSize = new System.Drawing.Size(1085, 607);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.lblSalir);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.PasajerosFrecuentes);
             this.Controls.Add(this.rchMuestreo);
             this.Controls.Add(this.btnAviones);
-            this.Controls.Add(this.btnGanancias);
             this.Controls.Add(this.btnDestinos);
             this.Controls.Add(this.btnPasajerosPorVuelo);
             this.Controls.Add(this.btnVerRecaudacion);
             this.Name = "FrmHistorial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmHistorial";
             this.Load += new System.EventHandler(this.FrmHistorial_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,9 +156,11 @@
         private System.Windows.Forms.Button btnVerRecaudacion;
         private System.Windows.Forms.Button btnPasajerosPorVuelo;
         private System.Windows.Forms.Button btnDestinos;
-        private System.Windows.Forms.Button btnGanancias;
         private System.Windows.Forms.Button btnAviones;
         private System.Windows.Forms.RichTextBox rchMuestreo;
         private System.Windows.Forms.Button PasajerosFrecuentes;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblSalir;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

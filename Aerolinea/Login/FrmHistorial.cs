@@ -19,11 +19,6 @@ namespace Vista
 
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            MostrarPasajes();
-        }
-
-        private void MostrarPasajes()
-        {
             
         }
 
@@ -62,6 +57,30 @@ namespace Vista
             FrmPasajerosFrecuentes menu = new FrmPasajerosFrecuentes(listaClientes);
 
             menu.ShowDialog();
+        }
+
+        private void btnAviones_Click(object sender, EventArgs e)
+        {
+             rchMuestreo.Clear();
+             rchMuestreo.AppendText(Administracion.MostrarHorasDeVueloAeronave());
+
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            const string mensaje = "Estas seguro de que queres cerrar?";
+            const string comentario = "Formulario cerrandose";
+            var result = MessageBox.Show(mensaje, comentario, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

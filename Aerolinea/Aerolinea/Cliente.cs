@@ -34,7 +34,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Nombre: {Nombre} - Apellido: {Apellido} - Dni: {Dni} - Edad: {Edad} - Cantidad de pasajes comprados : {CantidadVuelosComprados} Vuelos Comprados: {CantidadVuelosComprados}");
+            sb.Append($"Nombre: {Nombre} - Apellido: {Apellido} - Dni: {Dni} - Edad: {Edad} - Cantidad de pasajes comprados : {CantidadVuelosComprados}");
 
             return sb.ToString();
         }

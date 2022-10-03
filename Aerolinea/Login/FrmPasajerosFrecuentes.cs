@@ -52,5 +52,22 @@ namespace Vista
 
             dtgPasajeros.DataSource = clientesFrecuentes ;
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            const string mensaje = "Estas seguro de que queres cerrar?";
+            const string comentario = "Formulario cerrandose";
+            var result = MessageBox.Show(mensaje, comentario, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

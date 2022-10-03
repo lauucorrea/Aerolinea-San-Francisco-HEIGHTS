@@ -125,7 +125,7 @@ namespace Entidades
                 {
                     if (float.TryParse(value.ToString(), out numConvertido))
                     {
-                        costo = (float)Math.Round((double)value, 2);
+                        costo = (float)Math.Round((double)numConvertido, 2);
                     }
 
                 }
@@ -192,6 +192,7 @@ namespace Entidades
 
             sb.AppendLine($"Origen: {Origen}  Destino: {Destino} Partida: {HoraPartida.ToString("HH:mm")} Llegada: {HoraLlegada.ToString("HH:mm")} Costo: ${Costo} ");
             sb.AppendLine($"EspaciosPremium {AsientosPremium} Espacios Turista: {asientosTurista} Total Asientos: {avionVuelo.TotalAsientos}  Matricula Avion: {AvionVuelo.MatriculaAvion}");
+            
             return sb.ToString();
         }
 

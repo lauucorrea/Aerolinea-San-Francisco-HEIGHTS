@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using System;
+using System.Text;
 using System.Windows.Forms;
 namespace Vista
 {
@@ -61,6 +62,7 @@ namespace Vista
             cmbDestinos.SelectedIndex = indiceDestinos;
             cmbDestinos.Enabled = false;
             lblValorTotal.Text = vueloSeleccionado.Costo.ToString();
+
         }
 
         private void btnVender_Click(object sender, EventArgs e)
@@ -70,29 +72,40 @@ namespace Vista
             int cantidadValijas;
             decimal pesoValijas = Math.Round(numPeso1.Value + numPeso2.Value, 2);
             float valorPasajeNeto;
-
+            float valorPasajeFinal;
+            string stringPasajeFinal;
             try
             {
+
+
                 float.TryParse(lblValorTotal.Text, out valorPasajeNeto);
+
                 if (Administracion.CheckearSiVueloExiste(vueloSeleccionado))
                 {
                     if (EstanLosCamposLlenos())
                     {
-                        cantidadValijas = CalcularValijas();
                         if (Administracion.AvionPuedeCargarValijas(vueloSeleccionado.AvionVuelo, pesoValijas))
                         {
                             if (vueloSeleccionado.GestionarAsientos(rbtCategoriaPremium.Checked))
                             {
-                                vueloSeleccionado.AvionVuelo.CargaActualBodega += pesoValijas;
-                                if (Administracion.AgregarPasajeALista(vueloSeleccionado, clienteAtendido.Nombre, cantidadValijas, clienteAtendido.Dni, indiceDestinos, (float)Math.Round(valorPasajeNeto, 2), rbtCategoriaPremium.Checked, vueloSeleccionado.EsInternacional, rbtBolsoSi.Checked))
-                                {
-                                    vueloSeleccionado.AsientosOcupados++;
-                                    clienteAtendido.CantidadVuelosComprados++;
-                                    result = MessageBox.Show("Pasaje agregado con exito!", "", botonesOpciones);
+                                stringPasajeFinal = CalcularPrecioFinal(valorPasajeNeto, out valorPasajeFinal);
+                                rchCostoTotal.Text = stringPasajeFinal;
 
-                                    if (result == DialogResult.OK)
+                                result = MessageBox.Show("Concretar Venta?", "", MessageBoxButtons.YesNo);
+                                if (result == DialogResult.Yes)
+                                {
+                                    cantidadValijas = CalcularValijas();
+                                    vueloSeleccionado.AvionVuelo.CargaActualBodega += pesoValijas;
+                                    if (Administracion.AgregarPasajeALista(vueloSeleccionado, clienteAtendido.Nombre, cantidadValijas, clienteAtendido.Dni, indiceDestinos, (float)Math.Round(valorPasajeFinal, 2), rbtCategoriaPremium.Checked, vueloSeleccionado.EsInternacional, rbtBolsoSi.Checked))
                                     {
-                                        Close();
+                                        vueloSeleccionado.AsientosOcupados++;
+                                        clienteAtendido.CantidadVuelosComprados++;
+                                        result = MessageBox.Show("Pasaje agregado con exito!", "", botonesOpciones);
+
+                                        if (result == DialogResult.OK)
+                                        {
+                                            Close();
+                                        }
                                     }
                                 }
                             }
@@ -106,6 +119,35 @@ namespace Vista
             }
         }
 
+        private string CalcularPrecioFinal(float valorNeto, out float precioFinal)
+        {
+            float valorPasajeFinal = valorNeto;
+            float iva = valorNeto * 0.15f;
+            float impuestoAccesorios = valorNeto * 0.2f;
+            float impuestoPais = valorNeto * 0.8f;
+            float impuestoAgua = valorNeto * 0.1f;
+            float impuestoAlAsiento = valorNeto * 0.5f;
+
+            valorPasajeFinal += iva + impuestoAccesorios + impuestoAgua + impuestoAlAsiento + impuestoPais;
+            precioFinal = valorPasajeFinal;
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Valor neto del vuelo: {valorNeto}");
+            sb.AppendLine($"+IVA 15%: {valorNeto}");
+            sb.AppendLine($"+Impuesto por accesorios 20%: {valorNeto}");
+            sb.AppendLine($"+ImpuestoPais 80%: {valorNeto}");
+            sb.AppendLine($"+Impuesto por uso de agua 10%: {valorNeto}");
+            sb.AppendLine($"+Impuesto al asiento ocupado 50%: {valorNeto}");
+            sb.AppendLine($"############################################");
+            sb.AppendLine($"PRECIO FINAL VUELO: {valorPasajeFinal}");
+
+
+            return sb.ToString();
+
+
+        }
+         
         private int CalcularValijas()
         {
             if (numPeso1.Value >= 0 && numPeso2.Value >= 0)
@@ -178,7 +220,7 @@ namespace Vista
             EvaluarCampos();
             if (rbtCategoriaPremium.Checked)
             {
-                lblValorTotal.Text = Math.Round((vueloSeleccionado.Costo * 1.15),2).ToString();
+                lblValorTotal.Text = Math.Round((vueloSeleccionado.Costo * 1.15), 2).ToString();
                 numPeso2.Enabled = true;
             }
             else if (rbtCategoriaTurista.Checked)
@@ -186,6 +228,23 @@ namespace Vista
                 numPeso2.Enabled = false;
                 lblValorTotal.Text = vueloSeleccionado.Costo.ToString();
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            const string mensaje = "Estas seguro de que queres cerrar?";
+            const string comentario = "Formulario cerrandose";
+            var result = MessageBox.Show(mensaje, comentario, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
