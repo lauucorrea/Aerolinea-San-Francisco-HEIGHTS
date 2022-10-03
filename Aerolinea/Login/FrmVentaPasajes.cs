@@ -53,7 +53,7 @@ namespace Vista
 
         private void CargarDatosVueloElegido()
         {
-            indiceDestinos = Registro.GetIndex(vueloSeleccionado.Destino);
+            indiceDestinos = (int)vueloSeleccionado.Destino;
 
             txtMatricula.Clear();
             txtMatricula.Text = vueloSeleccionado.AvionVuelo.MatriculaAvion;
@@ -69,11 +69,11 @@ namespace Vista
             DialogResult result;
             int cantidadValijas;
             decimal pesoValijas = Math.Round(numPeso1.Value + numPeso2.Value, 2);
-            decimal valorPasajeNeto;
+            float valorPasajeNeto;
 
             try
             {
-                decimal.TryParse(lblValorTotal.Text, out valorPasajeNeto);
+                float.TryParse(lblValorTotal.Text, out valorPasajeNeto);
                 if (Administracion.CheckearSiVueloExiste(vueloSeleccionado))
                 {
                     if (EstanLosCamposLlenos())
@@ -84,8 +84,10 @@ namespace Vista
                             if (vueloSeleccionado.GestionarAsientos(rbtCategoriaPremium.Checked))
                             {
                                 vueloSeleccionado.AvionVuelo.CargaActualBodega += pesoValijas;
-                                if (Administracion.AgregarPasajeALista(vueloSeleccionado, clienteAtendido.Nombre, cantidadValijas, clienteAtendido.Dni, indiceDestinos, Math.Round(valorPasajeNeto, 2), rbtCategoriaPremium.Checked, vueloSeleccionado.EsInternacional, rbtBolsoSi.Checked))
+                                if (Administracion.AgregarPasajeALista(vueloSeleccionado, clienteAtendido.Nombre, cantidadValijas, clienteAtendido.Dni, indiceDestinos, (float)Math.Round(valorPasajeNeto, 2), rbtCategoriaPremium.Checked, vueloSeleccionado.EsInternacional, rbtBolsoSi.Checked))
                                 {
+                                    vueloSeleccionado.AsientosOcupados++;
+                                    clienteAtendido.CantidadVuelosComprados++;
                                     result = MessageBox.Show("Pasaje agregado con exito!", "", botonesOpciones);
 
                                     if (result == DialogResult.OK)

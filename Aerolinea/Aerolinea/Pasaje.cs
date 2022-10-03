@@ -7,15 +7,15 @@ namespace Entidades
     {
         private string nombrePasajero;
         private int dniPasajero;
-        private Enum destino;
-        private decimal valorPasaje;
+        private Destinos destino;
+        private float valorPasaje;
         private bool esPremium;
         private bool esInternacional;
         private string matriculaAvion;
-        private bool traeBolsos;
+        private bool traeBolso;
         private int cantidadValijas;
 
-        public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, decimal valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
+        public Pasaje(string nombrePasajero, int dniPasajero, Destinos destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolso, int cantidadValijas)
         {
             NombrePasajero = nombrePasajero;
             DniPasajero = dniPasajero;
@@ -24,7 +24,7 @@ namespace Entidades
             EsPremium = esPremium;
             EsInternacional = esInternacional;
             MatriculaAvion = matriculaAvion;
-            TraeBolsos = traeBolsos;
+            TraeBolso = traeBolso;
             CantidadValijas = cantidadValijas;
         }
 
@@ -61,22 +61,15 @@ namespace Entidades
                 }
             }
         }
-        public Enum Destino
+        public Destinos Destino
         {
             get => destino;
             private set
             {
-                if (value is not null)
-                {
-                    destino = (Destinos)value;
-                }
-                else
-                {
-                    throw new NullReferenceException();
-                }
+               destino = value;
             }
         }
-        public decimal ValorPasaje
+        public float ValorPasaje
         {
             get => valorPasaje;
             private set
@@ -104,10 +97,10 @@ namespace Entidades
             private set => esInternacional = value;
         }
 
-        public bool TraeBolsos
+        public bool TraeBolso
         {
-            get => traeBolsos;
-            private set => traeBolsos = value;
+            get => traeBolso;
+            private set => traeBolso = value;
         }
 
         public string MatriculaAvion
@@ -124,7 +117,7 @@ namespace Entidades
             get => cantidadValijas;
             private set
             {
-                if (value <= 2 && value > 0)
+                if (value <= 2 && value >= 0)
                 {
                     cantidadValijas = value;
                 }
@@ -134,15 +127,19 @@ namespace Entidades
                 }
             }
         }
-        // public Pasaje(string nombrePasajero, int dniPasajero, Enum destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolsos, int cantidadValijas)
+        
         public override string ToString()
         {
             string esPremium = EsPremium ? "Premium" : "Turista";
             string esInternacional = EsInternacional ? "Internacional" : "Nacional";
-            string traeBolsos = TraeBolsos ? "Si" : "No";
+            string traeBolso = TraeBolso ? "Si" : "No";
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Nombre pasajero: {NombrePasajero} Dni: {DniPasajero} Destino : {Destino} Valor del pasaje: {ValorPasaje} Categoria: {esPremium} Alcance: {esInternacional} Valijas: {CantidadValijas} Bolsos: {traeBolsos} Avion: {MatriculaAvion} ");
+            sb.AppendLine($"Nombre pasajero: {NombrePasajero} Dni: {DniPasajero}");
+            sb.AppendLine($"Destino: {Destino} \nValor del pasaje: {ValorPasaje}");
+            sb.AppendLine($"Categoria: {esPremium}\nAlcance: {esInternacional}");
+            sb.AppendLine($"Valijas: {CantidadValijas}\nBolsos: {traeBolso}");
+            sb.AppendLine($"Avion: { MatriculaAvion}");
 
             return sb.ToString();
         }

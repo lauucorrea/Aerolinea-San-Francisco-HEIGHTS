@@ -7,7 +7,7 @@ namespace Entidades
     public class Cliente : Persona
     {
         private bool tieneVuelosComprados;
-
+        private int cantidadVuelosComprados;
         public Cliente(string nombre, string apellido, int dni, int edad) : base(nombre, apellido, dni, edad)
         {
             TieneVuelosComprados = false;
@@ -17,6 +17,11 @@ namespace Entidades
         {
             get => tieneVuelosComprados;
             private set => tieneVuelosComprados = value;
+        }
+        public int CantidadVuelosComprados
+        {
+            get => cantidadVuelosComprados;
+            set => cantidadVuelosComprados = value;
         }
         public override int GetHashCode()
         {
@@ -29,7 +34,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Nombre: {Nombre} - Apellido: {Apellido} - Dni: {Dni} - Edad: {Edad} - Tiene vuelos comprados? : {tieneVuelosComprados}");
+            sb.Append($"Nombre: {Nombre} - Apellido: {Apellido} - Dni: {Dni} - Edad: {Edad} - Cantidad de pasajes comprados : {CantidadVuelosComprados} Vuelos Comprados: {CantidadVuelosComprados}");
 
             return sb.ToString();
         }

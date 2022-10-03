@@ -21,7 +21,7 @@ namespace Login
         private void FrmMenu_Load(object sender, EventArgs e)
         {
             lblTituloMenu.Text += vendedorDeTurno.NombreApellido();
-            
+
             MostrarClientes();
         }
 
@@ -54,14 +54,24 @@ namespace Login
 
         private void btnVerHistorial_Click(object sender, EventArgs e)
         {
+          if (Registro.Pasajes.Count > 0)
+            {
+            FrmHistorial menu = new FrmHistorial();
 
+            menu.ShowDialog();
+            MostrarClientes();
+            }
+            else
+            {
+                lblErrores.Text = "No hay pasajes vendidos";
+            }
         }
 
         private void btnGestionPasaje_Click(object sender, EventArgs e)
         {
-            if (lstPasajeros.Items.Count > 0 && lstPasajeros.SelectedItems.Count != 0)
+            try
             {
-                try
+                if (lstPasajeros.Items.Count > 0 && lstPasajeros.SelectedItems.Count != 0)
                 {
                     if (Registro.Vuelos.Count > 0)
                     {
@@ -76,13 +86,13 @@ namespace Login
                         throw new Exception("No hay vuelos cargados en el sistema");
                     }
                 }
-                catch(Exception ex)
-                {
-                    lblErrores.Text = ex.Message;
-                }
             }
-
-
+            catch (Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
+            lstPasajeros.Items.Clear();
+            MostrarClientes();
         }
 
         private void btnAgregarVuelo_Click(object sender, EventArgs e)
@@ -91,5 +101,8 @@ namespace Login
 
             menu.ShowDialog();
         }
+
     }
+
+
 }

@@ -1,7 +1,9 @@
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.csproj.AssemblyReference.cache
+C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmHistorial.resources
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Login.FrmLogin.resources
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Login.FrmMenuPrincipal.resources
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Login.FrmRegistroPasajero.resources
+C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmRegistroVuelo.resources
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmVentaPasajes.resources
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.csproj.GenerateResource.cache
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.GeneratedMSBuildEditorConfig.editorconfig
@@ -24,4 +26,5 @@ C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\refint\Vist
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.pdb
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.genruntimeconfig.cache
 C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\ref\Vista.dll
-C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmRegistroVuelo.resources
+C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmHistorialDestinos.resources
+C:\Users\Lauta\source\repos\Aerolinea\Login\obj\Debug\net5.0-windows\Vista.FrmPasajerosFrecuentes.resources

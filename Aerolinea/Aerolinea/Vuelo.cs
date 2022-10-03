@@ -12,10 +12,11 @@ namespace Entidades
         private bool esInternacional;
         private string origen;
         private static int idVuelo;
+        private int asientosOcupados;
         private int asientosPremium;
         private int asientosTurista;
         private float costo;
-        private Enum destino;
+        private Destinos destino;
         private DateTime horaPartida;
         private DateTime horaLlegada;
 
@@ -24,9 +25,10 @@ namespace Entidades
             IdVuelo = 0000;
         }
 
-        public Vuelo(Avion avionVuelo, string origen, DateTime horaPartida, DateTime horaLlegada, Enum destino, bool esInternacional, float costo)
+        public Vuelo(Avion avionVuelo, string origen, DateTime horaPartida, DateTime horaLlegada, Destinos destino, bool esInternacional, float costo)
         {
             ListaPasajes = new List<Pasaje>();
+            AsientosOcupados = 0;
             Origen = origen;
             Destino = destino;
             EsInternacional = esInternacional;
@@ -64,20 +66,12 @@ namespace Entidades
             private set => idVuelo = value;
         }
 
-        public Enum Destino
+        public Destinos Destino
         {
             get => destino;
             private set
             {
-                if (value is not null)
-                {
-                    destino = value;
-                }
-
-                else
-                {
-                    throw new Exception("Destino incorrecto");
-                }
+                destino = value;
 
             }
 
@@ -96,7 +90,7 @@ namespace Entidades
         public List<Pasaje> ListaPasajes
         {
             get => listaPasajes;
-            private set
+            set
             {
                 listaPasajes = value;
             }
@@ -129,17 +123,17 @@ namespace Entidades
                 float numConvertido;
                 if (value > 0)
                 {
-                    if(float.TryParse(value.ToString(),out numConvertido))
+                    if (float.TryParse(value.ToString(), out numConvertido))
                     {
-                        costo = (float)Math.Round((double)value,2);
+                        costo = (float)Math.Round((double)value, 2);
                     }
-                    
+
                 }
                 else
                 {
                     throw new Exception("El vuelo no puede salir gratis");
                 }
-               
+
             }
         }
         public bool EsInternacional
@@ -180,6 +174,15 @@ namespace Entidades
 
             }
         }
+
+        public int AsientosOcupados
+        {
+            get => asientosOcupados;
+            set
+            {
+                asientosOcupados = value;
+            }
+        }
         #endregion
 
         #region sobrecargas
@@ -187,8 +190,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"Origen: {Origen}  Destino: {Destino} Partida: {HoraPartida.ToString("HH:mm")} Llegada: {HoraLlegada.ToString("HH:mm")} Costo: ${Costo} ");
-            sb.Append($"EspaciosPremium {AsientosPremium} Espacios Turista: {asientosTurista} Total Asientos: {avionVuelo.TotalAsientos}  Matricula Avion: {AvionVuelo.MatriculaAvion}");
+            sb.AppendLine($"Origen: {Origen}  Destino: {Destino} Partida: {HoraPartida.ToString("HH:mm")} Llegada: {HoraLlegada.ToString("HH:mm")} Costo: ${Costo} ");
+            sb.AppendLine($"EspaciosPremium {AsientosPremium} Espacios Turista: {asientosTurista} Total Asientos: {avionVuelo.TotalAsientos}  Matricula Avion: {AvionVuelo.MatriculaAvion}");
             return sb.ToString();
         }
 
@@ -220,7 +223,7 @@ namespace Entidades
             if (esPremium)
             {
                 cantidadProxima = AsientosPremium - 1;
-                if(cantidadProxima >= 0)
+                if (cantidadProxima >= 0)
                 {
                     AsientosPremium = cantidadProxima;
                     return true;
@@ -230,7 +233,7 @@ namespace Entidades
             else
             {
                 cantidadProxima = AsientosTurista--;
-                if(cantidadProxima >= 0)
+                if (cantidadProxima >= 0)
                 {
                     AsientosTurista = cantidadProxima;
                     return true;
@@ -238,7 +241,7 @@ namespace Entidades
                 throw new Exception("No hay lugares disponibles");
             }
 
-            
+
         }
 
 
