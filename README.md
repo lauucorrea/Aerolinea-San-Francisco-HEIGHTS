@@ -1,5 +1,5 @@
 
-<h1>Aerolineas Juan Pepito</h1>
+<h1>Aerolineas San Francisco Heights</h1>
 
 <h2> Sobre Mi </h2>
 <p>Mi nombre es Lautaro Correa, tengo 24 años y empece programando a mis 16. Mi primer contacto con el mundo de la programacion fue en el secundario cuando conoci el mundo del desarrollo web. Luego de egresarme, consegui mi primer trabajo trainee junto a un grupo de programadores reducidos, creando juegos y aplicaciones AR/VR con c# en Unity3d. Fue entonces cuando me di cuenta que la programacion era mas que un hobby y que debia enfocarle mi vida profesional a ello.</br>
@@ -23,9 +23,29 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <li><p>"Agregar vuelos" nos permite acceder a un formulario con la lista de aviones que existe en la aerolinea, y seleccionandolo, podremos sumarlo a un vuelo generado con los datos completados en el formulario</p></li>
 
 </ol>
-<h1>Diagrama y fundamentos</h1></br>
+<h1>Diagrama</h1>
 
 ![Diagrama De Clases](/Diagrama.jpeg)
+
+<h1>Justificacion tecnica</h1>
+
+<h2>Clases y metodos estaticos</h2>
+
+<p> La unica clase estatica creada en mi proyecto es la clase ValidadoraDeDatos, la cual se encarga de validar el rango de los DNI ingresados para las personas, asi como la validacion de strings alfanumericos para la asignacion de matriculas de los aviones. Esta clase, nos permite devolver valores de retorno en sus metodos, sin depender de las instancias de nuestros objetos</p>
+<p> Aun asi, continuamos con el uso de metodos estaticos, para el agregado de objetos en listas, y calculos pertinentes a la administracion de la aerolinea. Estos metodos pueden encontrarse en la clase "Administracion". La intencion de la creacion de esta clase es gestionar la responsabilidad de la aerolinea y poder agrupar todos los metodos de gestion en un mismo espacio.</p>
+<p> La clase Vuelo es la unica clase que posee un constructor estatico para inicializar el identificador de los vuelos.</p>
+
+<h2> Abstraccion, Herencia, Encapsulamiento, y Polimorfismo </h2>
+
+<h3>Abstraccion y Herencia</h3>
+<p> El programa posee una clase base llamada "Persona", y dos clases heredadas de la misma llamadas "Vendedor" y "Cliente".</p>
+<p>Estos dos ultimos fueron creados con la intencion de separar los atributos y comportamientos que diferencian a los vendedores de los clientes en si, aunque ambos sean considerados persona.</p>
+<p>De no haber creado estas dos ultimas clases mencionadas, no habria sido posible crear un sistema seguro en el que ciertas personas puedan loguearse (vendedores) para gestionar todas las compras que los clientes de la aerolinea deseen realizar, ya que lo que diferencia una de otra, son los atributos "Password" y "Usuario" necesarios para la administracion del LogIn al comienzo del programa. Aun asi y todo, siguen heredando los miembros de persona para registrar la informacion base como su nombre, apellido, dni , etc</p>
+</br>
+<h3> Encapsulamiento </h3>
+<p>Se generaron propiedades del tipo SET y GET para el facil acceso de cada uno de los atributos rpivados que poseen las clases anteriormente mencionadas, asi como tambien la clase Vuelo y Avion.</p>
+<p>Cada una de las clases posee sus atributos privados, para poder mejorar aun mas la seguridad de la informacion, siendo posible acceder a los datos en tiempo de ejecucion mediante las propiedades publicas</p>
+<p>En algunos casos, las propiedades son accedidas por metodos externos, aunque la gran mayoria de estas son modificadas por las propiedades PRIVADAS SET desde los constructores. Para asi impedir que estos datos se vean vulnerabilizados por fuera del flujo del programa</p>
 
 
   
