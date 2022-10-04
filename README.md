@@ -60,6 +60,6 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <h2>Colecciones</h2>
 <p>El unico uso de las colecciones dentro del programa, se encuentra en la seccion de registro. Ya que para la organizacion de los destinos segun su recaudacion, se decidio utilizar un diccionario ya que es mas sencillo ubicar cada destino junto a su valor con el uso del par <key,value>. Donde la KEY es el Enum, y el value el monto recaudado para el mismo</p>
   
-<h3> Opinion del programa </h3>
+<h2> Opinion del programa </h2>
 <p>Como contra, considero que el programa podria ser aun mas robusto, ya que me hubiera gustado poder hacer un muestreo mas claro de la informacion en pantalla, como sucede en caso de los listbox que muestran los objetos poco claros a la vista, siendo que el uso de DataGrid podria haber facilitado mucho el flujo del programa y el entendimiento del mismo.</p>
 <p>Como "pro", opino que el programa cuenta con un buen abanico de manejo de errores. Creo que se logro una buena experiencia de usuario siendo un formulario aparentemente "sencillo" en cuanto a diseño. Aun asi, me hubiera gustado poder aplicar el uso de formularios heredados al programa para agilizar el uso de la memoria.</p>
