@@ -35,10 +35,10 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <p> Aun asi, continuamos con el uso de metodos estaticos, para el agregado de objetos en listas, y calculos pertinentes a la administracion de la aerolinea. Estos metodos pueden encontrarse en la clase "Administracion". La intencion de la creacion de esta clase es gestionar la responsabilidad de la aerolinea y poder agrupar todos los metodos de gestion en un mismo espacio.</p>
 <p> La clase Vuelo es la unica clase que posee un constructor estatico para inicializar el identificador de los vuelos.</p>
 
-<h2> Abstraccion, Herencia, Encapsulamiento, y Polimorfismo </h2>
+<h2>POO: Abstraccion, Herencia, Encapsulamiento, y Polimorfismo </h2>
 
 <h3>Abstraccion y Herencia</h3>
-<p> El programa posee una clase base llamada "Persona", y dos clases heredadas de la misma llamadas "Vendedor" y "Cliente".</p>
+<p> El programa posee una clase abstracta llamada "Persona", y dos clases heredadas de la misma llamadas "Vendedor" y "Cliente".</p>
 <p>Estos dos ultimos fueron creados con la intencion de separar los atributos y comportamientos que diferencian a los vendedores de los clientes en si, aunque ambos sean considerados persona.</p>
 <p>De no haber creado estas dos ultimas clases mencionadas, no habria sido posible crear un sistema seguro en el que ciertas personas puedan loguearse (vendedores) para gestionar todas las compras que los clientes de la aerolinea deseen realizar, ya que lo que diferencia una de otra, son los atributos "Password" y "Usuario" necesarios para la administracion del LogIn al comienzo del programa. Aun asi y todo, siguen heredando los miembros de persona para registrar la informacion base como su nombre, apellido, dni , etc</p>
 </br>
@@ -47,5 +47,12 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <p>Cada una de las clases posee sus atributos privados, para poder mejorar aun mas la seguridad de la informacion, siendo posible acceder a los datos en tiempo de ejecucion mediante las propiedades publicas</p>
 <p>En algunos casos, las propiedades son accedidas por metodos externos, aunque la gran mayoria de estas son modificadas por las propiedades PRIVADAS SET desde los constructores. Para asi impedir que estos datos se vean vulnerabilizados por fuera del flujo del programa</p>
 
-
-  
+<h2>Sobrecargas</h2>
+<p>El metodo por defecto ToString() devuelve el literal del tipo de objeto al cual estemos accediendo</p>
+<p>Aprovechando que algunas funcionalidades acceden al ToString() de los objetos, y sabiendo que necesitamos hacer el muestreo de algunas propiedades de nuestra construccion del objeto, se procedio a sobreescribir este metodo en todas las clases creadas con un formateo especial en cada una para, por ejemplo, mostrar la lista de Clientes existentes, asi como cualquier tipo de informacion descriptiva de los datos almacenados.</p>
+</br>
+<p>El metodo por defecto Equals() nos devuelve un booleano que define si un objeto es literalmente el objeto que le pasemos por parametro. obj.Equals(obj)</p>
+<p>En mi caso, se sobreescribio este metodo para saber si los identificadores correspondientes a cada clase, coincidian. Por ejemplo, en la clase Cliente, se sobreescribio el Equals para saber si el DNI del cliente coincidia con el dni del objeto invocado</p>
+</br>
+<p>El metodo por defecto GetHashCode() nos devuelve un codigo hash (id unico) del objeto que estemos invocando</p>
+<p>En mi caso, este metodo fue utilizado para comparar los codigos hash de los identificadores de los vuelos, para asi evitar que el match de los identificadores literales int == int produzcan un problema en caso de duplicados</p>
