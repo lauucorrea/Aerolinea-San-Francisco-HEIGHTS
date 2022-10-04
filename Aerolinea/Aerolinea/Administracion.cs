@@ -167,6 +167,7 @@ namespace Entidades
 
             if (CheckearSiAvionExiste(avionElegido))
             {
+                
                 esInternacional = EsInternacional(indice);
                 horasDeVuelo = CalcularCantidadDeHorasDeVuelo(esInternacional);
                 costoVuelo = CalcularCostoDelVuelo(esInternacional, horasDeVuelo);
@@ -177,9 +178,17 @@ namespace Entidades
                 Vuelo vueloCreado = new Vuelo(avionElegido, origen, horaDespegue, horaLlegada, (Destinos)indice, esInternacional, costoVuelo);
                 if (vueloCreado is not null)
                 {
+                    if (!CheckearSiVueloExiste(vueloCreado))
+                    {
                     Registro.Vuelos.Add(vueloCreado);
                     avionElegido.HorasDeVuelo += horasDeVuelo;
                     return true;
+                    }
+                    else
+                    {
+                        throw new Exception("El vuelo creado ya existe");
+                    }
+
                 }
                 else
                 {

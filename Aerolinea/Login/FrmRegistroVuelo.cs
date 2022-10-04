@@ -74,14 +74,13 @@ namespace Vista
                     result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
                     if (result == DialogResult.OK)
                     {
-                        Close();
                         return true;
                     }
                 }
             }
             else
             {
-                throw new Exception("Los campos numericos deben ser completados");
+                throw new Exception("Debe ingresar al menos el peso de una valija");
             }
             return false;
         }
