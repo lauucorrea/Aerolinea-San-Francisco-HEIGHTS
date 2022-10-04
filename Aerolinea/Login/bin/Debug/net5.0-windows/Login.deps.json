@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Login/1.0.0": {
+        "dependencies": {
+          "Entidades": "1.0.0"
+        },
+        "runtime": {
+          "Login.dll": {}
+        }
+      },
+      "Entidades/1.0.0": {
+        "dependencies": {
+          "Validaciones": "1.0.0"
+        },
+        "runtime": {
+          "Entidades.dll": {}
+        }
+      },
+      "Validaciones/1.0.0": {
+        "runtime": {
+          "Validaciones.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Login/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Entidades/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Validaciones/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

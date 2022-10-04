@@ -1,0 +1,15 @@
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\bin\Debug\net5.0\Entidades.deps.json
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\bin\Debug\net5.0\Entidades.dll
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\bin\Debug\net5.0\Entidades.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\bin\Debug\net5.0\Validaciones.dll
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\bin\Debug\net5.0\Validaciones.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.csproj.CopyComplete
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.dll
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\refint\Entidades.dll
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\Entidades.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Aerolinea\obj\Debug\net5.0\ref\Entidades.dll
