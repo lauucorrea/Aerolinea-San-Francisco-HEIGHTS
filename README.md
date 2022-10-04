@@ -3,11 +3,11 @@
 
 <h2> Sobre Mi </h2>
 <p>Mi nombre es Lautaro Correa, tengo 24 años y empece programando a mis 16. Mi primer contacto con el mundo de la programacion fue en el secundario cuando conoci el mundo del desarrollo web. Luego de egresarme, consegui mi primer trabajo trainee junto a un grupo de programadores reducidos, creando juegos y aplicaciones AR/VR con c# en Unity3d. Fue entonces cuando me di cuenta que la programacion era mas que un hobby y que debia enfocarle mi vida profesional a ello.</br>
-Hoy en dia sigo soñando con asentarme en una empresa seria, para poder crecer y construir mi perfil como desarrollador.</p></br>
+Hoy en dia sigo soñando con asentarme en una empresa seria, para poder crecer y construir mi perfil como desarrollador.</p>
 
 <h2> Sobre la aerolinea </h2>
 
-<p> El trabajo de la aerolinea me resulto exhaustivo, realmente tuve que dedicarle muchisimas horas para que funcionase de la forma que esperaba, asi como tambien lograr integrar todos los temas de forma correcta sin fallas. Aun asi el proceso de aprendizaje fue positivo, senti que mejore mi proyeccion a la hora de crear un trabajo desde 0, asi como tambien identifico mucho mejor  los problemas que aparecen en el proceso.</p> </br>
+<p> El trabajo de la aerolinea me resulto exhaustivo, realmente tuve que dedicarle muchisimas horas para que funcionase de la forma que esperaba, asi como tambien lograr integrar todos los temas de forma correcta sin fallas. Aun asi el proceso de aprendizaje fue positivo, senti que mejore mi proyeccion a la hora de crear un trabajo desde 0, asi como tambien identifico mucho mejor  los problemas que aparecen en el proceso.</p>
 
 <h2> Uso de la aplicacion </h2>
 <ol>
@@ -41,7 +41,7 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <p> El programa posee una clase abstracta llamada "Persona", y dos clases heredadas de la misma llamadas "Vendedor" y "Cliente".</p>
 <p>Estos dos ultimos fueron creados con la intencion de separar los atributos y comportamientos que diferencian a los vendedores de los clientes en si, aunque ambos sean considerados persona.</p>
 <p>De no haber creado estas dos ultimas clases mencionadas, no habria sido posible crear un sistema seguro en el que ciertas personas puedan loguearse (vendedores) para gestionar todas las compras que los clientes de la aerolinea deseen realizar, ya que lo que diferencia una de otra, son los atributos "Password" y "Usuario" necesarios para la administracion del LogIn al comienzo del programa. Aun asi y todo, siguen heredando los miembros de persona para registrar la informacion base como su nombre, apellido, dni , etc</p>
-</br>
+
 <h3> Encapsulamiento </h3>
 <p>Se generaron propiedades del tipo SET y GET para el facil acceso de cada uno de los atributos rpivados que poseen las clases anteriormente mencionadas, asi como tambien la clase Vuelo y Avion.</p>
 <p>Cada una de las clases posee sus atributos privados, para poder mejorar aun mas la seguridad de la informacion, siendo posible acceder a los datos en tiempo de ejecucion mediante las propiedades publicas</p>
@@ -55,4 +55,11 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 <p>En mi caso, se sobreescribio este metodo para saber si los identificadores correspondientes a cada clase, coincidian. Por ejemplo, en la clase Cliente, se sobreescribio el Equals para saber si el DNI del cliente coincidia con el dni del objeto invocado</p>
 </br>
 <p>El metodo por defecto GetHashCode() nos devuelve un codigo hash (id unico) del objeto que estemos invocando</p>
-<p>En mi caso, este metodo fue utilizado para comparar los codigos hash de los identificadores de los vuelos, para asi evitar que el match de los identificadores literales int == int produzcan un problema en caso de duplicados</p>
+<p>En mi caso, este metodo fue utilizado para comparar los codigos hash de los identificadores de los vuelos, para asi evitar que el match de los identificadores literales (int == int) produzcan un problema en caso de duplicados</p>
+
+<h2>Colecciones</h2>
+<p>El unico uso de las colecciones dentro del programa, se encuentra en la seccion de registro. Ya que para la organizacion de los destinos segun su recaudacion, se decidio utilizar un diccionario ya que es mas sencillo ubicar cada destino junto a su valor con el uso del par <key,value>. Donde la KEY es el Enum, y el value el monto recaudado para el mismo</p>
+  
+<h3> Opinion del programa </h3>
+<p>Como contra, considero que el programa podria ser aun mas robusto, ya que me hubiera gustado poder hacer un muestreo mas claro de la informacion en pantalla, como sucede en caso de los listbox que muestran los objetos poco claros a la vista, siendo que el uso de DataGrid podria haber facilitado mucho el flujo del programa y el entendimiento del mismo.</p>
+<p>Como "pro", opino que el programa cuenta con un buen abanico de manejo de errores. Creo que se logro una buena experiencia de usuario siendo un formulario aparentemente "sencillo" en cuanto a diseño. Aun asi, me hubiera gustado poder aplicar el uso de formularios heredados al programa para agilizar el uso de la memoria.</p>
