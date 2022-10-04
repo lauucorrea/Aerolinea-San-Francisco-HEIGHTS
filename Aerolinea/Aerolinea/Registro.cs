@@ -96,8 +96,8 @@ namespace Entidades
 
         public static void CrearVuelos()
         {
-            DateTime partida = new DateTime(2022, 10, 01, 22, 3, 0);
-            DateTime Llegada = new DateTime(2022, 10, 01, 01, 22, 0);
+            DateTime partida = new(2022, 10, 01, 22, 3, 0);
+            DateTime Llegada = new(2022, 10, 01, 01, 22, 0);
 
             ListaVuelos.Add(new Vuelo(ListaAviones[0], "BuenosAires", partida, Llegada, Destinos.Mendoza, false, Administracion.CalcularCostoDelVuelo(false, 3)));
             ListaVuelos.Add(new Vuelo(ListaAviones[1], "BuenosAires", partida, Llegada, Destinos.Mendoza, false, Administracion.CalcularCostoDelVuelo(false, 3)));
@@ -110,16 +110,16 @@ namespace Entidades
 
         public static void CrearPasajes()
         {
-            Pasaje Pasaje0 = new Pasaje("Montaner", 41105244, ListaVuelos[0].Destino, ListaVuelos[0].Costo, false, ListaVuelos[0].EsInternacional, ListaVuelos[0].AvionVuelo.MatriculaAvion, true, 1);
-            Pasaje Pasaje1 = new Pasaje("Familia", 41177224, ListaVuelos[1].Destino, ListaVuelos[1].Costo, true, ListaVuelos[1].EsInternacional, ListaVuelos[1].AvionVuelo.MatriculaAvion, true, 1);
-            Pasaje Pasaje2 = new Pasaje("Familia", 41177224, ListaVuelos[2].Destino, ListaVuelos[2].Costo, true, ListaVuelos[2].EsInternacional, ListaVuelos[2].AvionVuelo.MatriculaAvion, true, 0);
-            Pasaje Pasaje3 = new Pasaje("Vencina", 49630423, ListaVuelos[3].Destino, ListaVuelos[3].Costo, false, ListaVuelos[3].EsInternacional, ListaVuelos[3].AvionVuelo.MatriculaAvion, true, 1);
-            Pasaje Pasaje4 = new Pasaje("Montaner", 41105244, ListaVuelos[4].Destino, ListaVuelos[4].Costo, true, ListaVuelos[4].EsInternacional, ListaVuelos[4].AvionVuelo.MatriculaAvion, true, 1);
-            Pasaje Pasaje5 = new Pasaje("Familia", 41177224, ListaVuelos[5].Destino, ListaVuelos[5].Costo, false, ListaVuelos[5].EsInternacional, ListaVuelos[5].AvionVuelo.MatriculaAvion, true, 0);
-            Pasaje Pasaje6 = new Pasaje("Prodi", 41100624, ListaVuelos[6].Destino, ListaVuelos[6].Costo, true, ListaVuelos[6].EsInternacional, ListaVuelos[6].AvionVuelo.MatriculaAvion, true, 1);
-            Pasaje Pasaje7 = new Pasaje("Familia", 41177224, ListaVuelos[6].Destino, ListaVuelos[6].Costo, true, ListaVuelos[6].EsInternacional, ListaVuelos[6].AvionVuelo.MatriculaAvion, true, 2);
-            Pasaje Pasaje8 = new Pasaje("Prodi", 41100624, ListaVuelos[5].Destino, ListaVuelos[5].Costo, false, ListaVuelos[5].EsInternacional, ListaVuelos[5].AvionVuelo.MatriculaAvion, true, 2);
-            Pasaje Pasaje9 = new Pasaje("Gerardo", 41152245, ListaVuelos[1].Destino, ListaVuelos[1].Costo, true, ListaVuelos[1].EsInternacional, ListaVuelos[1].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje0 = new("Montaner", 41105244, ListaVuelos[0].Destino, ListaVuelos[0].Costo, false, ListaVuelos[0].EsInternacional, ListaVuelos[0].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje1 = new("Familia", 41177224, ListaVuelos[1].Destino, ListaVuelos[1].Costo, true, ListaVuelos[1].EsInternacional, ListaVuelos[1].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje2 = new("Familia", 41177224, ListaVuelos[2].Destino, ListaVuelos[2].Costo, true, ListaVuelos[2].EsInternacional, ListaVuelos[2].AvionVuelo.MatriculaAvion, true, 0);
+            Pasaje Pasaje3 = new("Vencina", 49630423, ListaVuelos[3].Destino, ListaVuelos[3].Costo, false, ListaVuelos[3].EsInternacional, ListaVuelos[3].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje4 = new("Montaner", 41105244, ListaVuelos[4].Destino, ListaVuelos[4].Costo, true, ListaVuelos[4].EsInternacional, ListaVuelos[4].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje5 = new("Familia", 41177224, ListaVuelos[5].Destino, ListaVuelos[5].Costo, false, ListaVuelos[5].EsInternacional, ListaVuelos[5].AvionVuelo.MatriculaAvion, true, 0);
+            Pasaje Pasaje6 = new("Prodi", 41100624, ListaVuelos[6].Destino, ListaVuelos[6].Costo, true, ListaVuelos[6].EsInternacional, ListaVuelos[6].AvionVuelo.MatriculaAvion, true, 1);
+            Pasaje Pasaje7 = new("Familia", 41177224, ListaVuelos[6].Destino, ListaVuelos[6].Costo, true, ListaVuelos[6].EsInternacional, ListaVuelos[6].AvionVuelo.MatriculaAvion, true, 2);
+            Pasaje Pasaje8 = new("Prodi", 41100624, ListaVuelos[5].Destino, ListaVuelos[5].Costo, false, ListaVuelos[5].EsInternacional, ListaVuelos[5].AvionVuelo.MatriculaAvion, true, 2);
+            Pasaje Pasaje9 = new("Gerardo", 41152245, ListaVuelos[1].Destino, ListaVuelos[1].Costo, true, ListaVuelos[1].EsInternacional, ListaVuelos[1].AvionVuelo.MatriculaAvion, true, 1);
 
             ListaPasajes.Add(Pasaje1);ListaPasajes.Add(Pasaje2);ListaPasajes.Add(Pasaje3);ListaPasajes.Add(Pasaje4);
             ListaPasajes.Add(Pasaje5);ListaPasajes.Add(Pasaje6);ListaPasajes.Add(Pasaje7);ListaPasajes.Add(Pasaje8);

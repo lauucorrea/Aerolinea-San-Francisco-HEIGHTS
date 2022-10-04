@@ -48,7 +48,6 @@ namespace Vista
 
         private void btnCargarVuelo_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 CargarVuelo();

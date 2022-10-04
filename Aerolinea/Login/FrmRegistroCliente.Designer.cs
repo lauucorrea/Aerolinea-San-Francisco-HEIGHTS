@@ -126,7 +126,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(164, 395);
+            this.btnCancelar.Location = new System.Drawing.Point(158, 395);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(105, 46);
             this.btnCancelar.TabIndex = 10;
@@ -160,7 +160,7 @@
             this.lblErrores.AutoSize = true;
             this.lblErrores.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblErrores.ForeColor = System.Drawing.Color.Red;
-            this.lblErrores.Location = new System.Drawing.Point(158, 424);
+            this.lblErrores.Location = new System.Drawing.Point(214, 463);
             this.lblErrores.Name = "lblErrores";
             this.lblErrores.Size = new System.Drawing.Size(0, 17);
             this.lblErrores.TabIndex = 11;

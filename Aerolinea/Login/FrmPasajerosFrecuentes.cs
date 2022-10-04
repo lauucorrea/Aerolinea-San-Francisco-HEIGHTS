@@ -12,9 +12,9 @@ namespace Vista
 {
     public partial class FrmPasajerosFrecuentes : Form
     {
-        DataTable clientesFrecuentes;
-        DataView clientesFrecuentesDataview;
-        List<Cliente> clientesRecibidos;
+        DataTable clientesFrecuentes = new();
+        DataView clientesFrecuentesDataview = new();
+        List<Cliente> clientesRecibidos = new();
         public FrmPasajerosFrecuentes(List<Cliente> listaClientes)
         {
             InitializeComponent();

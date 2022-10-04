@@ -32,7 +32,7 @@ namespace Login
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            FrmRegistroPasajero menu = new FrmRegistroPasajero(vendedorDeTurno);
+            FrmRegistroPasajero menu = new(vendedorDeTurno);
 
             menu.ShowDialog();
             MostrarClientes();
@@ -47,9 +47,9 @@ namespace Login
 
             foreach (Persona persona in Registro.Personas)
             {
-                if (persona is Cliente)
+                if (persona is Cliente cliente)
                 {
-                    lstPasajeros.Items.Add((Cliente)persona);
+                    lstPasajeros.Items.Add(cliente);
 
                 }
             }
@@ -60,7 +60,7 @@ namespace Login
         {
           if (Registro.Pasajes.Count > 0)
             {
-            FrmHistorial menu = new FrmHistorial();
+            FrmHistorial menu = new();
 
             menu.ShowDialog();
             MostrarClientes();
@@ -81,7 +81,7 @@ namespace Login
                     {
                         Cliente clienteSeleccionado = (Cliente)lstPasajeros.SelectedItem;
 
-                        FrmVentaPasajes menu = new FrmVentaPasajes(clienteSeleccionado);
+                        FrmVentaPasajes menu = new(clienteSeleccionado);
 
                         menu.ShowDialog();
                     }
@@ -101,7 +101,7 @@ namespace Login
 
         private void btnAgregarVuelo_Click(object sender, EventArgs e)
         {
-            FrmRegistroVuelo menu = new FrmRegistroVuelo();
+            FrmRegistroVuelo menu = new();
 
             menu.ShowDialog();
         }
@@ -116,6 +116,13 @@ namespace Login
             {
                 Application.Exit();
             }
+        }
+
+        private void btnAltaAviones_Click(object sender, EventArgs e)
+        {
+            FrmAltaAviones menu = new();
+
+            menu.ShowDialog();
         }
     }
 

@@ -24,39 +24,61 @@ namespace Vista
 
         private void btnVerRecaudacion_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             rchMuestreo.Clear();
             string recaudacionTotal = Administracion.CalcularRecaudacion();
             rchMuestreo.AppendText(recaudacionTotal);
+            }
+            catch(Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
         }
 
         private void btnPasajerosPorVuelo_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             rchMuestreo.Clear();
             string PasajerosOrdenadosPorVuelo = Administracion.ObtenerPasajerosPorVuelo();
             rchMuestreo.AppendText(PasajerosOrdenadosPorVuelo);
+            }
+            catch(Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
         }
 
         private void btnDestinos_Click(object sender, EventArgs e)
         {
+            try
+            {
             Administracion.ActualizarFacturacionesPorDestino();
-            FrmHistorialDestinos menu = new FrmHistorialDestinos(Registro.DiccionarioDestinos);
+            FrmHistorialDestinos menu = new(Registro.DiccionarioDestinos);
 
             menu.ShowDialog();
+
+            }
+            catch(Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
         }
 
         private void PasajerosFrecuentes_Click(object sender, EventArgs e)
         {
-            List<Cliente> listaClientes = new List<Cliente>();
-            foreach(Persona persona in Registro.Personas)
+            try
             {
-                if (persona is Cliente)
-                {
-                    listaClientes.Add((Cliente)persona);
-                }
-            }
-            FrmPasajerosFrecuentes menu = new FrmPasajerosFrecuentes(listaClientes);
 
-            menu.ShowDialog();
+            VerPasajerosFrecuentes();
+            }catch(Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
+            
         }
 
         private void btnAviones_Click(object sender, EventArgs e)
@@ -80,6 +102,29 @@ namespace Vista
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void VerPasajerosFrecuentes()
+        {
+            if(Registro.Personas.Count > 0)
+            {
+            List<Cliente> listaClientes = new();
+            foreach (Persona persona in Registro.Personas)
+            {
+                if (persona is Cliente cliente)
+                {
+                    listaClientes.Add(cliente);
+                }
+            }
+            FrmPasajerosFrecuentes menu = new(listaClientes);
+
+            menu.ShowDialog();
+
+            }
+            else
+            {
+                throw new Exception("No hay personas registradas");
             }
         }
     }

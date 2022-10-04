@@ -37,6 +37,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblSalir = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.lblErrores = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnVerRecaudacion
@@ -128,12 +129,22 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // lblErrores
+            // 
+            this.lblErrores.AutoSize = true;
+            this.lblErrores.ForeColor = System.Drawing.Color.Red;
+            this.lblErrores.Location = new System.Drawing.Point(389, 548);
+            this.lblErrores.Name = "lblErrores";
+            this.lblErrores.Size = new System.Drawing.Size(0, 15);
+            this.lblErrores.TabIndex = 35;
+            // 
             // FrmHistorial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 607);
             this.ControlBox = false;
+            this.Controls.Add(this.lblErrores);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblSalir);
             this.Controls.Add(this.btnSalir);
@@ -162,5 +173,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblSalir;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Label lblErrores;
     }
 }

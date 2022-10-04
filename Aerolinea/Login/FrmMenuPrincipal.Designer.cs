@@ -38,6 +38,7 @@
             this.lblFechaActual = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblSalir = new System.Windows.Forms.Label();
+            this.btnAltaAviones = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTituloMenu
@@ -73,7 +74,7 @@
             // 
             // btnAgregarCliente
             // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(788, 285);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(788, 272);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(231, 51);
             this.btnAgregarCliente.TabIndex = 7;
@@ -83,7 +84,7 @@
             // 
             // btnVerHistorial
             // 
-            this.btnVerHistorial.Location = new System.Drawing.Point(788, 189);
+            this.btnVerHistorial.Location = new System.Drawing.Point(788, 184);
             this.btnVerHistorial.Name = "btnVerHistorial";
             this.btnVerHistorial.Size = new System.Drawing.Size(231, 51);
             this.btnVerHistorial.TabIndex = 8;
@@ -93,7 +94,7 @@
             // 
             // btnAgregarVuelo
             // 
-            this.btnAgregarVuelo.Location = new System.Drawing.Point(788, 384);
+            this.btnAgregarVuelo.Location = new System.Drawing.Point(788, 357);
             this.btnAgregarVuelo.Name = "btnAgregarVuelo";
             this.btnAgregarVuelo.Size = new System.Drawing.Size(231, 51);
             this.btnAgregarVuelo.TabIndex = 9;
@@ -142,12 +143,23 @@
             this.lblSalir.TabIndex = 34;
             this.lblSalir.Text = "Salir";
             // 
+            // btnAltaAviones
+            // 
+            this.btnAltaAviones.Location = new System.Drawing.Point(788, 438);
+            this.btnAltaAviones.Name = "btnAltaAviones";
+            this.btnAltaAviones.Size = new System.Drawing.Size(231, 51);
+            this.btnAltaAviones.TabIndex = 35;
+            this.btnAltaAviones.Text = "Agregar Aviones";
+            this.btnAltaAviones.UseVisualStyleBackColor = true;
+            this.btnAltaAviones.Click += new System.EventHandler(this.btnAltaAviones_Click);
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 638);
             this.ControlBox = false;
+            this.Controls.Add(this.btnAltaAviones);
             this.Controls.Add(this.lblSalir);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblFechaActual);
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Label lblFechaActual;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblSalir;
+        private System.Windows.Forms.Button btnAltaAviones;
     }
 }

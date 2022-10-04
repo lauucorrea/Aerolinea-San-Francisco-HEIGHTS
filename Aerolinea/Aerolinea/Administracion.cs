@@ -51,7 +51,7 @@ namespace Entidades
 
                     }
                 }
-                throw new Exception("No encontramos el cliente que buscabas");
+                return false;
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Entidades
                         return true;
                     }
                 }
-                throw new Exception("No encontramos el avion que buscabas");
+                return false;
             }
             else
             {
@@ -214,6 +214,26 @@ namespace Entidades
             throw new ArgumentNullException("No se ha seleccionado ningun avion");
 
         }
+        public static bool AgregarAvionALista(bool ofreceComida, int cantidadAsientos, decimal capacidadBodega, int cantidadToilets, string matriculaAvion)
+        {
+            {
+                Avion avion = new(ofreceComida, cantidadToilets, capacidadBodega, cantidadAsientos, matriculaAvion);
+                if (!CheckearSiAvionExiste(avion))
+                {
+                    if (avion is not null)
+                    {
+                        Registro.Aviones.Add(avion);
+                        return true;
+                    }
+                    else
+                    {
+                        throw new NullReferenceException("El programa fallo al crear un avion");
+                    }
+                }
+                throw new Exception("Ya existe un avion con esta matricla");
+            }
+
+        }
 
         public static float CalcularCostoDelVuelo(bool esInternacional, int duracionDeVuelo)
         {
@@ -274,38 +294,45 @@ namespace Entidades
             float recaudacionTotal = 0;
             StringBuilder sb = new StringBuilder();
             List<int> dniYaEncontrados = new List<int>();
-
-            foreach (Pasaje pasaje in Registro.Pasajes)
+            if (Registro.Pasajes.Count > 0)
             {
-                if (pasaje is not null)
-                {
-                    if (!dniYaEncontrados.Contains(pasaje.DniPasajero))
-                    {
-                        dniYaEncontrados.Add(pasaje.DniPasajero);
 
-                        if (pasaje.EsPremium)
+                foreach (Pasaje pasaje in Registro.Pasajes)
+                {
+                    if (pasaje is not null)
+                    {
+                        if (!dniYaEncontrados.Contains(pasaje.DniPasajero))
                         {
-                            recaudacionPremium += pasaje.ValorPasaje;
-                            contadorPremium++;
+                            dniYaEncontrados.Add(pasaje.DniPasajero);
+
+                            if (pasaje.EsPremium)
+                            {
+                                recaudacionPremium += pasaje.ValorPasaje;
+                                contadorPremium++;
+                            }
+                            else
+                            {
+                                recaudacionTurista += pasaje.ValorPasaje;
+                                contadorTurista++;
+                            }
+                            recaudacionTotal += pasaje.ValorPasaje;
                         }
-                        else
-                        {
-                            recaudacionTurista += pasaje.ValorPasaje;
-                            contadorTurista++;
-                        }
-                        recaudacionTotal += pasaje.ValorPasaje;
                     }
                 }
-            }
-            sb.AppendLine("Total de pasajeros en la aerolinea: " + dniYaEncontrados.Count);
-            sb.AppendLine("Total de pasajes premium vendidos: " + contadorPremium);
-            sb.AppendLine("Total de pasajes turista vendidos: " + contadorTurista);
-            sb.AppendLine("Total recaudado premium: " + recaudacionPremium);
-            sb.AppendLine("Total recaudado Turista: " + recaudacionTurista);
-            sb.AppendLine("---------------------------------------");
-            sb.AppendLine("Ganancia total: " + recaudacionTotal);
+                sb.AppendLine("Total de pasajeros en la aerolinea: " + dniYaEncontrados.Count);
+                sb.AppendLine("Total de pasajes premium vendidos: " + contadorPremium);
+                sb.AppendLine("Total de pasajes turista vendidos: " + contadorTurista);
+                sb.AppendLine("Total recaudado premium: " + recaudacionPremium);
+                sb.AppendLine("Total recaudado Turista: " + recaudacionTurista);
+                sb.AppendLine("---------------------------------------");
+                sb.AppendLine("Ganancia total: " + recaudacionTotal);
 
-            return sb.ToString();
+                return sb.ToString();
+            }
+            else
+            {
+                throw new Exception("No existen pasajeros cargados en la lista");
+            }
 
         }
 
@@ -315,22 +342,30 @@ namespace Entidades
         /// <returns></returns>
         public static string ObtenerPasajerosPorVuelo()
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (Vuelo vuelo in Registro.Vuelos)
+            if (Registro.Vuelos.Count > 0)
             {
-                sb.AppendLine($"Vuelo:\n{vuelo}");
-                sb.AppendLine("-------------------------------------------------");
-                if (vuelo is not null)
+
+                StringBuilder sb = new StringBuilder();
+                foreach (Vuelo vuelo in Registro.Vuelos)
                 {
-                    sb.AppendLine($"Cantidad de pasasajeros en este vuelo: {vuelo.AsientosOcupados}\n");
-                    foreach (Pasaje pasaje in vuelo.ListaPasajes)
+                    sb.AppendLine($"Vuelo:\n{vuelo}");
+                    sb.AppendLine("-------------------------------------------------");
+                    if (vuelo is not null)
                     {
-                        sb.AppendLine(pasaje.ToString());
+                        sb.AppendLine($"Cantidad de pasasajeros en este vuelo: {vuelo.AsientosOcupados}\n");
+                        foreach (Pasaje pasaje in vuelo.ListaPasajes)
+                        {
+                            sb.AppendLine(pasaje.ToString());
+                        }
+                        sb.AppendLine("#################################################");
                     }
-                    sb.AppendLine("#################################################");
                 }
+                return sb.ToString();
             }
-            return sb.ToString();
+            else
+            {
+                throw new Exception("No hay vuelos cargados en la lista");
+            }
         }
 
         /// <summary>
@@ -338,18 +373,26 @@ namespace Entidades
         /// </summary>
         public static void ActualizarFacturacionesPorDestino()
         {
-            foreach (Destinos destino in Enum.GetValues(typeof(Destinos)))
+            if (Registro.Pasajes.Count > 0)
             {
-                Registro.DiccionarioDestinos[destino] = 0;
 
-                foreach (Pasaje pasaje in Registro.Pasajes)
+                foreach (Destinos destino in Enum.GetValues(typeof(Destinos)))
                 {
-                    if (destino == pasaje.Destino)
-                    {
-                        Registro.DiccionarioDestinos[destino] += pasaje.ValorPasaje;
-                    }
+                    Registro.DiccionarioDestinos[destino] = 0;
 
+                    foreach (Pasaje pasaje in Registro.Pasajes)
+                    {
+                        if (destino == pasaje.Destino)
+                        {
+                            Registro.DiccionarioDestinos[destino] += pasaje.ValorPasaje;
+                        }
+
+                    }
                 }
+            }
+            else
+            {
+                throw new Exception("No hay pasajes cargados en la lista");
             }
         }
 

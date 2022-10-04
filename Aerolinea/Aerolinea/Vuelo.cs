@@ -120,10 +120,9 @@ namespace Entidades
             get => costo;
             private set
             {
-                float numConvertido;
                 if (value > 0)
                 {
-                    if (float.TryParse(value.ToString(), out numConvertido))
+                    if (float.TryParse(value.ToString(), out float numConvertido))
                     {
                         costo = (float)Math.Round((double)numConvertido, 2);
                     }
@@ -188,9 +187,9 @@ namespace Entidades
         #region sobrecargas
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
-            sb.AppendLine($"Origen: {Origen}  Destino: {Destino} Partida: {HoraPartida.ToString("HH:mm")} Llegada: {HoraLlegada.ToString("HH:mm")} Costo: ${Costo} ");
+            sb.AppendLine($"Origen: {Origen}  Destino: {Destino} Partida: {HoraPartida:HH:mm} Llegada: {HoraLlegada:HH:mm} Costo: ${Costo} ");
             sb.AppendLine($"EspaciosPremium {AsientosPremium} Espacios Turista: {asientosTurista} Total Asientos: {avionVuelo.TotalAsientos}  Matricula Avion: {AvionVuelo.MatriculaAvion}");
             
             return sb.ToString();

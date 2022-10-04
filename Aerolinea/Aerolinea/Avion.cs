@@ -38,8 +38,7 @@ namespace Entidades
             get => cantidadDeToilets;
             private set
             {
-                int numeroConvertido;
-                if (int.TryParse(value.ToString(), out numeroConvertido) && numeroConvertido > 0)
+                if (int.TryParse(value.ToString(), out int numeroConvertido) && numeroConvertido > 0)
                 {
                     cantidadDeToilets = numeroConvertido;
                 }
@@ -60,8 +59,7 @@ namespace Entidades
             get => capacidadBodega;
             private set
             {
-                decimal numeroConvertido;
-                if (decimal.TryParse(value.ToString(), out numeroConvertido) && numeroConvertido > 0)
+                if (decimal.TryParse(value.ToString(), out decimal numeroConvertido) && numeroConvertido > 0)
                 {
                     capacidadBodega = Math.Round(numeroConvertido, 2);
                 }
@@ -76,10 +74,9 @@ namespace Entidades
             get => cargaActualBodega;
             set
             {
-                decimal numeroConvertido;
-                if (decimal.TryParse(value.ToString(), out numeroConvertido))
+                if (decimal.TryParse(value.ToString(), out decimal numeroConvertido))
                 {
-                    if(value <= CapacidadBodega)
+                    if (value <= CapacidadBodega)
                     {
                         cargaActualBodega = Math.Round(numeroConvertido, 2);
                     }
@@ -87,7 +84,7 @@ namespace Entidades
                     {
                         throw new Exception("La carga actual superaria la capacidad del avion");
                     }
-                   
+
                 }
                 else
                 {
@@ -100,8 +97,7 @@ namespace Entidades
             get => totalAsientos;
             private set
             {
-                int numeroConvertido;
-                if (int.TryParse(value.ToString(), out numeroConvertido))
+                if (int.TryParse(value.ToString(), out int numeroConvertido))
                 {
                     totalAsientos = numeroConvertido;
                 }
@@ -129,7 +125,7 @@ namespace Entidades
         #endregion
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new ();
             string ofrece;
             if (ofreceComida)
             {
@@ -140,7 +136,8 @@ namespace Entidades
                 ofrece = "No";
             }
 
-            sb.AppendLine($"Ofrece Comida? {ofrece} Capacidad Bodega: {CapacidadBodega} Carga Actual: {CargaActualBodega} Total Asientos: {TotalAsientos} Matricula: {MatriculaAvion}");
+            sb.AppendLine($"Ofrece Comida? {ofrece} Capacidad Bodega: {CapacidadBodega}Kg Carga Actual: {CargaActualBodega}Kg");
+            sb.AppendLine($"Total Asientos: {TotalAsientos} Matricula: {MatriculaAvion}");
             sb.AppendLine($"Horas de vuelo {HorasDeVuelo}");
 
             return sb.ToString();
@@ -151,6 +148,11 @@ namespace Entidades
             Avion avion = obj as Avion;
 
             return avion is not null && MatriculaAvion == avion.MatriculaAvion;
+        }
+
+        public override int GetHashCode()
+        {
+            return matriculaAvion.GetHashCode();
         }
 
         public bool PuedeCargarValijas(decimal pesoValijas)
