@@ -22,6 +22,7 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 
 <li><p>"Agregar vuelos" nos permite acceder a un formulario con la lista de aviones que existe en la aerolinea, y seleccionandolo, podremos sumarlo a un vuelo generado con los datos completados en el formulario</p></li>
 
+<li><p>"Agregar aviones" nos permite acceder a un formulario con la lista de aviones de la aerolinea , la cual se refresca siempre que creamos un avion nuevo con los campos que  tenemos a nuestra derecha</li></p>
 </ol>
 <h1>Diagrama</h1>
 
