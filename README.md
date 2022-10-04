@@ -25,7 +25,7 @@ Luego de acceder al sistema, nos encontraremos con una pantalla que nos muestra 
 </ol>
 <h1>Diagrama y fundamentos</h1></br>
 
-![Diagrama De Clases](/Diagramas.jpeg)
+![Diagrama De Clases](/Diagrama.jpeg)
 
 
   
