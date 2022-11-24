@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblTituloMenu = new System.Windows.Forms.Label();
-            this.lstPasajeros = new System.Windows.Forms.ListBox();
             this.btnGestionPasaje = new System.Windows.Forms.Button();
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnVerHistorial = new System.Windows.Forms.Button();
@@ -39,6 +38,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblSalir = new System.Windows.Forms.Label();
             this.btnAltaAviones = new System.Windows.Forms.Button();
+            this.dtgClientes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloMenu
@@ -52,15 +53,6 @@
             this.lblTituloMenu.TabIndex = 0;
             this.lblTituloMenu.Text = "Bienvenido/a ,";
             this.lblTituloMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lstPasajeros
-            // 
-            this.lstPasajeros.FormattingEnabled = true;
-            this.lstPasajeros.ItemHeight = 15;
-            this.lstPasajeros.Location = new System.Drawing.Point(12, 65);
-            this.lstPasajeros.Name = "lstPasajeros";
-            this.lstPasajeros.Size = new System.Drawing.Size(694, 424);
-            this.lstPasajeros.TabIndex = 3;
             // 
             // btnGestionPasaje
             // 
@@ -153,12 +145,23 @@
             this.btnAltaAviones.UseVisualStyleBackColor = true;
             this.btnAltaAviones.Click += new System.EventHandler(this.btnAltaAviones_Click);
             // 
+            // dtgClientes
+            // 
+            this.dtgClientes.AllowUserToAddRows = false;
+            this.dtgClientes.Location = new System.Drawing.Point(12, 102);
+            this.dtgClientes.Name = "dtgClientes";
+            this.dtgClientes.RowTemplate.Height = 25;
+            this.dtgClientes.Size = new System.Drawing.Size(753, 387);
+            this.dtgClientes.TabIndex = 36;
+            this.dtgClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellClick);
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 638);
             this.ControlBox = false;
+            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.btnAltaAviones);
             this.Controls.Add(this.lblSalir);
             this.Controls.Add(this.btnSalir);
@@ -168,12 +171,12 @@
             this.Controls.Add(this.btnVerHistorial);
             this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.btnGestionPasaje);
-            this.Controls.Add(this.lstPasajeros);
             this.Controls.Add(this.lblTituloMenu);
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,7 +185,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTituloMenu;
-        private System.Windows.Forms.ListBox lstPasajeros;
         private System.Windows.Forms.Button btnGestionPasaje;
         private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Button btnVerHistorial;
@@ -192,5 +194,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblSalir;
         private System.Windows.Forms.Button btnAltaAviones;
+        private System.Windows.Forms.DataGridView dtgClientes;
     }
 }

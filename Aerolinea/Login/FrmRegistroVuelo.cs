@@ -1,11 +1,14 @@
 ﻿using Entidades;
 using System;
+using System.Data;
 using System.Windows.Forms;
 namespace Vista
 {
     public partial class FrmRegistroVuelo : Form
     {
-        Avion avionSeleccionado;
+        Avion avionSeleccionado = null;
+        DataTable avionesDisponibles = new();
+        DataView viewAviones = new();
         public FrmRegistroVuelo()
         {
             InitializeComponent();
@@ -13,12 +16,13 @@ namespace Vista
         private void FrmRegistroVuelo_Load(object sender, EventArgs e)
         {
             cmbDestinos.DataSource = Enum.GetValues(typeof(Destinos));
-            MostrarAviones();
+            DibujarTabla();
+            //MostrarAviones();
         }
         /// <summary>
         /// Carga los aviones al listbox
         /// </summary>
-        private void MostrarAviones()
+       /* private void MostrarAviones()
         {
             if (lstAviones.Items.Count > 0)
             {
@@ -27,6 +31,35 @@ namespace Vista
 
             lstAviones.DataSource = Registro.Aviones;
 
+        }*/
+        private void DibujarTabla()
+        {
+            avionesDisponibles = new DataTable();
+
+            avionesDisponibles.Columns.Add("Ofrece comida", typeof(bool));
+            avionesDisponibles.Columns.Add("Capacidad bodega", typeof(decimal));
+            avionesDisponibles.Columns.Add("Carga actual", typeof(decimal));
+            avionesDisponibles.Columns.Add("Asientos", typeof(int));
+            avionesDisponibles.Columns.Add("Matricula", typeof(string));
+            avionesDisponibles.Columns.Add("Horas de vuelo", typeof(int));
+
+            foreach (Avion avion in Registro.Aviones)
+            {
+                avionesDisponibles.Rows.Add(
+                    avion.OfreceComida,
+                    avion.CapacidadBodega,
+                    avion.CargaActualBodega,
+                    avion.TotalAsientos,
+                    avion.MatriculaAvion,
+                    avion.HorasDeVuelo);
+
+            }
+
+            dtgAviones.DataSource = avionesDisponibles;
+
+            dtgAviones.Rows[0].Selected = true;
+            txtMatricula.Text = Registro.Aviones[0].MatriculaAvion;
+            txtOrigen.Text = "Argentina";
         }
 
         /// <summary>
@@ -34,7 +67,7 @@ namespace Vista
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lstAviones_SelectedIndexChanged(object sender, EventArgs e)
+       /* private void lstAviones_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstAviones.SelectedItem is not null)
             {
@@ -44,7 +77,7 @@ namespace Vista
                 txtMatricula.Text = avionSeleccionado.MatriculaAvion;
 
             }
-        }
+        }*/
 
         private void btnCargarVuelo_Click(object sender, EventArgs e)
         {
@@ -57,20 +90,20 @@ namespace Vista
                 lblErrores.Text = ex.Message;
             }
         }
-        
+
 
         private bool CargarVuelo()
         {
             MessageBoxButtons botonesOpciones = MessageBoxButtons.OK;
             DialogResult result;
-            
+
 
             if (numHora.Value != 0)
             {
 
-                if (Administracion.AgregarVueloALista(avionSeleccionado, txtOrigen.Text, cmbDestinos.SelectedIndex,(int)numHora.Value, (int)numMinutos.Value))
+                if (Administracion.AgregarVueloALista(avionSeleccionado, txtOrigen.Text, cmbDestinos.SelectedIndex, (int)numHora.Value, (int)numMinutos.Value))
                 {
-                    
+
                     result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
                     if (result == DialogResult.OK)
                     {
@@ -87,7 +120,7 @@ namespace Vista
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-           Close();
+            Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -100,6 +133,16 @@ namespace Vista
             {
                 Application.Exit();
             }
+        }
+
+        private void dtgAviones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indice = dtgAviones.CurrentRow.Index;
+            dtgAviones.Rows[indice].Selected = true;
+            Avion avionSeleccionado = Registro.Aviones[indice];
+
+            txtMatricula.Text = avionSeleccionado.MatriculaAvion;
+            txtOrigen.Text = "Argentina";
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Entidades;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using Vista;
 namespace Login
@@ -7,7 +9,9 @@ namespace Login
     public partial class FrmMenuPrincipal : Form
     {
         Vendedor vendedorDeTurno;
-
+        DataTable clientes = new();
+        Cliente clienteSeleccionado;
+        List<Cliente> listaClientes = new();
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -22,11 +26,12 @@ namespace Login
         {
             DateTime fechaActual = DateTime.Now.Date;
 
+
             lblFechaActual.Text += fechaActual.ToShortDateString();
 
             lblTituloMenu.Text += vendedorDeTurno.NombreApellido();
 
-            MostrarClientes();
+            DibujarTabla();
         }
 
 
@@ -35,35 +40,44 @@ namespace Login
             FrmRegistroPasajero menu = new(vendedorDeTurno);
 
             menu.ShowDialog();
-            MostrarClientes();
+            DibujarTabla();
         }
-
-        private void MostrarClientes()
+        private void DibujarTabla()
         {
-            if (lstPasajeros.Items.Count > 0)
-            {
-                lstPasajeros.Items.Clear();
-            }
+            clientes = new DataTable();
+
+            clientes.Columns.Add("Nombre", typeof(string));
+            clientes.Columns.Add("Apellido", typeof(string));
+            clientes.Columns.Add("Dni", typeof(int));
+            clientes.Columns.Add("Edad", typeof(int));
+            clientes.Columns.Add("Vuelos registrados", typeof(int));
 
             foreach (Persona persona in Registro.Personas)
             {
-                if (persona is Cliente cliente)
+                if (persona is Cliente)
                 {
-                    lstPasajeros.Items.Add(cliente);
-
+                    Cliente cliente = (Cliente)persona;
+                    listaClientes.Add(cliente);
+                    string nombre = cliente.Nombre;
+                    string apellido = cliente.Apellido;
+                    int dni = cliente.Dni;
+                    int edad = cliente.Edad;
+                    int vuelosRegistrados = cliente.CantidadVuelosComprados;
+                    clientes.Rows.Add(nombre, apellido, dni, edad, vuelosRegistrados);
                 }
-            }
-        }
 
+            }
+            dtgClientes.DataSource = clientes;
+        }
 
         private void btnVerHistorial_Click(object sender, EventArgs e)
         {
-          if (Registro.Pasajes.Count > 0)
+            if (Registro.Pasajes.Count > 0)
             {
-            FrmHistorial menu = new();
+                FrmHistorial menu = new();
 
-            menu.ShowDialog();
-            MostrarClientes();
+                menu.ShowDialog();
+                DibujarTabla();
             }
             else
             {
@@ -75,14 +89,11 @@ namespace Login
         {
             try
             {
-                if (lstPasajeros.Items.Count > 0 && lstPasajeros.SelectedItems.Count != 0)
+                if (clienteSeleccionado is not null && dtgClientes.CurrentRow is not null)
                 {
                     if (Registro.Vuelos.Count > 0)
                     {
-                        Cliente clienteSeleccionado = (Cliente)lstPasajeros.SelectedItem;
-
                         FrmVentaPasajes menu = new(clienteSeleccionado);
-
                         menu.ShowDialog();
                     }
                     else
@@ -90,13 +101,16 @@ namespace Login
                         throw new Exception("No hay vuelos cargados en el sistema");
                     }
                 }
+                else
+                {
+                    throw new Exception("No hay un cliente seleccionado para operar");
+                }
             }
             catch (Exception ex)
             {
                 lblErrores.Text = ex.Message;
             }
-            lstPasajeros.Items.Clear();
-            MostrarClientes();
+            DibujarTabla();
         }
 
         private void btnAgregarVuelo_Click(object sender, EventArgs e)
@@ -123,6 +137,13 @@ namespace Login
             FrmAltaAviones menu = new();
 
             menu.ShowDialog();
+        }
+
+        private void dtgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indice = dtgClientes.CurrentRow.Index;
+            dtgClientes.Rows[indice].Selected = true;
+            clienteSeleccionado = (Cliente)listaClientes[indice];
         }
     }
 

@@ -2,12 +2,14 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
+using System.Data;
 namespace Vista
 {
     public partial class FrmVentaPasajes : Form
     {
         Cliente clienteAtendido;
         Vuelo vueloSeleccionado;
+        DataTable vuelosDisponibles = new();
         int indiceDestinos;
         private FrmVentaPasajes()
         {
@@ -21,8 +23,7 @@ namespace Vista
 
         private void FrmVentaPasajes_Load(object sender, EventArgs e)
         {
-            MostrarVuelos();
-
+            DibujarTabla();
             txtNombre.Text = clienteAtendido.Nombre;
             txtDni.Text = clienteAtendido.Dni.ToString();
 
@@ -31,25 +32,40 @@ namespace Vista
             rbtBolsoNo.Checked = true;
             EvaluarCampos();
         }
-        private void MostrarVuelos()
+        private void DibujarTabla()
         {
-            if (lstVuelos.Items.Count > 0)
+            vuelosDisponibles = new DataTable();
+
+            vuelosDisponibles.Columns.Add("Origen", typeof(string));
+            vuelosDisponibles.Columns.Add("Destino", typeof(Destinos));
+            vuelosDisponibles.Columns.Add("Partida", typeof(DateTime));
+            vuelosDisponibles.Columns.Add("Llegada", typeof(DateTime));
+            vuelosDisponibles.Columns.Add("Costo", typeof(float));
+            vuelosDisponibles.Columns.Add("Asientos Premium", typeof(int));
+            vuelosDisponibles.Columns.Add("Asientos Turista", typeof(int));
+            vuelosDisponibles.Columns.Add("Total Asientos", typeof(int));
+            vuelosDisponibles.Columns.Add("Matricula avion", typeof(string));
+
+            foreach (Vuelo vuelo in Registro.Vuelos)
             {
-                lstVuelos.Items.Clear();
+                vuelosDisponibles.Rows.Add(
+                    vuelo.Origen,
+                    vuelo.Destino,
+                    vuelo.HoraPartida,
+                    vuelo.HoraLlegada,
+                    vuelo.Costo,
+                    vuelo.AsientosPremium,
+                    vuelo.AsientosTurista,
+                    vuelo.AvionVuelo.TotalAsientos,
+                    vuelo.AvionVuelo.MatriculaAvion);
+
             }
 
-            lstVuelos.DataSource = Registro.Vuelos;
-        }
+            dtgVuelos.DataSource = vuelosDisponibles;
 
-        private void lstVuelos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstVuelos.SelectedItem is not null)
-            {
-                vueloSeleccionado = (Vuelo)lstVuelos.SelectedItem;
-                CargarDatosVueloElegido();
-
-            }
-
+            dtgVuelos.Rows[0].Selected = true;
+            vueloSeleccionado = Registro.Vuelos[0];
+            CargarDatosVueloElegido();
         }
 
         private void CargarDatosVueloElegido()
@@ -245,6 +261,15 @@ namespace Vista
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dtgVuelos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indice = dtgVuelos.CurrentRow.Index;
+            dtgVuelos.Rows[indice].Selected = true;
+            vueloSeleccionado = Registro.Vuelos[indice];
+            CargarDatosVueloElegido();
+
         }
     }
 }

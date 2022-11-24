@@ -15,7 +15,6 @@ namespace Entidades
         private int totalAsientos;
         private string matriculaAvion;
         private int horasDeVuelo;
-
         public Avion(bool ofreceComida, int cantidadDeToilets, decimal capacidadBodega, int totalAsientos, string matriculaAvion)
         {
             horasDeVuelo = 0;
@@ -26,7 +25,7 @@ namespace Entidades
             MatriculaAvion = matriculaAvion;
             CargaActualBodega = 0;
         }
-        #region setters/getters
+        
         public bool OfreceComida
         {
             get => ofreceComida;
@@ -88,7 +87,7 @@ namespace Entidades
                 }
                 else
                 {
-                    throw new Exception("Formato de capacidad de bodega incorrecto");
+                    throw new Exception("El peso tiene que ser un valor numerico");
                 }
             }
         }
@@ -103,7 +102,7 @@ namespace Entidades
                 }
                 else
                 {
-                    throw new Exception("Formato de la cantidad de asientos incorrecto");
+                    throw new Exception("La cantidad de asientos debe ser numerica");
                 }
             }
         }
@@ -118,11 +117,10 @@ namespace Entidades
                 }
                 else
                 {
-                    throw new Exception("Formato de matricula incorrecto");
+                    throw new Exception("La matricula debe ser alfanumerica");
                 }
             }
         }
-        #endregion
         public override string ToString()
         {
             StringBuilder sb = new ();

@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrigen = new System.Windows.Forms.TextBox();
-            this.lstAviones = new System.Windows.Forms.ListBox();
             this.cmbDestinos = new System.Windows.Forms.ComboBox();
             this.lblDestino = new System.Windows.Forms.Label();
             this.numHora = new System.Windows.Forms.NumericUpDown();
@@ -46,8 +45,10 @@
             this.lblErrores = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtgAviones = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAviones)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -68,16 +69,6 @@
             this.txtOrigen.ReadOnly = true;
             this.txtOrigen.Size = new System.Drawing.Size(165, 23);
             this.txtOrigen.TabIndex = 1;
-            // 
-            // lstAviones
-            // 
-            this.lstAviones.FormattingEnabled = true;
-            this.lstAviones.ItemHeight = 15;
-            this.lstAviones.Location = new System.Drawing.Point(12, 89);
-            this.lstAviones.Name = "lstAviones";
-            this.lstAviones.Size = new System.Drawing.Size(630, 274);
-            this.lstAviones.TabIndex = 2;
-            this.lstAviones.SelectedIndexChanged += new System.EventHandler(this.lstAviones_SelectedIndexChanged);
             // 
             // cmbDestinos
             // 
@@ -220,12 +211,23 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "Salir";
             // 
+            // dtgAviones
+            // 
+            this.dtgAviones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgAviones.Location = new System.Drawing.Point(12, 101);
+            this.dtgAviones.Name = "dtgAviones";
+            this.dtgAviones.RowTemplate.Height = 25;
+            this.dtgAviones.Size = new System.Drawing.Size(610, 295);
+            this.dtgAviones.TabIndex = 33;
+            this.dtgAviones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgAviones_CellClick);
+            // 
             // FrmRegistroVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(904, 524);
             this.ControlBox = false;
+            this.Controls.Add(this.dtgAviones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblErrores);
@@ -241,7 +243,6 @@
             this.Controls.Add(this.numHora);
             this.Controls.Add(this.lblDestino);
             this.Controls.Add(this.cmbDestinos);
-            this.Controls.Add(this.lstAviones);
             this.Controls.Add(this.txtOrigen);
             this.Controls.Add(this.label1);
             this.Name = "FrmRegistroVuelo";
@@ -250,6 +251,7 @@
             this.Load += new System.EventHandler(this.FrmRegistroVuelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numHora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgAviones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,7 +261,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtOrigen;
-        private System.Windows.Forms.ListBox lstAviones;
         private System.Windows.Forms.ComboBox cmbDestinos;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.NumericUpDown numHora;
@@ -275,5 +276,6 @@
         private System.Windows.Forms.Label lblErrores;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dtgAviones;
     }
 }

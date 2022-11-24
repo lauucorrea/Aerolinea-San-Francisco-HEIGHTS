@@ -8,11 +8,12 @@ namespace Entidades
     {
         private bool tieneVuelosComprados;
         private int cantidadVuelosComprados;
+
         public Cliente(string nombre, string apellido, int dni, int edad) : base(nombre, apellido, dni, edad)
         {
             TieneVuelosComprados = false;
         }
-        #region setters
+
         public bool TieneVuelosComprados
         {
             get => tieneVuelosComprados;
@@ -27,26 +28,6 @@ namespace Entidades
         {
             return Dni;
         }
-        #endregion
-
-        #region sobrecargas
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append($"Nombre: {Nombre} - Apellido: {Apellido} - Dni: {Dni} - Edad: {Edad} - Cantidad de pasajes comprados : {CantidadVuelosComprados}");
-
-            return sb.ToString();
-        }
-
-        public override bool Equals(object obj)
-        {
-            Cliente cliente = obj as Cliente;
-
-            return cliente is not null && Dni == cliente.Dni;
-        }
-
-        #endregion
 
         public bool ObtenerListaDePasajes(int dni, List<Pasaje> vuelosRealizados)
         {

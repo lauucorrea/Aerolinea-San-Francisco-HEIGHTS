@@ -39,7 +39,6 @@ namespace Entidades
             AvionVuelo = avionVuelo;
             CalcularAsientos();
         }
-        #region setters/getters
 
         public string Origen
         {
@@ -182,9 +181,8 @@ namespace Entidades
                 asientosOcupados = value;
             }
         }
-        #endregion
 
-        #region sobrecargas
+  
         public override string ToString()
         {
             StringBuilder sb = new();
@@ -199,10 +197,6 @@ namespace Entidades
         {
             return IdVuelo.GetHashCode();
         }
-
-        #endregion
-
-
 
         internal void CalcularAsientos()
         {

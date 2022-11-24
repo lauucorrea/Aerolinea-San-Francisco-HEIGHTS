@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstVuelos = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -58,21 +57,13 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.rchCostoTotal = new System.Windows.Forms.RichTextBox();
+            this.dtgVuelos = new System.Windows.Forms.DataGridView();
             this.grpCategoria.SuspendLayout();
             this.grpBolso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lstVuelos
-            // 
-            this.lstVuelos.FormattingEnabled = true;
-            this.lstVuelos.ItemHeight = 15;
-            this.lstVuelos.Location = new System.Drawing.Point(12, 108);
-            this.lstVuelos.Name = "lstVuelos";
-            this.lstVuelos.Size = new System.Drawing.Size(951, 424);
-            this.lstVuelos.TabIndex = 0;
-            this.lstVuelos.SelectedIndexChanged += new System.EventHandler(this.lstVuelos_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -365,12 +356,23 @@
             this.rchCostoTotal.TabIndex = 32;
             this.rchCostoTotal.Text = "";
             // 
+            // dtgVuelos
+            // 
+            this.dtgVuelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgVuelos.Location = new System.Drawing.Point(14, 111);
+            this.dtgVuelos.Name = "dtgVuelos";
+            this.dtgVuelos.RowTemplate.Height = 25;
+            this.dtgVuelos.Size = new System.Drawing.Size(989, 447);
+            this.dtgVuelos.TabIndex = 33;
+            this.dtgVuelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVuelos_CellClick);
+            // 
             // FrmVentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1464, 679);
             this.ControlBox = false;
+            this.Controls.Add(this.dtgVuelos);
             this.Controls.Add(this.rchCostoTotal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
@@ -396,7 +398,6 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lstVuelos);
             this.Name = "FrmVentaPasajes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVentaPasajes";
@@ -407,14 +408,13 @@
             this.grpBolso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lstVuelos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
@@ -444,5 +444,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rchCostoTotal;
+        private System.Windows.Forms.DataGridView dtgVuelos;
     }
 }

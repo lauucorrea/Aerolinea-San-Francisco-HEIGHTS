@@ -13,7 +13,6 @@ namespace Vista
     public partial class FrmPasajerosFrecuentes : Form
     {
         DataTable clientesFrecuentes = new();
-        DataView clientesFrecuentesDataview = new();
         List<Cliente> clientesRecibidos = new();
         public FrmPasajerosFrecuentes(List<Cliente> listaClientes)
         {
@@ -28,7 +27,6 @@ namespace Vista
         private void DibujarTabla()
         {
             clientesFrecuentes = new DataTable();
-            clientesFrecuentesDataview = new DataView();
 
             clientesFrecuentes.Columns.Add("Nombre", typeof(string));
             clientesFrecuentes.Columns.Add("Apellido", typeof(string));
@@ -51,6 +49,7 @@ namespace Vista
             }
 
             dtgPasajeros.DataSource = clientesFrecuentes ;
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

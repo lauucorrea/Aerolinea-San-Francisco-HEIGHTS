@@ -18,7 +18,6 @@ namespace Entidades
             Password = contraseña;
         }
 
-        #region setters
         public string NombreApellido()
         {
             StringBuilder sb = new StringBuilder();
@@ -38,7 +37,6 @@ namespace Entidades
             private set => usuario = value;
             get => usuario;
         }
-        #endregion
 
         public override string ToString()
         {
