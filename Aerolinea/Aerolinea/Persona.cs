@@ -13,7 +13,7 @@ namespace Entidades
         private string apellido;
         private int dni;
         private int edad;
-        protected Persona(string nombre, string apellido, int dni,int edad)
+        protected Persona(string nombre, string apellido, int dni, int edad)
         {
             Nombre = nombre;
             Apellido = apellido;
@@ -88,6 +88,18 @@ namespace Entidades
 
             }
 
+        }
+        public abstract bool AdministrarLogIn(string usuario, string password);
+
+        
+
+        public string NombreApellido()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"{Nombre}-{Apellido}");
+
+            return sb.ToString();
         }
 
         public override string ToString()

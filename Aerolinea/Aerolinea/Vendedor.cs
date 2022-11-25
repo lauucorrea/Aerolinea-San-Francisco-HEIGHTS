@@ -1,33 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Vendedor:Persona
+    public class Vendedor : Persona
     {
         private string usuario;
         private string password;
-
-        public Vendedor(string nombre, string apellido,int dni, int edad, string usuario, string contraseña) : base(nombre, apellido, dni, edad)
+        private int cantidadVuelosVendidos;
+        private Ecategoria categoria;
+        public Vendedor(string nombre, string apellido, int dni, int edad, string usuario, string contraseña, int cantidad) : base(nombre, apellido, dni, edad)
         {
             Usuario = usuario;
             Password = contraseña;
+            cantidadVuelosVendidos = 0;
+            cantidadVuelosVendidos = cantidad;
         }
 
-        public string NombreApellido()
+
+        public string Password
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append($"{Nombre}-{Apellido}");
-
-            return sb.ToString();
-        }
-
-        public string Password{
             private set => password = value;
             get => password;
         }
@@ -38,6 +30,53 @@ namespace Entidades
             get => usuario;
         }
 
+        public int CantidadVuelosVendidos
+        {
+            set => cantidadVuelosVendidos = value;
+            get => cantidadVuelosVendidos;
+        }
+        public enum Ecategoria
+        {
+            Novato,
+            Cadete,
+            Confiable,
+            Experto
+        }
+
+        public Ecategoria Categoria
+        {
+            get => categoria;
+            private set => categoria = value;
+        }
+
+        public override bool AdministrarLogIn(string usuario, string password)
+        {
+            if (Password == password && Usuario == usuario)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void GestionarCategoria()
+        {
+            if (CantidadVuelosVendidos >= 1 && CantidadVuelosVendidos < 2)
+            {
+                Categoria = Ecategoria.Cadete;
+            }
+            else if (CantidadVuelosVendidos >= 2 && CantidadVuelosVendidos < 3)
+            {
+                Categoria = Ecategoria.Confiable;
+            }
+            else if (CantidadVuelosVendidos >= 3)
+            {
+                Categoria = Ecategoria.Experto;
+            }
+            else
+            {
+                Categoria = Ecategoria.Novato;
+            }
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

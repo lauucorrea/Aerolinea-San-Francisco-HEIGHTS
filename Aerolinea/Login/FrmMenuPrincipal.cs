@@ -8,7 +8,9 @@ namespace Login
 {
     public partial class FrmMenuPrincipal : Form
     {
-        Vendedor vendedorDeTurno;
+        Type tipoPersonaLogueada;
+        Vendedor vendedorLogueado;
+        Cliente clienteLogueado;
         DataTable clientes = new();
         Cliente clienteSeleccionado;
         List<Cliente> listaClientes = new();
@@ -17,19 +19,46 @@ namespace Login
             InitializeComponent();
         }
 
-        public FrmMenuPrincipal(Vendedor vendedorLogueado) : this()
+        public FrmMenuPrincipal(Persona personaLogin) : this()
         {
-            vendedorDeTurno = vendedorLogueado;
+            tipoPersonaLogueada = personaLogin.GetType();
+
+            if (tipoPersonaLogueada == typeof(Vendedor))
+            {
+                vendedorLogueado = (Vendedor)personaLogin;
+            }
+            else if (tipoPersonaLogueada == typeof(Cliente))
+            {
+                clienteLogueado = (Cliente)personaLogin;
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
             DateTime fechaActual = DateTime.Now.Date;
-
-
             lblFechaActual.Text += fechaActual.ToShortDateString();
+            
+            if (tipoPersonaLogueada == typeof(Vendedor))
+            {
+                vendedorLogueado.GestionarCategoria();
+                lblTituloMenu.Text += vendedorLogueado.NombreApellido();
+                lblCategoria.Text = vendedorLogueado.Categoria.ToString();
 
-            lblTituloMenu.Text += vendedorDeTurno.NombreApellido();
+            }
+            else if (tipoPersonaLogueada == typeof(Cliente))
+            {
+                clienteLogueado.GestionarCategoria();
+                lblTituloMenu.Text += clienteLogueado.NombreApellido();
+                lblCategoria.Text = clienteLogueado.Categoria.ToString();
+                btnVerHistorial.Enabled = false;
+                btnAgregarCliente.Enabled = false;
+                btnAgregarVuelo.Enabled = false;
+                btnAltaAviones.Enabled = false;
+            }
 
             DibujarTabla();
         }
@@ -37,10 +66,18 @@ namespace Login
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            FrmRegistroPasajero menu = new(vendedorDeTurno);
+            try
+            {
+                FrmRegistroPasajero menu = new(vendedorLogueado);
 
-            menu.ShowDialog();
-            DibujarTabla();
+                menu.ShowDialog();
+                DibujarTabla();
+
+            }
+            catch (Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
         }
         private void DibujarTabla()
         {
@@ -50,20 +87,22 @@ namespace Login
             clientes.Columns.Add("Apellido", typeof(string));
             clientes.Columns.Add("Dni", typeof(int));
             clientes.Columns.Add("Edad", typeof(int));
-            clientes.Columns.Add("Vuelos registrados", typeof(int));
-
+            clientes.Columns.Add("Vuelos comprados", typeof(int));
+            clientes.Columns.Add("Categoria", typeof(string));
             foreach (Persona persona in Registro.Personas)
             {
                 if (persona is Cliente)
                 {
                     Cliente cliente = (Cliente)persona;
+                    cliente.GestionarCategoria();
                     listaClientes.Add(cliente);
                     string nombre = cliente.Nombre;
                     string apellido = cliente.Apellido;
                     int dni = cliente.Dni;
                     int edad = cliente.Edad;
                     int vuelosRegistrados = cliente.CantidadVuelosComprados;
-                    clientes.Rows.Add(nombre, apellido, dni, edad, vuelosRegistrados);
+                    string categoria = cliente.Categoria.ToString();
+                    clientes.Rows.Add(nombre, apellido, dni, edad, vuelosRegistrados, categoria);
                 }
 
             }
@@ -93,8 +132,27 @@ namespace Login
                 {
                     if (Registro.Vuelos.Count > 0)
                     {
-                        FrmVentaPasajes menu = new(clienteSeleccionado);
-                        menu.ShowDialog();
+                        if (tipoPersonaLogueada == typeof(Vendedor))
+                        {
+                            FrmVentaPasajes menu = new(clienteSeleccionado, vendedorLogueado, tipoPersonaLogueada);
+                            menu.ShowDialog();
+                        }
+                        else if (tipoPersonaLogueada == typeof(Cliente))
+                        {
+                            if (clienteLogueado.Equals(clienteSeleccionado))
+                            {
+                                FrmVentaPasajes menu = new(clienteSeleccionado, clienteLogueado, tipoPersonaLogueada);
+                                menu.ShowDialog();
+                            }
+                            else
+                            {
+                                lblErrores.Text = "Un cliente no puede venderle a otros clientes";
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("tipo de persona no valida");
+                        }
                     }
                     else
                     {

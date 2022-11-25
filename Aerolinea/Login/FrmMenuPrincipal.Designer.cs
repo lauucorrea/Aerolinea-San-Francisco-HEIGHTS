@@ -39,6 +39,7 @@
             this.lblSalir = new System.Windows.Forms.Label();
             this.btnAltaAviones = new System.Windows.Forms.Button();
             this.dtgClientes = new System.Windows.Forms.DataGridView();
+            this.lblCategoria = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,12 +156,24 @@
             this.dtgClientes.TabIndex = 36;
             this.dtgClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellClick);
             // 
+            // lblCategoria
+            // 
+            this.lblCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCategoria.Location = new System.Drawing.Point(439, 9);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(0, 32);
+            this.lblCategoria.TabIndex = 37;
+            this.lblCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 638);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.btnAltaAviones);
             this.Controls.Add(this.lblSalir);
@@ -195,5 +208,6 @@
         private System.Windows.Forms.Label lblSalir;
         private System.Windows.Forms.Button btnAltaAviones;
         private System.Windows.Forms.DataGridView dtgClientes;
+        private System.Windows.Forms.Label lblCategoria;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entidades
 {
@@ -8,12 +6,31 @@ namespace Entidades
     {
         private bool tieneVuelosComprados;
         private int cantidadVuelosComprados;
-
-        public Cliente(string nombre, string apellido, int dni, int edad) : base(nombre, apellido, dni, edad)
+        private string usuario;
+        private string password;
+        private Ecategoria categoria;
+        public Cliente(string nombre, string apellido, int dni, int edad, string usuario, string password) : base(nombre, apellido, dni, edad)
         {
             TieneVuelosComprados = false;
+            CantidadVuelosComprados = 0;
+            Password = password;
+            Usuario = usuario;
+
         }
 
+        public enum Ecategoria
+        {
+            Primerizo,
+            Nuevo,
+            Regular,
+            VIP
+        }
+
+        public Ecategoria Categoria
+        {
+            get => categoria;
+            private set => categoria = value;
+        }
         public bool TieneVuelosComprados
         {
             get => tieneVuelosComprados;
@@ -28,21 +45,43 @@ namespace Entidades
         {
             return Dni;
         }
-
-        public bool ObtenerListaDePasajes(int dni, List<Pasaje> vuelosRealizados)
+        public string Password
         {
-            bool seEncontroVuelo = false;
-            foreach (Pasaje pasaje in vuelosRealizados)
-            {
-                if (pasaje.DniPasajero == dni)
-                {
-                    vuelosRealizados.Add(pasaje);
-                    seEncontroVuelo = true;
-                }
-            }
-            if (seEncontroVuelo) { return seEncontroVuelo; }
+            private set => password = value;
+            get => password;
+        }
 
-            throw new Exception("No se pudo obtener la lista de pasajes");
+        public string Usuario
+        {
+            private set => usuario = value;
+            get => usuario;
+        }
+        public override bool AdministrarLogIn(string usuario, string password)
+        {
+            if (Password == password && Usuario == usuario)
+            {
+                return true;
+            }
+            return false;
+        }
+        public void GestionarCategoria()
+        {
+            if(CantidadVuelosComprados >= 1 && CantidadVuelosComprados < 2)
+            {
+                Categoria = Ecategoria.Primerizo;
+            }
+            else if(CantidadVuelosComprados >= 2 && CantidadVuelosComprados < 3)
+            {
+                Categoria = Ecategoria.Regular;
+            }
+            else if( CantidadVuelosComprados >= 3)
+            {
+                Categoria = Ecategoria.VIP;
+            }
+            else
+            {
+                Categoria = Ecategoria.Nuevo;
+            }
         }
     }
 

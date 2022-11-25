@@ -5,7 +5,8 @@ namespace Login
 {
     public partial class FrmLogin : Form
     {
-
+        Cliente clienteLogin;
+        Vendedor vendedorLogin;
         public FrmLogin()
         {
             InitializeComponent();
@@ -30,25 +31,56 @@ namespace Login
         }
         private bool LogCredenciales(string usuario, string passwd)
         {
+            string excepcion = "";
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(passwd))
             {
-
-                if (Administracion.AdministrarLogIn(usuario, passwd))
+                foreach (Persona persona in Registro.Personas)
                 {
-                    FrmMenuPrincipal menu = new FrmMenuPrincipal(Administracion.ObtenerVendedor(usuario, passwd));
+                    if (persona.GetType() == typeof(Cliente))
+                    {
+                        clienteLogin = (Cliente)persona;
+                        if (clienteLogin.AdministrarLogIn(usuario, passwd))
+                        {
+                            FrmMenuPrincipal menu = new (clienteLogin);
+                            menu.Show();
+                            Hide();
+                            return true;
 
-                    menu.Show();
-                    Hide();
-                    return true;
+                        }
+                        else
+                        {
+                            txtUsuario.Text = string.Empty;
+                            txtPasswd.Text = string.Empty;
+                            excepcion = "Los registros del cliente no coinciden";
+                        }
+                    }
+                    else if(persona.GetType() == typeof(Vendedor))
+                    {
+
+                        vendedorLogin = (Vendedor)persona;
+                        if (vendedorLogin.AdministrarLogIn(usuario, passwd))
+                        {
+                            FrmMenuPrincipal menu = new (vendedorLogin);
+                            menu.Show();
+                            Hide();
+                            return true;
+                        }
+                        else
+                        {
+                            txtUsuario.Text = string.Empty;
+                            txtPasswd.Text = string.Empty;
+                            excepcion = "Los registros del vendedor no coinciden";
+                        }
+                    }
                 }
-                else
+                if (!string.IsNullOrEmpty(excepcion))
                 {
-                    txtUsuario.Text = string.Empty;
-                    txtPasswd.Text = string.Empty;
+                    throw new Exception(excepcion);
                 }
+                return false;
             }
             throw new Exception("Los campos deben completarse para loguear");
-            
+
 
         }
     }

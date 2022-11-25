@@ -1,36 +1,60 @@
 ﻿using Entidades;
 using System;
+using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using System.Data;
 namespace Vista
 {
     public partial class FrmVentaPasajes : Form
     {
-        Cliente clienteAtendido;
-        Vuelo vueloSeleccionado;
+        Cliente? clienteAtendido = null;
+        Cliente? clienteLogueado = null;
+        Vendedor? vendedorLogueado = null;
+        Vuelo? vueloSeleccionado = null;
         DataTable vuelosDisponibles = new();
+        Type? tipoVendedor = null;
         int indiceDestinos;
         private FrmVentaPasajes()
         {
             InitializeComponent();
         }
-
-        public FrmVentaPasajes(Cliente clienteElegido) : this()
+        //chequear si el vendedor de turno se esta autovendiendo un pasaje
+        public FrmVentaPasajes(Cliente clienteElegido, Persona vendedorDeTurno, Type vendedor) : this()
         {
             clienteAtendido = clienteElegido;
+            tipoVendedor = vendedor;
+            if (vendedor == typeof(Cliente))
+            {
+                clienteLogueado = (Cliente)vendedorDeTurno;
+            }
+            else if (vendedor == typeof(Vendedor))
+            {
+                vendedorLogueado = (Vendedor)vendedorDeTurno;
+            }
         }
 
         private void FrmVentaPasajes_Load(object sender, EventArgs e)
         {
-            DibujarTabla();
-            txtNombre.Text = clienteAtendido.Nombre;
-            txtDni.Text = clienteAtendido.Dni.ToString();
+            try
+            {
 
-            txtDni.ReadOnly = true;
-            rbtCategoriaTurista.Checked = true;
-            rbtBolsoNo.Checked = true;
-            EvaluarCampos();
+                if (clienteAtendido is not null)
+                {
+                    DibujarTabla();
+                    txtNombre.Text = clienteAtendido.Nombre;
+                    txtDni.Text = clienteAtendido.Dni.ToString();
+
+                    txtDni.ReadOnly = true;
+                    rbtCategoriaTurista.Checked = true;
+                    rbtBolsoNo.Checked = true;
+                    EvaluarCampos();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
+
         }
         private void DibujarTabla()
         {
@@ -70,15 +94,18 @@ namespace Vista
 
         private void CargarDatosVueloElegido()
         {
-            indiceDestinos = (int)vueloSeleccionado.Destino;
+            if (vueloSeleccionado is not null)
+            {
+                indiceDestinos = (int)vueloSeleccionado.Destino;
 
-            txtMatricula.Clear();
-            txtMatricula.Text = vueloSeleccionado.AvionVuelo.MatriculaAvion;
-            cmbDestinos.DataSource = Enum.GetValues(typeof(Destinos));
-            cmbDestinos.SelectedIndex = indiceDestinos;
-            cmbDestinos.Enabled = false;
-            lblValorTotal.Text = vueloSeleccionado.Costo.ToString();
+                txtMatricula.Clear();
+                txtMatricula.Text = vueloSeleccionado.AvionVuelo.MatriculaAvion;
+                cmbDestinos.DataSource = Enum.GetValues(typeof(Destinos));
+                cmbDestinos.SelectedIndex = indiceDestinos;
+                cmbDestinos.Enabled = false;
+                lblValorTotal.Text = vueloSeleccionado.Costo.ToString();
 
+            }
         }
 
         private void btnVender_Click(object sender, EventArgs e)
@@ -87,14 +114,10 @@ namespace Vista
             DialogResult result;
             int cantidadValijas;
             decimal pesoValijas = Math.Round(numPeso1.Value + numPeso2.Value, 2);
-            float valorPasajeNeto;
-            float valorPasajeFinal;
             string stringPasajeFinal;
             try
             {
-
-
-                float.TryParse(lblValorTotal.Text, out valorPasajeNeto);
+                float.TryParse(lblValorTotal.Text, out float valorPasajeNeto);
 
                 if (Administracion.CheckearSiVueloExiste(vueloSeleccionado))
                 {
@@ -104,7 +127,7 @@ namespace Vista
                         {
                             if (vueloSeleccionado.GestionarAsientos(rbtCategoriaPremium.Checked))
                             {
-                                stringPasajeFinal = CalcularPrecioFinal(valorPasajeNeto, out valorPasajeFinal);
+                                stringPasajeFinal = CalcularPrecioFinal(valorPasajeNeto, out float valorPasajeFinal);
                                 rchCostoTotal.Text = stringPasajeFinal;
 
                                 result = MessageBox.Show("Concretar Venta?", "", MessageBoxButtons.YesNo);
@@ -115,7 +138,19 @@ namespace Vista
                                     if (Administracion.AgregarPasajeALista(vueloSeleccionado, clienteAtendido.Nombre, cantidadValijas, clienteAtendido.Dni, indiceDestinos, (float)Math.Round(valorPasajeFinal, 2), rbtCategoriaPremium.Checked, vueloSeleccionado.EsInternacional, rbtBolsoSi.Checked))
                                     {
                                         vueloSeleccionado.AsientosOcupados++;
-                                        clienteAtendido.CantidadVuelosComprados++;
+
+                                        if (tipoVendedor == typeof(Cliente))
+                                        {
+                                            clienteAtendido.CantidadVuelosComprados++;
+                                            clienteAtendido.GestionarCategoria();
+                                        }
+                                        else
+                                        {
+                                            vendedorLogueado.CantidadVuelosVendidos++;
+                                            clienteAtendido.CantidadVuelosComprados++;
+                                            clienteAtendido.GestionarCategoria();
+                                            vendedorLogueado.GestionarCategoria();
+                                        }
                                         result = MessageBox.Show("Pasaje agregado con exito!", "", botonesOpciones);
 
                                         if (result == DialogResult.OK)
@@ -128,6 +163,7 @@ namespace Vista
                         }
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -163,7 +199,7 @@ namespace Vista
 
 
         }
-         
+
         private int CalcularValijas()
         {
             if (numPeso1.Value >= 0 && numPeso2.Value >= 0)
@@ -234,12 +270,12 @@ namespace Vista
         private void rbtCategoriaTurista_CheckedChanged(object sender, EventArgs e)
         {
             EvaluarCampos();
-            if (rbtCategoriaPremium.Checked)
+            if (rbtCategoriaPremium.Checked && vueloSeleccionado is not null)
             {
                 lblValorTotal.Text = Math.Round((vueloSeleccionado.Costo * 1.15), 2).ToString();
                 numPeso2.Enabled = true;
             }
-            else if (rbtCategoriaTurista.Checked)
+            else if (rbtCategoriaTurista.Checked && vueloSeleccionado is not null)
             {
                 numPeso2.Enabled = false;
                 lblValorTotal.Text = vueloSeleccionado.Costo.ToString();

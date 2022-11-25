@@ -42,6 +42,10 @@
             this.lblErrores = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblSalir = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtPasswd = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblPasswd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numDni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEdad)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +63,7 @@
             // txtNombrePasajero
             // 
             this.txtNombrePasajero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNombrePasajero.Location = new System.Drawing.Point(158, 112);
+            this.txtNombrePasajero.Location = new System.Drawing.Point(158, 80);
             this.txtNombrePasajero.Name = "txtNombrePasajero";
             this.txtNombrePasajero.PlaceholderText = "Nombre";
             this.txtNombrePasajero.Size = new System.Drawing.Size(285, 27);
@@ -69,7 +73,7 @@
             // txtApellido
             // 
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtApellido.Location = new System.Drawing.Point(158, 169);
+            this.txtApellido.Location = new System.Drawing.Point(158, 131);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PlaceholderText = "Apellido";
             this.txtApellido.Size = new System.Drawing.Size(285, 27);
@@ -79,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 170);
+            this.label2.Location = new System.Drawing.Point(30, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 15);
             this.label2.TabIndex = 4;
@@ -88,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 113);
+            this.label3.Location = new System.Drawing.Point(30, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 15);
             this.label3.TabIndex = 5;
@@ -97,7 +101,7 @@
             // lblEdad
             // 
             this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(30, 228);
+            this.lblEdad.Location = new System.Drawing.Point(158, 280);
             this.lblEdad.Name = "lblEdad";
             this.lblEdad.Size = new System.Drawing.Size(86, 15);
             this.lblEdad.TabIndex = 6;
@@ -106,7 +110,7 @@
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(30, 285);
+            this.lblDni.Location = new System.Drawing.Point(323, 280);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(68, 15);
             this.lblDni.TabIndex = 7;
@@ -136,7 +140,7 @@
             // 
             // numDni
             // 
-            this.numDni.Location = new System.Drawing.Point(158, 283);
+            this.numDni.Location = new System.Drawing.Point(323, 314);
             this.numDni.Maximum = new decimal(new int[] {
             59999999,
             0,
@@ -149,7 +153,7 @@
             // 
             // numEdad
             // 
-            this.numEdad.Location = new System.Drawing.Point(158, 226);
+            this.numEdad.Location = new System.Drawing.Point(158, 314);
             this.numEdad.Name = "numEdad";
             this.numEdad.Size = new System.Drawing.Size(120, 23);
             this.numEdad.TabIndex = 13;
@@ -185,12 +189,52 @@
             this.lblSalir.TabIndex = 32;
             this.lblSalir.Text = "Salir";
             // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUsuario.Location = new System.Drawing.Point(158, 187);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.PlaceholderText = "Usuario";
+            this.txtUsuario.Size = new System.Drawing.Size(285, 27);
+            this.txtUsuario.TabIndex = 33;
+            // 
+            // txtPasswd
+            // 
+            this.txtPasswd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPasswd.Location = new System.Drawing.Point(158, 239);
+            this.txtPasswd.Name = "txtPasswd";
+            this.txtPasswd.PlaceholderText = "Contraseña";
+            this.txtPasswd.Size = new System.Drawing.Size(285, 27);
+            this.txtPasswd.TabIndex = 34;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(30, 199);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(87, 15);
+            this.lblUsuario.TabIndex = 35;
+            this.lblUsuario.Text = "Ingrese usuario";
+            // 
+            // lblPasswd
+            // 
+            this.lblPasswd.AutoSize = true;
+            this.lblPasswd.Location = new System.Drawing.Point(30, 251);
+            this.lblPasswd.Name = "lblPasswd";
+            this.lblPasswd.Size = new System.Drawing.Size(106, 15);
+            this.lblPasswd.TabIndex = 36;
+            this.lblPasswd.Text = "Ingrese contraseña";
+            // 
             // FrmRegistroPasajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 489);
             this.ControlBox = false;
+            this.Controls.Add(this.lblPasswd);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.txtPasswd);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblSalir);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.numEdad);
@@ -232,5 +276,9 @@
         private System.Windows.Forms.Label lblErrores;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblSalir;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtPasswd;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblPasswd;
     }
 }

@@ -54,8 +54,8 @@ namespace Entidades
 
         public static void HardcodeListas()
         {
-            ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123"));
-            ListaPersonas.Add(new Vendedor("silvina", "peruca", 41100224, 50, "tedije", "123"));
+            ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123",1));
+            ListaPersonas.Add(new Vendedor("silvina", "peruca", 41100224, 50, "tedije", "123",3));
 
             CrearClientes();
             CrearAviones();
@@ -76,11 +76,11 @@ namespace Entidades
 
         public static void CrearClientes()
         {
-            ListaPersonas.Add(new Cliente("Familia", "Colombres", 41177224, 50));
-            ListaPersonas.Add(new Cliente("Vencina", "Gentila", 49630423, 50));
-            ListaPersonas.Add(new Cliente("Gerardo", "Pedila", 41152245, 50));
-            ListaPersonas.Add(new Cliente("Prodi", "Sarapa", 41100624, 50));
-            ListaPersonas.Add(new Cliente("Montaner", "Cecilia", 41105244, 50));
+            ListaPersonas.Add(new Cliente("Familia", "Colombres", 41177224, 50, "familia", "colombres"));
+            ListaPersonas.Add(new Cliente("Vencina", "Gentila", 49630423, 50, "vencina", "gentila"));
+            ListaPersonas.Add(new Cliente("Gerardo", "Pedila", 41152245, 50, "gerardo", "pedila"));
+            ListaPersonas.Add(new Cliente("Prodi", "Sarapa", 41100624, 50, "prodi", "sarapa"));
+            ListaPersonas.Add(new Cliente("Montaner", "Cecilia", 41105244, 50, "montaner", "cecilia"));
         }
 
         public static void CrearAviones()

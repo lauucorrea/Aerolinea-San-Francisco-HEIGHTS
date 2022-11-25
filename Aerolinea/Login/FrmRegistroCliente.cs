@@ -33,7 +33,7 @@ namespace Login
             DialogResult result;
             try
             {
-                if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, (int)numDni.Value, (int)numEdad.Value))
+                if (Administracion.AgregarClienteALista(txtNombrePasajero.Text, txtApellido.Text, (int)numDni.Value, (int)numEdad.Value, txtUsuario.Text,txtPasswd.Text))
                 {
                     result = MessageBox.Show("Persona agregada con exito!", "", botonesOpciones);
                     if (result == DialogResult.OK)

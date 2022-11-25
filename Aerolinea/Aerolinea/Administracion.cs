@@ -131,9 +131,9 @@ namespace Entidades
             throw new Exception("El vendedor no existe");
         }
 
-        public static bool AgregarClienteALista(string nombre, string apellido, int dni, int edad)
+        public static bool AgregarClienteALista(string nombre, string apellido, int dni, int edad, string usuario, string password)
         {
-            Cliente ClienteCreado = new Cliente(nombre, apellido, dni, edad);
+            Cliente ClienteCreado = new Cliente(nombre, apellido, dni, edad, usuario, password);
 
             if (!CheckearSiClienteExiste(ClienteCreado))
             {
