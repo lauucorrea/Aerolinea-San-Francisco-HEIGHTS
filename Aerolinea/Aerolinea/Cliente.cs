@@ -20,8 +20,8 @@ namespace Entidades
 
         public enum Ecategoria
         {
-            Primerizo,
             Nuevo,
+            Primerizo,
             Regular,
             VIP
         }

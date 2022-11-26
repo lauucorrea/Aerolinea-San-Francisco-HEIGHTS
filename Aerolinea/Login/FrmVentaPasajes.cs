@@ -121,7 +121,7 @@ namespace Vista
 
                 if (Administracion.CheckearSiVueloExiste(vueloSeleccionado))
                 {
-                    if (EstanLosCamposLlenos())
+                    if (EstanLosCamposLlenos() && vueloSeleccionado is not null)
                     {
                         if (vueloSeleccionado.AvionVuelo.PuedeCargarValijas(pesoValijas))
                         {
@@ -131,7 +131,7 @@ namespace Vista
                                 rchCostoTotal.Text = stringPasajeFinal;
 
                                 result = MessageBox.Show("Concretar Venta?", "", MessageBoxButtons.YesNo);
-                                if (result == DialogResult.Yes)
+                                if (result == DialogResult.Yes && clienteAtendido is not null)
                                 {
                                     cantidadValijas = CalcularValijas();
                                     vueloSeleccionado.AvionVuelo.CargaActualBodega += pesoValijas;
@@ -144,7 +144,7 @@ namespace Vista
                                             clienteAtendido.CantidadVuelosComprados++;
                                             clienteAtendido.GestionarCategoria();
                                         }
-                                        else
+                                        else if (vendedorLogueado is not null)
                                         {
                                             vendedorLogueado.CantidadVuelosVendidos++;
                                             clienteAtendido.CantidadVuelosComprados++;
@@ -179,24 +179,56 @@ namespace Vista
             float impuestoPais = valorNeto * 0.8f;
             float impuestoAgua = valorNeto * 0.1f;
             float impuestoAlAsiento = valorNeto * 0.5f;
-
-            valorPasajeFinal += iva + impuestoAccesorios + impuestoAgua + impuestoAlAsiento + impuestoPais;
-            precioFinal = valorPasajeFinal;
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Valor neto del vuelo: {valorNeto}");
-            sb.AppendLine($"+IVA 15%: {valorNeto}");
-            sb.AppendLine($"+Impuesto por accesorios 20%: {valorNeto}");
-            sb.AppendLine($"+ImpuestoPais 80%: {valorNeto}");
-            sb.AppendLine($"+Impuesto por uso de agua 10%: {valorNeto}");
-            sb.AppendLine($"+Impuesto al asiento ocupado 50%: {valorNeto}");
-            sb.AppendLine($"############################################");
-            sb.AppendLine($"PRECIO FINAL VUELO: {valorPasajeFinal}");
+            float descuentoCategoria = 0;
 
 
-            return sb.ToString();
+            if (clienteAtendido is not null)
+            {
+                valorPasajeFinal += iva + impuestoAccesorios + impuestoAgua + impuestoAlAsiento + impuestoPais;
 
+                switch (clienteAtendido.Categoria.ToString())
+                {
+                    case "Primerizo":
+                        descuentoCategoria = 0.10f;
+                        valorPasajeFinal -= valorPasajeFinal * descuentoCategoria;
+                        descuentoCategoria = 10;
+                        break;
+                    case "Regular":
+                        descuentoCategoria = 0.20f;
+                        valorPasajeFinal -= valorPasajeFinal * descuentoCategoria;
+                        descuentoCategoria = 20;
+                        break;
+                    case "VIP":
+                        descuentoCategoria = 0.30f;
+                        valorPasajeFinal -= valorPasajeFinal * descuentoCategoria;
+                        descuentoCategoria = 30;
+                        break;
+                }
+
+                precioFinal = valorPasajeFinal;
+                StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine($"Valor neto del vuelo: {valorNeto}");
+                sb.AppendLine($"+IVA 15%: {iva}");
+                sb.AppendLine($"+Impuesto por accesorios 20%: {impuestoAccesorios}");
+                sb.AppendLine($"+ImpuestoPais 80%: {impuestoPais}");
+                sb.AppendLine($"+Impuesto por uso de agua 10%: {impuestoAgua}");
+                sb.AppendLine($"+Impuesto al asiento ocupado 50%: {impuestoAlAsiento}");
+                if (descuentoCategoria != 0)
+                {
+
+                    sb.AppendLine($"DESCUENTO POR CATEGORIA {clienteAtendido.Categoria} VALOR DESCUENTO: {descuentoCategoria}%");
+                }
+                sb.AppendLine($"############################################");
+                sb.AppendLine($"PRECIO FINAL VUELO: {valorPasajeFinal}");
+
+                return sb.ToString();
+
+            }
+            else
+            {
+                throw new Exception("El cliente atendido no es valido");
+            }
 
         }
 
