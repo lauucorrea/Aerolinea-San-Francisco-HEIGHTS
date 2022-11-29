@@ -36,8 +36,6 @@
             this.rbtCategoriaPremium = new System.Windows.Forms.RadioButton();
             this.rbtCategoriaTurista = new System.Windows.Forms.RadioButton();
             this.lblRecargoPremium = new System.Windows.Forms.Label();
-            this.lblValorTotal = new System.Windows.Forms.Label();
-            this.lblTextoValorPasaje = new System.Windows.Forms.Label();
             this.grpBolso = new System.Windows.Forms.GroupBox();
             this.rbtBolsoNo = new System.Windows.Forms.RadioButton();
             this.rbtBolsoSi = new System.Windows.Forms.RadioButton();
@@ -58,6 +56,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rchCostoTotal = new System.Windows.Forms.RichTextBox();
             this.dtgVuelos = new System.Windows.Forms.DataGridView();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.lblTextoValorPasaje = new System.Windows.Forms.Label();
             this.grpCategoria.SuspendLayout();
             this.grpBolso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPeso1)).BeginInit();
@@ -79,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1078, 112);
+            this.label2.Location = new System.Drawing.Point(1096, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(223, 30);
             this.label2.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(1009, 193);
+            this.txtNombre.Location = new System.Drawing.Point(1034, 123);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "NOMBRE PASAJERO";
             this.txtNombre.ReadOnly = true;
@@ -98,7 +98,7 @@
             // 
             this.lblDestino.AutoSize = true;
             this.lblDestino.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDestino.Location = new System.Drawing.Point(1009, 248);
+            this.lblDestino.Location = new System.Drawing.Point(1034, 178);
             this.lblDestino.Name = "lblDestino";
             this.lblDestino.Size = new System.Drawing.Size(47, 13);
             this.lblDestino.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             this.grpCategoria.Controls.Add(this.rbtCategoriaPremium);
             this.grpCategoria.Controls.Add(this.rbtCategoriaTurista);
-            this.grpCategoria.Location = new System.Drawing.Point(1195, 248);
+            this.grpCategoria.Location = new System.Drawing.Point(1220, 178);
             this.grpCategoria.Name = "grpCategoria";
             this.grpCategoria.Size = new System.Drawing.Size(196, 39);
             this.grpCategoria.TabIndex = 8;
@@ -143,37 +143,17 @@
             this.lblRecargoPremium.AutoSize = true;
             this.lblRecargoPremium.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblRecargoPremium.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRecargoPremium.Location = new System.Drawing.Point(1195, 290);
+            this.lblRecargoPremium.Location = new System.Drawing.Point(1220, 220);
             this.lblRecargoPremium.Name = "lblRecargoPremium";
             this.lblRecargoPremium.Size = new System.Drawing.Size(196, 13);
             this.lblRecargoPremium.TabIndex = 19;
             this.lblRecargoPremium.Text = "Recargo del +%15 por clase Premium";
             // 
-            // lblValorTotal
-            // 
-            this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValorTotal.Location = new System.Drawing.Point(260, 35);
-            this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(129, 45);
-            this.lblValorTotal.TabIndex = 9;
-            this.lblValorTotal.Text = "180.000";
-            // 
-            // lblTextoValorPasaje
-            // 
-            this.lblTextoValorPasaje.AutoSize = true;
-            this.lblTextoValorPasaje.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTextoValorPasaje.Location = new System.Drawing.Point(27, 9);
-            this.lblTextoValorPasaje.Name = "lblTextoValorPasaje";
-            this.lblTextoValorPasaje.Size = new System.Drawing.Size(227, 37);
-            this.lblTextoValorPasaje.TabIndex = 10;
-            this.lblTextoValorPasaje.Text = "Valor del pasaje $";
-            // 
             // grpBolso
             // 
             this.grpBolso.Controls.Add(this.rbtBolsoNo);
             this.grpBolso.Controls.Add(this.rbtBolsoSi);
-            this.grpBolso.Location = new System.Drawing.Point(1009, 385);
+            this.grpBolso.Location = new System.Drawing.Point(1034, 315);
             this.grpBolso.Name = "grpBolso";
             this.grpBolso.Size = new System.Drawing.Size(149, 39);
             this.grpBolso.TabIndex = 11;
@@ -208,7 +188,7 @@
             // 
             this.lblValija1.AutoSize = true;
             this.lblValija1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValija1.Location = new System.Drawing.Point(1009, 321);
+            this.lblValija1.Location = new System.Drawing.Point(1034, 251);
             this.lblValija1.Name = "lblValija1";
             this.lblValija1.Size = new System.Drawing.Size(70, 13);
             this.lblValija1.TabIndex = 12;
@@ -218,7 +198,7 @@
             // 
             this.lblValija2.AutoSize = true;
             this.lblValija2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblValija2.Location = new System.Drawing.Point(1195, 321);
+            this.lblValija2.Location = new System.Drawing.Point(1220, 251);
             this.lblValija2.Name = "lblValija2";
             this.lblValija2.Size = new System.Drawing.Size(70, 13);
             this.lblValija2.TabIndex = 15;
@@ -226,7 +206,7 @@
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(1195, 401);
+            this.txtMatricula.Location = new System.Drawing.Point(1220, 331);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.PlaceholderText = "MATRICULA";
             this.txtMatricula.ReadOnly = true;
@@ -237,7 +217,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(1195, 385);
+            this.label8.Location = new System.Drawing.Point(1220, 315);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 13);
             this.label8.TabIndex = 17;
@@ -248,7 +228,7 @@
             this.lblLimiteValija.AutoSize = true;
             this.lblLimiteValija.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLimiteValija.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblLimiteValija.Location = new System.Drawing.Point(1175, 364);
+            this.lblLimiteValija.Location = new System.Drawing.Point(1200, 294);
             this.lblLimiteValija.Name = "lblLimiteValija";
             this.lblLimiteValija.Size = new System.Drawing.Size(232, 13);
             this.lblLimiteValija.TabIndex = 18;
@@ -268,7 +248,7 @@
             // 
             this.btnVender.Enabled = false;
             this.btnVender.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnVender.Location = new System.Drawing.Point(632, 564);
+            this.btnVender.Location = new System.Drawing.Point(809, 595);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(194, 55);
             this.btnVender.TabIndex = 22;
@@ -278,7 +258,7 @@
             // 
             // numPeso1
             // 
-            this.numPeso1.Location = new System.Drawing.Point(1009, 337);
+            this.numPeso1.Location = new System.Drawing.Point(1034, 267);
             this.numPeso1.Name = "numPeso1";
             this.numPeso1.Size = new System.Drawing.Size(120, 23);
             this.numPeso1.TabIndex = 23;
@@ -286,7 +266,7 @@
             // 
             // numPeso2
             // 
-            this.numPeso2.Location = new System.Drawing.Point(1195, 337);
+            this.numPeso2.Location = new System.Drawing.Point(1220, 267);
             this.numPeso2.Name = "numPeso2";
             this.numPeso2.Size = new System.Drawing.Size(120, 23);
             this.numPeso2.TabIndex = 24;
@@ -295,7 +275,7 @@
             // cmbDestinos
             // 
             this.cmbDestinos.FormattingEnabled = true;
-            this.cmbDestinos.Location = new System.Drawing.Point(1009, 264);
+            this.cmbDestinos.Location = new System.Drawing.Point(1034, 194);
             this.cmbDestinos.Name = "cmbDestinos";
             this.cmbDestinos.Size = new System.Drawing.Size(149, 23);
             this.cmbDestinos.TabIndex = 25;
@@ -305,14 +285,14 @@
             // 
             this.lblErrores.AutoSize = true;
             this.lblErrores.ForeColor = System.Drawing.Color.Red;
-            this.lblErrores.Location = new System.Drawing.Point(413, 646);
+            this.lblErrores.Location = new System.Drawing.Point(1034, 576);
             this.lblErrores.Name = "lblErrores";
             this.lblErrores.Size = new System.Drawing.Size(0, 15);
             this.lblErrores.TabIndex = 27;
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(1195, 193);
+            this.txtDni.Location = new System.Drawing.Point(1220, 123);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(149, 23);
             this.txtDni.TabIndex = 28;
@@ -320,7 +300,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(260, 564);
+            this.btnCancelar.Location = new System.Drawing.Point(581, 594);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(194, 55);
             this.btnCancelar.TabIndex = 29;
@@ -331,7 +311,7 @@
             // btnSalir
             // 
             this.btnSalir.Image = global::Vista.Properties.Resources.Sin_título_1;
-            this.btnSalir.Location = new System.Drawing.Point(12, 560);
+            this.btnSalir.Location = new System.Drawing.Point(12, 565);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(66, 68);
             this.btnSalir.TabIndex = 30;
@@ -342,7 +322,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 631);
+            this.label3.Location = new System.Drawing.Point(12, 636);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 30);
             this.label3.TabIndex = 31;
@@ -350,7 +330,7 @@
             // 
             // rchCostoTotal
             // 
-            this.rchCostoTotal.Location = new System.Drawing.Point(1009, 451);
+            this.rchCostoTotal.Location = new System.Drawing.Point(1034, 381);
             this.rchCostoTotal.Name = "rchCostoTotal";
             this.rchCostoTotal.Size = new System.Drawing.Size(398, 177);
             this.rchCostoTotal.TabIndex = 32;
@@ -358,18 +338,46 @@
             // 
             // dtgVuelos
             // 
+            this.dtgVuelos.AllowUserToAddRows = false;
+            this.dtgVuelos.AllowUserToDeleteRows = false;
+            this.dtgVuelos.AllowUserToResizeRows = false;
+            this.dtgVuelos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtgVuelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgVuelos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtgVuelos.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtgVuelos.Location = new System.Drawing.Point(14, 111);
             this.dtgVuelos.Name = "dtgVuelos";
+            this.dtgVuelos.RowHeadersVisible = false;
             this.dtgVuelos.RowTemplate.Height = 25;
             this.dtgVuelos.Size = new System.Drawing.Size(989, 447);
             this.dtgVuelos.TabIndex = 33;
             this.dtgVuelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVuelos_CellClick);
             // 
+            // lblValorTotal
+            // 
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblValorTotal.Location = new System.Drawing.Point(1250, 593);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(119, 40);
+            this.lblValorTotal.TabIndex = 9;
+            this.lblValorTotal.Text = "180.000";
+            // 
+            // lblTextoValorPasaje
+            // 
+            this.lblTextoValorPasaje.AutoSize = true;
+            this.lblTextoValorPasaje.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTextoValorPasaje.Location = new System.Drawing.Point(1032, 594);
+            this.lblTextoValorPasaje.Name = "lblTextoValorPasaje";
+            this.lblTextoValorPasaje.Size = new System.Drawing.Size(227, 37);
+            this.lblTextoValorPasaje.TabIndex = 10;
+            this.lblTextoValorPasaje.Text = "Valor del pasaje $";
+            // 
             // FrmVentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1464, 679);
             this.ControlBox = false;
             this.Controls.Add(this.dtgVuelos);
@@ -422,8 +430,6 @@
         private System.Windows.Forms.GroupBox grpCategoria;
         private System.Windows.Forms.RadioButton rbtCategoriaPremium;
         private System.Windows.Forms.RadioButton rbtCategoriaTurista;
-        private System.Windows.Forms.Label lblValorTotal;
-        private System.Windows.Forms.Label lblTextoValorPasaje;
         private System.Windows.Forms.GroupBox grpBolso;
         private System.Windows.Forms.RadioButton rbtBolsoNo;
         private System.Windows.Forms.RadioButton rbtBolsoSi;
@@ -445,5 +451,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rchCostoTotal;
         private System.Windows.Forms.DataGridView dtgVuelos;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Label lblTextoValorPasaje;
     }
 }

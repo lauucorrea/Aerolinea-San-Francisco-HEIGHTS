@@ -57,7 +57,7 @@
             // 
             // btnGestionPasaje
             // 
-            this.btnGestionPasaje.Location = new System.Drawing.Point(788, 102);
+            this.btnGestionPasaje.Location = new System.Drawing.Point(713, 102);
             this.btnGestionPasaje.Name = "btnGestionPasaje";
             this.btnGestionPasaje.Size = new System.Drawing.Size(231, 51);
             this.btnGestionPasaje.TabIndex = 5;
@@ -67,7 +67,7 @@
             // 
             // btnAgregarCliente
             // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(788, 272);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(713, 272);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(231, 51);
             this.btnAgregarCliente.TabIndex = 7;
@@ -77,7 +77,7 @@
             // 
             // btnVerHistorial
             // 
-            this.btnVerHistorial.Location = new System.Drawing.Point(788, 184);
+            this.btnVerHistorial.Location = new System.Drawing.Point(713, 184);
             this.btnVerHistorial.Name = "btnVerHistorial";
             this.btnVerHistorial.Size = new System.Drawing.Size(231, 51);
             this.btnVerHistorial.TabIndex = 8;
@@ -87,7 +87,7 @@
             // 
             // btnAgregarVuelo
             // 
-            this.btnAgregarVuelo.Location = new System.Drawing.Point(788, 357);
+            this.btnAgregarVuelo.Location = new System.Drawing.Point(713, 357);
             this.btnAgregarVuelo.Name = "btnAgregarVuelo";
             this.btnAgregarVuelo.Size = new System.Drawing.Size(231, 51);
             this.btnAgregarVuelo.TabIndex = 9;
@@ -109,7 +109,7 @@
             this.lblFechaActual.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFechaActual.AutoSize = true;
             this.lblFechaActual.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFechaActual.Location = new System.Drawing.Point(788, 9);
+            this.lblFechaActual.Location = new System.Drawing.Point(713, 9);
             this.lblFechaActual.Name = "lblFechaActual";
             this.lblFechaActual.Size = new System.Drawing.Size(99, 32);
             this.lblFechaActual.TabIndex = 12;
@@ -138,7 +138,7 @@
             // 
             // btnAltaAviones
             // 
-            this.btnAltaAviones.Location = new System.Drawing.Point(788, 438);
+            this.btnAltaAviones.Location = new System.Drawing.Point(713, 438);
             this.btnAltaAviones.Name = "btnAltaAviones";
             this.btnAltaAviones.Size = new System.Drawing.Size(231, 51);
             this.btnAltaAviones.TabIndex = 35;
@@ -149,10 +149,15 @@
             // dtgClientes
             // 
             this.dtgClientes.AllowUserToAddRows = false;
+            this.dtgClientes.AllowUserToDeleteRows = false;
+            this.dtgClientes.AllowUserToResizeRows = false;
+            this.dtgClientes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dtgClientes.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtgClientes.Location = new System.Drawing.Point(12, 102);
             this.dtgClientes.Name = "dtgClientes";
+            this.dtgClientes.RowHeadersVisible = false;
             this.dtgClientes.RowTemplate.Height = 25;
-            this.dtgClientes.Size = new System.Drawing.Size(753, 387);
+            this.dtgClientes.Size = new System.Drawing.Size(605, 387);
             this.dtgClientes.TabIndex = 36;
             this.dtgClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellClick);
             // 
@@ -161,7 +166,7 @@
             this.lblCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCategoria.Location = new System.Drawing.Point(439, 9);
+            this.lblCategoria.Location = new System.Drawing.Point(12, 52);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(0, 32);
             this.lblCategoria.TabIndex = 37;
@@ -171,7 +176,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 638);
+            this.BackColor = System.Drawing.Color.Snow;
+            this.ClientSize = new System.Drawing.Size(972, 638);
             this.ControlBox = false;
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.dtgClientes);

@@ -213,9 +213,16 @@
             // 
             // dtgAviones
             // 
+            this.dtgAviones.AllowUserToAddRows = false;
+            this.dtgAviones.AllowUserToDeleteRows = false;
+            this.dtgAviones.AllowUserToResizeRows = false;
+            this.dtgAviones.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtgAviones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgAviones.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtgAviones.Location = new System.Drawing.Point(12, 101);
+            this.dtgAviones.MultiSelect = false;
             this.dtgAviones.Name = "dtgAviones";
+            this.dtgAviones.RowHeadersVisible = false;
             this.dtgAviones.RowTemplate.Height = 25;
             this.dtgAviones.Size = new System.Drawing.Size(610, 295);
             this.dtgAviones.TabIndex = 33;
@@ -225,6 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(904, 524);
             this.ControlBox = false;
             this.Controls.Add(this.dtgAviones);

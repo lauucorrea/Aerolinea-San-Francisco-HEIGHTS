@@ -37,7 +37,6 @@ namespace Vista
         {
             try
             {
-
                 if (clienteAtendido is not null)
                 {
                     DibujarTabla();

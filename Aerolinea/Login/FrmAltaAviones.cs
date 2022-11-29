@@ -1,11 +1,13 @@
 ﻿using Entidades;
 using System;
+using System.Data;
 using System.Windows.Forms;
 using Validaciones;
 namespace Vista
 {
     public partial class FrmAltaAviones : Form
     {
+        DataTable avionesExistentes;
         public FrmAltaAviones()
         {
             InitializeComponent();
@@ -13,21 +15,33 @@ namespace Vista
 
         private void FrmAltaAviones_Load(object sender, EventArgs e)
         {
-            MostrarAviones();
+            DibujarTabla();
         }
-
-        private void MostrarAviones()
+        private void DibujarTabla()
         {
-            rchListaAviones.Clear();
+            avionesExistentes = new DataTable();
+
+            avionesExistentes.Columns.Add("Comida a bordo", typeof(bool));
+            avionesExistentes.Columns.Add("Baños", typeof(int));
+            avionesExistentes.Columns.Add("Capacidad de carga", typeof(decimal));
+            avionesExistentes.Columns.Add("Asientos", typeof(int));
+            avionesExistentes.Columns.Add("Matricula", typeof(string));
+            avionesExistentes.Columns.Add("Horas de vuelo", typeof(int));
 
             foreach (Avion avion in Registro.Aviones)
             {
-                if (avion is not null)
-                {
-                    rchListaAviones.AppendText(avion.ToString());
-                }
+                avionesExistentes.Rows.Add(
+                    avion.OfreceComida,
+                    avion.CantidadDeToilets,
+                    avion.CapacidadBodega,
+                    avion.TotalAsientos,
+                    avion.MatriculaAvion,
+                    avion.HorasDeVuelo
+                    );
+
             }
 
+            dtgAviones.DataSource = avionesExistentes;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -66,7 +80,7 @@ namespace Vista
                                 result = MessageBox.Show("Avion agregado con exito!", "", botonesOpciones);
                                 if (result == DialogResult.OK)
                                 {
-                                    MostrarAviones();
+                                    DibujarTabla();
                                 }
                             }
                         }
