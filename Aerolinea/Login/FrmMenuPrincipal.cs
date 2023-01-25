@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using Vista;
+using Sql_Aerolinea;
+using Serializacion;
 namespace Login
 {
     public partial class FrmMenuPrincipal : Form
@@ -186,6 +188,8 @@ namespace Login
 
             if (result == DialogResult.Yes)
             {
+                Clase_serializadora serializadora= new();
+                serializadora.GuardarPersonasXML();
                 Application.Exit();
             }
         }

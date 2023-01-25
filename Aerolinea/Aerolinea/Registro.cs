@@ -29,7 +29,9 @@ namespace Entidades
         public static List<Pasaje> Pasajes
         {
             get => ListaPasajes;
+            set => ListaPasajes = value;
         }
+
 
         public static Dictionary<Destinos, float> DiccionarioDestinos
         {
@@ -39,9 +41,10 @@ namespace Entidades
 
         public static List<Persona> Personas
         {
+            set => ListaPersonas = value;
             get => ListaPersonas;
         }
-
+        
         public static List<Avion> Aviones
         {
             get => ListaAviones;
@@ -50,14 +53,15 @@ namespace Entidades
         public static List<Vuelo> Vuelos
         {
             get => ListaVuelos;
+            set => ListaVuelos = value;
         }
 
         public static void HardcodeListas()
         {
-            ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123",1));
-            ListaPersonas.Add(new Vendedor("silvina", "peruca", 41100224, 50, "tedije", "123",3));
+            //ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123"));
+            //ListaPersonas.Add(new Vendedor("silvina", "peruca", 41100224, 50, "tedije", "123"));
 
-            CrearClientes();
+            //CrearClientes();
             CrearAviones();
             CrearVuelos();
             CrearPasajes();

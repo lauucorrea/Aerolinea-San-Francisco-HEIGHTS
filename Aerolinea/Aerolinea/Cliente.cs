@@ -6,35 +6,23 @@ namespace Entidades
     {
         private bool tieneVuelosComprados;
         private int cantidadVuelosComprados;
-        private string usuario;
-        private string password;
-        private Ecategoria categoria;
-        public Cliente(string nombre, string apellido, int dni, int edad, string usuario, string password) : base(nombre, apellido, dni, edad)
+       
+        public Cliente()
+        {
+
+        }
+        public Cliente(string nombre, string apellido, int dni, int edad, string usuario, string password) : base(nombre, apellido, dni, edad,usuario,password)
         {
             TieneVuelosComprados = false;
             CantidadVuelosComprados = 0;
-            Password = password;
-            Usuario = usuario;
-
+            Rol = "Cliente";
         }
 
-        public enum Ecategoria
-        {
-            Nuevo,
-            Primerizo,
-            Regular,
-            VIP
-        }
 
-        public Ecategoria Categoria
-        {
-            get => categoria;
-            private set => categoria = value;
-        }
         public bool TieneVuelosComprados
         {
             get => tieneVuelosComprados;
-            private set => tieneVuelosComprados = value;
+            set => tieneVuelosComprados = value;
         }
         public int CantidadVuelosComprados
         {
@@ -45,17 +33,6 @@ namespace Entidades
         {
             return Dni;
         }
-        public string Password
-        {
-            private set => password = value;
-            get => password;
-        }
-
-        public string Usuario
-        {
-            private set => usuario = value;
-            get => usuario;
-        }
         public override bool AdministrarLogIn(string usuario, string password)
         {
             if (Password == password && Usuario == usuario)
@@ -64,7 +41,7 @@ namespace Entidades
             }
             return false;
         }
-        public void GestionarCategoria()
+        public override void GestionarCategoria()
         {
             if(CantidadVuelosComprados >= 1 && CantidadVuelosComprados < 2)
             {

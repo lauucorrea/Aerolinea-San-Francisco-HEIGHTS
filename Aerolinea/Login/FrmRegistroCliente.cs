@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Serializacion;
 using System;
 using System.Windows.Forms;
 namespace Login
@@ -89,6 +90,8 @@ namespace Login
 
             if (result == DialogResult.Yes)
             {
+                Clase_serializadora serializadora = new();
+                serializadora.GuardarPersonasXML();
                 Application.Exit();
             }
         }

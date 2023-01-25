@@ -5,49 +5,25 @@ namespace Entidades
 {
     public class Vendedor : Persona
     {
-        private string usuario;
-        private string password;
         private int cantidadVuelosVendidos;
-        private Ecategoria categoria;
-        public Vendedor(string nombre, string apellido, int dni, int edad, string usuario, string contraseña, int cantidad) : base(nombre, apellido, dni, edad)
+
+        public Vendedor()
         {
-            Usuario = usuario;
-            Password = contraseña;
+
+        }
+        public Vendedor(string nombre, string apellido, int dni, int edad, string usuario, string password) : base(nombre, apellido, dni, edad,usuario,password)
+        {
             cantidadVuelosVendidos = 0;
-            cantidadVuelosVendidos = cantidad;
+            Rol = "Vendedor";
         }
 
-
-        public string Password
-        {
-            private set => password = value;
-            get => password;
-        }
-
-        public string Usuario
-        {
-            private set => usuario = value;
-            get => usuario;
-        }
 
         public int CantidadVuelosVendidos
         {
             set => cantidadVuelosVendidos = value;
             get => cantidadVuelosVendidos;
         }
-        public enum Ecategoria
-        {
-            Novato,
-            Cadete,
-            Confiable,
-            Experto
-        }
 
-        public Ecategoria Categoria
-        {
-            get => categoria;
-            private set => categoria = value;
-        }
 
         public override bool AdministrarLogIn(string usuario, string password)
         {
@@ -57,8 +33,8 @@ namespace Entidades
             }
             return false;
         }
-
-        public void GestionarCategoria()
+        
+        public override void GestionarCategoria()
         {
             if (CantidadVuelosVendidos >= 1 && CantidadVuelosVendidos < 2)
             {
@@ -76,10 +52,11 @@ namespace Entidades
             {
                 Categoria = Ecategoria.Novato;
             }
+            
         }
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new ();
 
             sb.Append($"VENDEDOR {Usuario}-{Nombre}-{Apellido}-{Dni}-{Edad}");
 

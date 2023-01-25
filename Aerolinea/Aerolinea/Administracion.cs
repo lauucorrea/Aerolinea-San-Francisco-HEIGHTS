@@ -17,9 +17,17 @@ namespace Entidades
         {
             foreach (Vendedor vendedor in Registro.Personas)
             {
-                if (vendedor.Password == password && vendedor.Usuario == usuario)
+                if (!String.IsNullOrEmpty(usuario) && !String.IsNullOrEmpty(password))
                 {
-                    return true;
+
+                    if (vendedor.Password == password && vendedor.Usuario == usuario)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    throw new Exception("Dato de entrada nulo o vacio");
                 }
             }
             throw new Exception("No encontramos un vendedor con estas credenciales");
@@ -55,7 +63,7 @@ namespace Entidades
             }
             else
             {
-                throw new Exception("El cliente recibido no existe o es nulo");
+                throw new ArgumentNullException("El cliente recibido no existe o es nulo");
             }
         }
 
@@ -102,30 +110,41 @@ namespace Entidades
 
         public static bool CheckearSiPasajeExiste(int dniPasajero, Vuelo vueloSeleccionado)
         {
-            if (vueloSeleccionado is not null)
+            if (Validaciones.ValidadoraDeDatos.VerificarDni(dniPasajero))
             {
-                if (vueloSeleccionado.ListaPasajes.Count > 0)
+                if (vueloSeleccionado is not null)
                 {
-                    foreach (Pasaje pasaje in vueloSeleccionado.ListaPasajes)
+
+                    if (vueloSeleccionado.ListaPasajes.Count > 0)
                     {
-                        if (pasaje.DniPasajero == dniPasajero)
+                        foreach (Pasaje pasaje in vueloSeleccionado.ListaPasajes)
                         {
-                            return true;
+                            if (pasaje.DniPasajero == dniPasajero)
+                            {
+                                return true;
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new Exception("No hay pasajes para el vuelo seleccionado");
+                    }
+                    return false;
                 }
-                return false;
             }
-            throw new Exception("No ha elegido ningun vuelo de la lista");
+            throw new ArgumentNullException("No ha elegido ningun vuelo de la lista");
         }
 
         public static Vendedor ObtenerVendedor(string usuario, string password)
         {
-            foreach (Vendedor vendedor in Registro.Personas)
+            if (Validaciones.ValidadoraDeDatos.ValidarString(usuario) || Validaciones.ValidadoraDeDatos.ValidarString(password))
             {
-                if (vendedor.Password == password && vendedor.Usuario == usuario)
+                foreach (Vendedor vendedor in Registro.Personas)
                 {
-                    return vendedor;
+                    if (vendedor.Password == password && vendedor.Usuario == usuario)
+                    {
+                        return vendedor;
+                    }
                 }
             }
             throw new Exception("El vendedor no existe");
@@ -151,7 +170,7 @@ namespace Entidades
             }
             else
             {
-                throw new Exception("Se encontro una persona con el mismo dni");
+                throw new Exception("No se encontro una persona con los datos proporcionados");
             }
 
         }
@@ -167,7 +186,7 @@ namespace Entidades
 
             if (CheckearSiAvionExiste(avionElegido))
             {
-                
+
                 esInternacional = EsInternacional(indice);
                 horasDeVuelo = CalcularCantidadDeHorasDeVuelo(esInternacional);
                 costoVuelo = CalcularCostoDelVuelo(esInternacional, horasDeVuelo);
@@ -180,9 +199,9 @@ namespace Entidades
                 {
                     if (!CheckearSiVueloExiste(vueloCreado))
                     {
-                    Registro.Vuelos.Add(vueloCreado);
-                    avionElegido.HorasDeVuelo += horasDeVuelo;
-                    return true;
+                        Registro.Vuelos.Add(vueloCreado);
+                        avionElegido.HorasDeVuelo += horasDeVuelo;
+                        return true;
                     }
                     else
                     {

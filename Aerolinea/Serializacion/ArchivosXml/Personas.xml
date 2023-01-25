@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPersona xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Persona xsi:type="Vendedor">
+    <Categoria>Novato</Categoria>
+    <Rol>Vendedor</Rol>
+    <Apellido>Correa</Apellido>
+    <Password>asd123</Password>
+    <Usuario>lau123</Usuario>
+    <Edad>24</Edad>
+    <Dni>41080577</Dni>
+    <Nombre>Lautaro</Nombre>
+    <CantidadVuelosVendidos>0</CantidadVuelosVendidos>
+  </Persona>
+  <Persona xsi:type="Vendedor">
+    <Categoria>Novato</Categoria>
+    <Rol>Vendedor</Rol>
+    <Apellido>peruca</Apellido>
+    <Password>123</Password>
+    <Usuario>tedije</Usuario>
+    <Edad>50</Edad>
+    <Dni>41100224</Dni>
+    <Nombre>silvina</Nombre>
+    <CantidadVuelosVendidos>0</CantidadVuelosVendidos>
+  </Persona>
+  <Persona xsi:type="Cliente">
+    <Categoria>Nuevo</Categoria>
+    <Rol>Cliente</Rol>
+    <Apellido>Colombres</Apellido>
+    <Password>colombres</Password>
+    <Usuario>familia</Usuario>
+    <Edad>50</Edad>
+    <Dni>41177224</Dni>
+    <Nombre>Familia</Nombre>
+    <TieneVuelosComprados>false</TieneVuelosComprados>
+    <CantidadVuelosComprados>0</CantidadVuelosComprados>
+  </Persona>
+  <Persona xsi:type="Cliente">
+    <Categoria>Nuevo</Categoria>
+    <Rol>Cliente</Rol>
+    <Apellido>Gentila</Apellido>
+    <Password>gentila</Password>
+    <Usuario>vencina</Usuario>
+    <Edad>50</Edad>
+    <Dni>49630423</Dni>
+    <Nombre>Vencina</Nombre>
+    <TieneVuelosComprados>false</TieneVuelosComprados>
+    <CantidadVuelosComprados>0</CantidadVuelosComprados>
+  </Persona>
+  <Persona xsi:type="Cliente">
+    <Categoria>Nuevo</Categoria>
+    <Rol>Cliente</Rol>
+    <Apellido>Pedila</Apellido>
+    <Password>pedila</Password>
+    <Usuario>gerardo</Usuario>
+    <Edad>50</Edad>
+    <Dni>41152245</Dni>
+    <Nombre>Gerardo</Nombre>
+    <TieneVuelosComprados>false</TieneVuelosComprados>
+    <CantidadVuelosComprados>0</CantidadVuelosComprados>
+  </Persona>
+  <Persona xsi:type="Cliente">
+    <Categoria>Nuevo</Categoria>
+    <Rol>Cliente</Rol>
+    <Apellido>Sarapa</Apellido>
+    <Password>sarapa</Password>
+    <Usuario>prodi</Usuario>
+    <Edad>50</Edad>
+    <Dni>41100624</Dni>
+    <Nombre>Prodi</Nombre>
+    <TieneVuelosComprados>false</TieneVuelosComprados>
+    <CantidadVuelosComprados>0</CantidadVuelosComprados>
+  </Persona>
+  <Persona xsi:type="Cliente">
+    <Categoria>Nuevo</Categoria>
+    <Rol>Cliente</Rol>
+    <Apellido>Cecilia</Apellido>
+    <Password>cecilia</Password>
+    <Usuario>montaner</Usuario>
+    <Edad>50</Edad>
+    <Dni>41105244</Dni>
+    <Nombre>Montaner</Nombre>
+    <TieneVuelosComprados>false</TieneVuelosComprados>
+    <CantidadVuelosComprados>0</CantidadVuelosComprados>
+  </Persona>
+</ArrayOfPersona>

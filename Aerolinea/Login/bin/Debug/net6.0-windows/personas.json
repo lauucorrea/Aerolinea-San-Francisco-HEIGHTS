@@ -1,0 +1,72 @@
+[
+  {
+    "Categoria": 1,
+    "Rol": "Vendedor",
+    "Apellido": "Correa",
+    "Password": "asd123",
+    "Usuario": "lau123",
+    "Edad": 24,
+    "Dni": 41080577,
+    "Nombre": "Lautaro"
+  },
+  {
+    "Categoria": 1,
+    "Rol": "Vendedor",
+    "Apellido": "peruca",
+    "Password": "123",
+    "Usuario": "tedije",
+    "Edad": 50,
+    "Dni": 41100224,
+    "Nombre": "silvina"
+  },
+  {
+    "Categoria": 5,
+    "Rol": "Cliente",
+    "Apellido": "Colombres",
+    "Password": "colombres",
+    "Usuario": "familia",
+    "Edad": 50,
+    "Dni": 41177224,
+    "Nombre": "Familia"
+  },
+  {
+    "Categoria": 5,
+    "Rol": "Cliente",
+    "Apellido": "Gentila",
+    "Password": "gentila",
+    "Usuario": "vencina",
+    "Edad": 50,
+    "Dni": 49630423,
+    "Nombre": "Vencina"
+  },
+  {
+    "Categoria": 5,
+    "Rol": "Cliente",
+    "Apellido": "Pedila",
+    "Password": "pedila",
+    "Usuario": "gerardo",
+    "Edad": 50,
+    "Dni": 41152245,
+    "Nombre": "Gerardo"
+  },
+  {
+    "Categoria": 5,
+    "Rol": "Cliente",
+    "Apellido": "Sarapa",
+    "Password": "sarapa",
+    "Usuario": "prodi",
+    "Edad": 50,
+    "Dni": 41100624,
+    "Nombre": "Prodi"
+  },
+  {
+    "Categoria": 5,
+    "Rol": "Cliente",
+    "Apellido": "Cecilia",
+    "Password": "cecilia",
+    "Usuario": "montaner",
+    "Edad": 50,
+    "Dni": 41105244,
+    "Nombre": "Montaner"
+  }
+]

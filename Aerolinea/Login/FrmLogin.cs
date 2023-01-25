@@ -1,6 +1,10 @@
 ﻿using Entidades;
+using Serializacion;
+using Sql_Aerolinea;
 using System;
+using System.IO;
 using System.Windows.Forms;
+
 namespace Login
 {
     public partial class FrmLogin : Form
@@ -26,9 +30,66 @@ namespace Login
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            try
+            {
+
+                if (Registro.Personas is not null)
+                {
+                    Tabla_Personas consultaPersonas = new();
+                    Clase_serializadora serializadora = new();
+
+                    if (File.Exists(serializadora.RutaPersonas))
+                    {
+                        serializadora.LevantarPersonasXML();
+                        if (Registro.Personas.Count > 0)
+                        {
+                            foreach (Persona persona in Registro.Personas)
+                            {
+                                consultaPersonas.SubirPersonaBD(persona);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Registro.Personas = consultaPersonas.ObtenerPersonasBD();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblErrores.Text = ex.Message;
+            }
             txtUsuario.Text = "lau123";
             txtPasswd.Text = "asd123";
         }
+       /* private bool ObtenerPersonas()
+        {
+            bool ret = false;
+            Tabla_Personas consultaPersonas = new();
+            Clase_serializadora serializadora = new();
+
+            if (File.Exists(serializadora.RutaPersonas))
+            {
+                serializadora.LevantarPersonasXML();
+                if (Registro.Personas.Count > 0)
+                {
+                    foreach (Persona persona in Registro.Personas)
+                    {
+                        consultaPersonas.SubirPersonaBD(persona);
+                    }
+                    ret = true;
+                }
+            }
+            else
+            {
+                Registro.Personas = consultaPersonas.ObtenerPersonasBD();
+                if(Registro.Personas is not null)
+                {
+                    ret = true;
+                }
+            }
+            return ret;
+        }*/
         private bool LogCredenciales(string usuario, string passwd)
         {
             string excepcion = "";
@@ -41,7 +102,7 @@ namespace Login
                         clienteLogin = (Cliente)persona;
                         if (clienteLogin.AdministrarLogIn(usuario, passwd))
                         {
-                            FrmMenuPrincipal menu = new (clienteLogin);
+                            FrmMenuPrincipal menu = new(clienteLogin);
                             menu.Show();
                             Hide();
                             return true;
@@ -54,13 +115,13 @@ namespace Login
                             excepcion = "Los registros del cliente no coinciden";
                         }
                     }
-                    else if(persona.GetType() == typeof(Vendedor))
+                    else if (persona.GetType() == typeof(Vendedor))
                     {
 
                         vendedorLogin = (Vendedor)persona;
                         if (vendedorLogin.AdministrarLogIn(usuario, passwd))
                         {
-                            FrmMenuPrincipal menu = new (vendedorLogin);
+                            FrmMenuPrincipal menu = new(vendedorLogin);
                             menu.Show();
                             Hide();
                             return true;

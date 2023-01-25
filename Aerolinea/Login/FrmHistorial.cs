@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Serializacion;
+
 namespace Vista
 {
     public partial class FrmHistorial : Form
@@ -101,6 +103,8 @@ namespace Vista
 
             if (result == DialogResult.Yes)
             {
+                Clase_serializadora serializadora = new();
+                serializadora.GuardarPersonasXML();
                 Application.Exit();
             }
         }

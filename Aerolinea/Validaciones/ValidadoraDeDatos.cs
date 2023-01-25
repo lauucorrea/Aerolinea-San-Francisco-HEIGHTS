@@ -14,7 +14,7 @@ namespace Validaciones
         {
             int num;
 
-            if (cadena is not null)
+            if (!String.IsNullOrEmpty(cadena))
             {
                 if (int.TryParse(cadena, out num) || ValidarAlfanumerico(cadena))
                 {
@@ -28,7 +28,22 @@ namespace Validaciones
             }
 
         }
+        public static string GenerarCodigoAlfanumericoRandom()
+        {
+            string caracteresPermitidos = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
 
+            Char[] codigo = new char[12];
+            Random random = new();
+
+            for(int i=0; i< codigo.Length; i++)
+            {
+                codigo[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+            }
+
+            string stringRetorno = new(codigo);
+
+            return stringRetorno;
+        }
         public static bool ValidarAlfanumerico(string cadena)
         {
             if (cadena is not null)

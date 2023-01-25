@@ -1,0 +1,17 @@
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Serializacion.deps.json
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Serializacion.dll
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Serializacion.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Entidades.dll
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Validaciones.dll
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\bin\Debug\net6.0\Validaciones.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.csproj.AssemblyReference.cache
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.AssemblyInfoInputs.cache
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.AssemblyInfo.cs
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.csproj.CoreCompileInputs.cache
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.csproj.CopyComplete
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.dll
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\refint\Serializacion.dll
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\Serializacion.pdb
+C:\Users\Lauta\source\repos\Aerolinea\Serializacion\obj\Debug\net6.0\ref\Serializacion.dll

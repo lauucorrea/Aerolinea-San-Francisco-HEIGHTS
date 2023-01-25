@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Aerolinea\Entidades.csproj" />
+    <ProjectReference Include="..\Serializacion\Serializacion.csproj" />
+    <ProjectReference Include="..\Sql_Aerolinea\Sql_Aerolinea.csproj" />
   </ItemGroup>
 
   <ItemGroup>

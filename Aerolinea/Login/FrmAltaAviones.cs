@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Serializacion;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -110,6 +111,9 @@ namespace Vista
 
             if (result == DialogResult.Yes)
             {
+                
+                Clase_serializadora serializadora = new();
+                serializadora.GuardarPersonasXML();
                 Application.Exit();
             }
         }
