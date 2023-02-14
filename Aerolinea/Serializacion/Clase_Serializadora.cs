@@ -5,8 +5,8 @@ namespace Serializacion
 {
     public class Clase_serializadora
     {
-        string rutaBase = String.Empty;
-        string rutaArchivo = String.Empty;
+        string rutaBase = string.Empty;
+        string rutaArchivo = string.Empty;
         public Clase_serializadora()
         {
             rutaBase = "C:/Users/Lauta/source/repos/Aerolinea/Serializacion/";
@@ -14,9 +14,13 @@ namespace Serializacion
         }
         public string RutaPersonas
         {
-            get { return Path.Combine(rutaBase, "ArchivosXml/Personas.json"); }
+            get { return Path.Combine(rutaBase, "ArchivosXml/Personas.xml"); }
         }
-        public void GuardarPersonasJSON()
+        public string RutaAviones
+        {
+            get { return Path.Combine(rutaBase, "ArchivosXml/Aviones.xml"); }
+        }
+        /*public void GuardarPersonasJSON()
         {
             try
             {
@@ -31,7 +35,7 @@ namespace Serializacion
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }*/
 
         public void GuardarPersonasXML()
         {
@@ -52,16 +56,35 @@ namespace Serializacion
             }
         }
 
+        public void GuardarAvionesXML()
+        {
+            try
+            {
+                rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Aviones.xml");
+                StreamWriter sw = new (rutaArchivo);
+
+                using (sw)
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Avion>));
+                    serializer.Serialize(sw, Registro.Aviones);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public void GuardarVuelosXML()
         {
             try
             {
                 rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Vuelos.xml");
-                StreamWriter sw = new StreamWriter(rutaArchivo);
+                StreamWriter sw = new (rutaArchivo);
 
                 using (sw)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Vuelo>));
+                    XmlSerializer serializer = new (typeof(List<Vuelo>));
                     serializer.Serialize(sw, Registro.Vuelos);
                 }
             }
@@ -75,11 +98,11 @@ namespace Serializacion
             try
             {
                 rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Pasajes.xml");
-                StreamWriter sw = new StreamWriter(rutaArchivo);
+                StreamWriter sw = new (rutaArchivo);
 
                 using (sw)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Pasaje>));
+                    XmlSerializer serializer = new (typeof(List<Pasaje>));
                     serializer.Serialize(sw, Registro.Pasajes);
                 }
             }
@@ -93,9 +116,9 @@ namespace Serializacion
             try
             {
                 rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Personas.xml");
-                StreamReader sr = new StreamReader(rutaArchivo);
+                StreamReader sr = new (rutaArchivo);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Persona>));
+                XmlSerializer serializer = new (typeof(List<Persona>));
 
                 using (sr)
                 {
@@ -108,18 +131,18 @@ namespace Serializacion
             }
 
         }
-        public void LevantarVuelosXML()
+        public void LevantarAvionesXML()
         {
             try
             {
-                rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Vuelos.xml");
-                StreamReader sr = new StreamReader(rutaArchivo);
+                rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Aviones.xml");
+                StreamReader sr = new (rutaArchivo);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Vuelo>));
+                XmlSerializer serializer = new (typeof(List<Avion>));
 
                 using (sr)
                 {
-                    Registro.Vuelos = serializer.Deserialize(sr) as List<Vuelo>;
+                    Registro.Aviones = serializer.Deserialize(sr) as List<Avion>;
                 }
             }
             catch (Exception ex)
@@ -133,9 +156,9 @@ namespace Serializacion
             try
             {
                 rutaArchivo = Path.Combine(rutaBase, "ArchivosXml/Pasajes.xml");
-                StreamReader sr = new StreamReader(rutaArchivo);
+                StreamReader sr = new (rutaArchivo);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Pasaje>));
+                XmlSerializer serializer = new (typeof(List<Pasaje>));
 
                 using (sr)
                 {

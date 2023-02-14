@@ -5,6 +5,7 @@ namespace Entidades
 {
     public class Pasaje
     {
+        private int idVUelo;
         private string nombrePasajero;
         private int dniPasajero;
         private Destinos destino;
@@ -15,7 +16,7 @@ namespace Entidades
         private bool traeBolso;
         private int cantidadValijas;
 
-        public Pasaje(string nombrePasajero, int dniPasajero, Destinos destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolso, int cantidadValijas)
+        public Pasaje(string nombrePasajero, int dniPasajero, Destinos destino, float valorPasaje, bool esPremium, bool esInternacional, string matriculaAvion, bool traeBolso, int cantidadValijas, int idVuelo)
         {
             NombrePasajero = nombrePasajero;
             DniPasajero = dniPasajero;
@@ -26,6 +27,8 @@ namespace Entidades
             MatriculaAvion = matriculaAvion;
             TraeBolso = traeBolso;
             CantidadValijas = cantidadValijas;
+
+            IdVuelo = idVuelo;
         }
 
         public string NombrePasajero
@@ -44,7 +47,14 @@ namespace Entidades
                 }
             }
         }
-
+        public int IdVuelo
+        {
+            get => idVUelo;
+            private set
+            {
+                idVUelo = value;
+            }
+        }
 
         public int DniPasajero
         {

@@ -11,7 +11,6 @@ namespace Entidades
         private Avion avionVuelo;
         private bool esInternacional;
         private string origen;
-        private static int idVuelo;
         private int asientosOcupados;
         private int asientosPremium;
         private int asientosTurista;
@@ -19,13 +18,10 @@ namespace Entidades
         private Destinos destino;
         private DateTime horaPartida;
         private DateTime horaLlegada;
+        private string fechaVuelo;
 
-        static Vuelo()
-        {
-            IdVuelo = 0000;
-        }
 
-        public Vuelo(Avion avionVuelo, string origen, DateTime horaPartida, DateTime horaLlegada, Destinos destino, bool esInternacional, float costo)
+        public Vuelo(Avion avionVuelo, string origen, DateTime horaPartida, DateTime horaLlegada, Destinos destino, bool esInternacional, float costo, string fechaVuelo)
         {
             ListaPasajes = new List<Pasaje>();
             AsientosOcupados = 0;
@@ -35,9 +31,9 @@ namespace Entidades
             HoraPartida = horaPartida;
             HoraLlegada = horaLlegada;
             Costo = costo;
-            IdVuelo = IdVuelo++;
             AvionVuelo = avionVuelo;
             CalcularAsientos();
+            FechaVuelo = fechaVuelo;
         }
 
         public string Origen
@@ -59,12 +55,6 @@ namespace Entidades
 
         }
 
-        public static int IdVuelo
-        {
-            get => idVuelo;
-            private set => idVuelo = value;
-        }
-
         public Destinos Destino
         {
             get => destino;
@@ -74,6 +64,12 @@ namespace Entidades
 
             }
 
+        }
+
+        public string FechaVuelo
+        {
+            get => fechaVuelo;
+            set => fechaVuelo = value;
         }
         public DateTime HoraPartida
         {
@@ -140,6 +136,7 @@ namespace Entidades
             set => esInternacional = value;
         }
 
+
         public int AsientosPremium
         {
             get => asientosPremium;
@@ -193,10 +190,10 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public override int GetHashCode()
+       /* public override int GetHashCode()
         {
             return IdVuelo.GetHashCode();
-        }
+        }*/
 
         internal void CalcularAsientos()
         {

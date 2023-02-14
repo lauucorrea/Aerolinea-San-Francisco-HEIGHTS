@@ -102,7 +102,7 @@ namespace Vista
             if (numHora.Value != 0)
             {
 
-                if (Administracion.AgregarVueloALista(avionSeleccionado, txtOrigen.Text, cmbDestinos.SelectedIndex, (int)numHora.Value, (int)numMinutos.Value))
+                if (Administracion.AgregarVueloALista(avionSeleccionado, txtOrigen.Text, cmbDestinos.SelectedIndex,DtpSalidaVuelo.Value))
                 {
 
                     result = MessageBox.Show("Vuelo agregado con exito!", "", botonesOpciones);
@@ -146,6 +146,11 @@ namespace Vista
 
             txtMatricula.Text = avionSeleccionado.MatriculaAvion;
             txtOrigen.Text = "Argentina";
+        }
+
+        private void DtpSalidaVuelo_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

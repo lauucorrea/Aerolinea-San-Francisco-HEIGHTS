@@ -47,6 +47,7 @@ namespace Entidades
         
         public static List<Avion> Aviones
         {
+            set => ListaAviones = value;
             get => ListaAviones;
         }
 
@@ -58,13 +59,8 @@ namespace Entidades
 
         public static void HardcodeListas()
         {
-            //ListaPersonas.Add(new Vendedor("Lautaro", "Correa", 41080577, 24, "lau123", "asd123"));
-            //ListaPersonas.Add(new Vendedor("silvina", "peruca", 41100224, 50, "tedije", "123"));
-
-            //CrearClientes();
-            CrearAviones();
-            CrearVuelos();
-            CrearPasajes();
+            //CrearVuelos();
+           // CrearPasajes();
             CargarFacturacionesPorDestino();
         }
         /// <summary>
@@ -78,27 +74,8 @@ namespace Entidades
             }
         }
 
-        public static void CrearClientes()
-        {
-            ListaPersonas.Add(new Cliente("Familia", "Colombres", 41177224, 50, "familia", "colombres"));
-            ListaPersonas.Add(new Cliente("Vencina", "Gentila", 49630423, 50, "vencina", "gentila"));
-            ListaPersonas.Add(new Cliente("Gerardo", "Pedila", 41152245, 50, "gerardo", "pedila"));
-            ListaPersonas.Add(new Cliente("Prodi", "Sarapa", 41100624, 50, "prodi", "sarapa"));
-            ListaPersonas.Add(new Cliente("Montaner", "Cecilia", 41105244, 50, "montaner", "cecilia"));
-        }
 
-        public static void CrearAviones()
-        {
-            ListaAviones.Add(new Avion(true, 2, 50, 22, "A2E3DE5A"));
-            ListaAviones.Add(new Avion(true, 1, 40, 5, "U73WE98W"));
-            ListaAviones.Add(new Avion(false, 3, 110, 45, "O23SFF8E"));
-            ListaAviones.Add(new Avion(false, 2, 50, 12, "2LS9384L"));
-            ListaAviones.Add(new Avion(true, 2, 80, 60, "O0O25AFF"));
-            ListaAviones.Add(new Avion(false, 1, 40, 30, "WE345FHI"));
-            ListaAviones.Add(new Avion(true, 1, 45, 22, "QHO0E4F5"));
-        }
-
-        public static void CrearVuelos()
+      /*  public static void CrearVuelos()
         {
             DateTime partida = new(2022, 10, 01, 22, 3, 0);
             DateTime Llegada = new(2022, 10, 01, 01, 22, 0);
@@ -110,9 +87,9 @@ namespace Entidades
             ListaVuelos.Add(new Vuelo(ListaAviones[4], "BuenosAires", partida, Llegada, Destinos.Mendoza, false, Administracion.CalcularCostoDelVuelo(false, 3)));
             ListaVuelos.Add(new Vuelo(ListaAviones[5], "BuenosAires", partida, Llegada.AddHours(5), Destinos.Acapulco, true, Administracion.CalcularCostoDelVuelo(false, 8)));
             ListaVuelos.Add(new Vuelo(ListaAviones[6], "BuenosAires", partida, Llegada, Destinos.Mendoza, false, Administracion.CalcularCostoDelVuelo(false, 3)));
-        }
+        }*/
 
-        public static void CrearPasajes()
+       /* public static void CrearPasajes()
         {
             Pasaje Pasaje0 = new("Montaner", 41105244, ListaVuelos[0].Destino, ListaVuelos[0].Costo, false, ListaVuelos[0].EsInternacional, ListaVuelos[0].AvionVuelo.MatriculaAvion, true, 1);
             Pasaje Pasaje1 = new("Familia", 41177224, ListaVuelos[1].Destino, ListaVuelos[1].Costo, true, ListaVuelos[1].EsInternacional, ListaVuelos[1].AvionVuelo.MatriculaAvion, true, 1);
@@ -148,11 +125,11 @@ namespace Entidades
                 ListaVuelos[i].AsientosOcupados = ListaVuelos[i].ListaPasajes.Count;
                 resultado = ListaVuelos[i].HoraLlegada.Subtract(ListaVuelos[i].HoraPartida);
                 ListaVuelos[i].AvionVuelo.HorasDeVuelo = resultado.Hours;
-            }
+            }*/
 
         }
 
 
 
     }
-}
+

@@ -46,6 +46,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dtgAviones = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DtpSalidaVuelo = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.numHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgAviones)).BeginInit();
@@ -90,7 +92,7 @@
             // 
             // numHora
             // 
-            this.numHora.Location = new System.Drawing.Point(680, 254);
+            this.numHora.Location = new System.Drawing.Point(681, 335);
             this.numHora.Name = "numHora";
             this.numHora.Size = new System.Drawing.Size(60, 23);
             this.numHora.TabIndex = 6;
@@ -99,7 +101,7 @@
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblHora.Location = new System.Drawing.Point(680, 236);
+            this.lblHora.Location = new System.Drawing.Point(681, 317);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(33, 15);
             this.lblHora.TabIndex = 7;
@@ -109,7 +111,7 @@
             // 
             this.lblMinutos.AutoSize = true;
             this.lblMinutos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMinutos.Location = new System.Drawing.Point(785, 236);
+            this.lblMinutos.Location = new System.Drawing.Point(786, 317);
             this.lblMinutos.Name = "lblMinutos";
             this.lblMinutos.Size = new System.Drawing.Size(51, 15);
             this.lblMinutos.TabIndex = 9;
@@ -117,7 +119,7 @@
             // 
             // numMinutos
             // 
-            this.numMinutos.Location = new System.Drawing.Point(785, 254);
+            this.numMinutos.Location = new System.Drawing.Point(786, 335);
             this.numMinutos.Name = "numMinutos";
             this.numMinutos.Size = new System.Drawing.Size(60, 23);
             this.numMinutos.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             this.lblHorarioVuelo.AutoSize = true;
             this.lblHorarioVuelo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblHorarioVuelo.Location = new System.Drawing.Point(708, 210);
+            this.lblHorarioVuelo.Location = new System.Drawing.Point(709, 291);
             this.lblHorarioVuelo.Name = "lblHorarioVuelo";
             this.lblHorarioVuelo.Size = new System.Drawing.Size(96, 15);
             this.lblHorarioVuelo.TabIndex = 10;
@@ -134,7 +136,7 @@
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(681, 309);
+            this.txtMatricula.Location = new System.Drawing.Point(680, 373);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.PlaceholderText = "Matricula del avion";
             this.txtMatricula.ReadOnly = true;
@@ -228,6 +230,26 @@
             this.dtgAviones.TabIndex = 33;
             this.dtgAviones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgAviones_CellClick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(715, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 15);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Fecha de salida";
+            // 
+            // DtpSalidaVuelo
+            // 
+            this.DtpSalidaVuelo.CustomFormat = "dd/MM/yyyy hh:mm";
+            this.DtpSalidaVuelo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpSalidaVuelo.Location = new System.Drawing.Point(681, 243);
+            this.DtpSalidaVuelo.Name = "DtpSalidaVuelo";
+            this.DtpSalidaVuelo.Size = new System.Drawing.Size(138, 23);
+            this.DtpSalidaVuelo.TabIndex = 35;
+            this.DtpSalidaVuelo.ValueChanged += new System.EventHandler(this.DtpSalidaVuelo_ValueChanged);
+            // 
             // FrmRegistroVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -235,6 +257,8 @@
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(904, 524);
             this.ControlBox = false;
+            this.Controls.Add(this.DtpSalidaVuelo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dtgAviones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSalir);
@@ -285,5 +309,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dtgAviones;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker DtpSalidaVuelo;
     }
 }

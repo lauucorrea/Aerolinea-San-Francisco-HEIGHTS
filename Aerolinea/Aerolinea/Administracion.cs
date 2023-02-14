@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Entidades
 {
     public class Administracion
@@ -17,7 +16,7 @@ namespace Entidades
         {
             foreach (Vendedor vendedor in Registro.Personas)
             {
-                if (!String.IsNullOrEmpty(usuario) && !String.IsNullOrEmpty(password))
+                if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(password))
                 {
 
                     if (vendedor.Password == password && vendedor.Usuario == usuario)
@@ -93,7 +92,7 @@ namespace Entidades
             {
                 foreach (Vuelo vuelo in Registro.Vuelos)
                 {
-                    if (vuelo.GetHashCode() == vueloRecibido.GetHashCode())
+                    if (vuelo.AvionVuelo.MatriculaAvion == vueloRecibido.AvionVuelo.MatriculaAvion && vuelo.FechaVuelo == vueloRecibido.FechaVuelo)
                     {
                         return true;
                     }
@@ -175,11 +174,11 @@ namespace Entidades
 
         }
 
-        public static bool AgregarVueloALista(Avion avionElegido, string origen, int indice, int horaPartida, int minutosPartida)
+        public static bool AgregarVueloALista(Avion avionElegido, string origen, int indice, DateTime fechaPartida)
         {
             DateTime horaDespegue;
             DateTime horaLlegada;
-
+            string fechaDespegue;
             float costoVuelo;
             int horasDeVuelo;
             bool esInternacional;
@@ -191,10 +190,11 @@ namespace Entidades
                 horasDeVuelo = CalcularCantidadDeHorasDeVuelo(esInternacional);
                 costoVuelo = CalcularCostoDelVuelo(esInternacional, horasDeVuelo);
 
-                horaDespegue = new DateTime(2022, 10, 01, horaPartida, minutosPartida, 0);
+                fechaDespegue = fechaPartida.ToString("dd/MM/yyyy");
+                horaDespegue = new DateTime(2022, 10, 01, fechaPartida.Hour, fechaPartida.Minute, 0);
                 horaLlegada = horaDespegue.AddHours(horasDeVuelo);
 
-                Vuelo vueloCreado = new Vuelo(avionElegido, origen, horaDespegue, horaLlegada, (Destinos)indice, esInternacional, costoVuelo);
+                Vuelo vueloCreado = new Vuelo(avionElegido, origen, horaDespegue, horaLlegada, (Destinos)indice, esInternacional, costoVuelo, fechaDespegue);
                 if (vueloCreado is not null)
                 {
                     if (!CheckearSiVueloExiste(vueloCreado))
@@ -224,7 +224,7 @@ namespace Entidades
             {
                 if (!CheckearSiPasajeExiste(dniPasajero, vueloSeleccionado))
                 {
-                    Pasaje pasajeCreado = new Pasaje(nombrePasajero, dniPasajero, (Destinos)indice, valorPasaje, esPremium, esInternacional, vueloSeleccionado.AvionVuelo.MatriculaAvion, traeBolsos, cantidadValijas);
+                    Pasaje pasajeCreado = new Pasaje(nombrePasajero, dniPasajero, (Destinos)indice, valorPasaje, esPremium, esInternacional, vueloSeleccionado.AvionVuelo.MatriculaAvion, traeBolsos, cantidadValijas,0);
                     if (pasajeCreado is not null)
                     {
                         vueloSeleccionado.ListaPasajes.Add(pasajeCreado);
@@ -242,15 +242,14 @@ namespace Entidades
             throw new ArgumentNullException("No se ha seleccionado ningun avion");
 
         }
-        public static bool AgregarAvionALista(bool ofreceComida, int cantidadAsientos, decimal capacidadBodega, int cantidadToilets, string matriculaAvion)
+        public static bool AgregarAvionALista(Avion unAvion)
         {
-            {
-                Avion avion = new(ofreceComida, cantidadToilets, capacidadBodega, cantidadAsientos, matriculaAvion);
-                if (!CheckearSiAvionExiste(avion))
+            
+                if (!CheckearSiAvionExiste(unAvion))
                 {
-                    if (avion is not null)
+                    if (unAvion is not null)
                     {
-                        Registro.Aviones.Add(avion);
+                        Registro.Aviones.Add(unAvion);
                         return true;
                     }
                     else
@@ -259,7 +258,7 @@ namespace Entidades
                     }
                 }
                 throw new Exception("Ya existe un avion con esta matricla");
-            }
+            
 
         }
 
@@ -435,6 +434,7 @@ namespace Entidades
 
             return sb.ToString();
         }
+        
 
     }
 }

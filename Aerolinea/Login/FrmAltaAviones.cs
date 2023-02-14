@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using Validaciones;
+using Sql_Aerolinea;
 namespace Vista
 {
     public partial class FrmAltaAviones : Form
@@ -75,9 +76,11 @@ namespace Vista
                     {
                         if (ValidadoraDeDatos.ValidarAlfanumerico(txtMatricula.Text))
                         {
-                            if (Administracion.AgregarAvionALista(rbtSi.Checked, (int)numAsientos.Value, numBodega.Value, (int)numToilets.Value, txtMatricula.Text.ToUpper()))
+                            Avion avionNuevo = new(rbtSi.Checked, (int)numToilets.Value, numBodega.Value, (int)numAsientos.Value, txtMatricula.Text.ToUpper());
+                            if (Administracion.AgregarAvionALista(avionNuevo))
                             {
-
+                                Tabla_Aviones consulta = new();
+                                consulta.SubirAvionBD(avionNuevo);
                                 result = MessageBox.Show("Avion agregado con exito!", "", botonesOpciones);
                                 if (result == DialogResult.OK)
                                 {
@@ -111,9 +114,9 @@ namespace Vista
 
             if (result == DialogResult.Yes)
             {
-                
                 Clase_serializadora serializadora = new();
                 serializadora.GuardarPersonasXML();
+                serializadora.GuardarAvionesXML();
                 Application.Exit();
             }
         }

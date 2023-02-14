@@ -190,6 +190,7 @@ namespace Login
             {
                 Clase_serializadora serializadora= new();
                 serializadora.GuardarPersonasXML();
+                serializadora.GuardarAvionesXML();
                 Application.Exit();
             }
         }

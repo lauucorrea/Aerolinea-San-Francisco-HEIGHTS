@@ -15,6 +15,11 @@ namespace Entidades
         private int totalAsientos;
         private string matriculaAvion;
         private int horasDeVuelo;
+
+        public Avion()
+        {
+
+        }
         public Avion(bool ofreceComida, int cantidadDeToilets, decimal capacidadBodega, int totalAsientos, string matriculaAvion)
         {
             horasDeVuelo = 0;
@@ -29,13 +34,13 @@ namespace Entidades
         public bool OfreceComida
         {
             get => ofreceComida;
-            private set => ofreceComida = value;
+            set => ofreceComida = value;
         }
 
         public int CantidadDeToilets
         {
             get => cantidadDeToilets;
-            private set
+            set
             {
                 if (int.TryParse(value.ToString(), out int numeroConvertido) && numeroConvertido > 0)
                 {
@@ -56,7 +61,7 @@ namespace Entidades
         public decimal CapacidadBodega
         {
             get => capacidadBodega;
-            private set
+            set
             {
                 if (decimal.TryParse(value.ToString(), out decimal numeroConvertido) && numeroConvertido > 0)
                 {
@@ -94,7 +99,7 @@ namespace Entidades
         public int TotalAsientos
         {
             get => totalAsientos;
-            private set
+            set
             {
                 if (int.TryParse(value.ToString(), out int numeroConvertido))
                 {
@@ -109,7 +114,7 @@ namespace Entidades
         public string MatriculaAvion
         {
             get => matriculaAvion;
-            private set
+            set
             {
                 if (ValidadoraDeDatos.ValidarAlfanumerico(value))
                 {
@@ -121,7 +126,7 @@ namespace Entidades
                 }
             }
         }
-        public override string ToString()
+       /* public override string ToString()
         {
             StringBuilder sb = new ();
             string ofrece;
@@ -139,7 +144,7 @@ namespace Entidades
             sb.AppendLine($"Horas de vuelo {HorasDeVuelo}");
 
             return sb.ToString();
-        }
+        }*/
 
         public override bool Equals(object obj)
         {

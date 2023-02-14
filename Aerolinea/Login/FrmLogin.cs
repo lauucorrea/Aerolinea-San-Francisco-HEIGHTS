@@ -33,63 +33,83 @@ namespace Login
             try
             {
 
-                if (Registro.Personas is not null)
+                if (ObtenerPersonas() && ObtenerAviones())
                 {
-                    Tabla_Personas consultaPersonas = new();
-                    Clase_serializadora serializadora = new();
-
-                    if (File.Exists(serializadora.RutaPersonas))
-                    {
-                        serializadora.LevantarPersonasXML();
-                        if (Registro.Personas.Count > 0)
-                        {
-                            foreach (Persona persona in Registro.Personas)
-                            {
-                                consultaPersonas.SubirPersonaBD(persona);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Registro.Personas = consultaPersonas.ObtenerPersonasBD();
-                    }
+                    txtUsuario.Text = "lau123";
+                    txtPasswd.Text = "asd123";
                 }
             }
             catch (Exception ex)
             {
                 lblErrores.Text = ex.Message;
             }
-            txtUsuario.Text = "lau123";
-            txtPasswd.Text = "asd123";
+            
         }
-       /* private bool ObtenerPersonas()
+        private bool ObtenerPersonas()
         {
             bool ret = false;
-            Tabla_Personas consultaPersonas = new();
-            Clase_serializadora serializadora = new();
+            if (Registro.Personas is not null)
+            {
 
-            if (File.Exists(serializadora.RutaPersonas))
-            {
-                serializadora.LevantarPersonasXML();
-                if (Registro.Personas.Count > 0)
+                Tabla_Personas consultaPersonas = new();
+                Clase_serializadora serializadora = new();
+
+                if (File.Exists(serializadora.RutaPersonas))
                 {
-                    foreach (Persona persona in Registro.Personas)
+                    serializadora.LevantarPersonasXML();
+                    if (Registro.Personas.Count > 0)
                     {
-                        consultaPersonas.SubirPersonaBD(persona);
+                        foreach (Persona persona in Registro.Personas)
+                        {
+                            consultaPersonas.SubirPersonaBD(persona);
+                        }
+                        ret = true;
                     }
-                    ret = true;
                 }
-            }
-            else
-            {
-                Registro.Personas = consultaPersonas.ObtenerPersonasBD();
-                if(Registro.Personas is not null)
+                else
                 {
-                    ret = true;
+                    Registro.Personas = consultaPersonas.ObtenerPersonasBD();
+                    if (Registro.Personas is not null)
+                    {
+                        ret = true;
+                    }
                 }
             }
             return ret;
-        }*/
+        }
+        private bool ObtenerAviones()
+        {
+            bool ret = false;
+            if (Registro.Personas is not null)
+            {
+
+                Tabla_Aviones consultaAviones = new();
+                Clase_serializadora serializadora = new();
+
+                if (File.Exists(serializadora.RutaAviones))
+                {
+                    serializadora.LevantarAvionesXML();
+                    if (Registro.Aviones.Count > 0)
+                    {
+                        foreach (Avion avion in Registro.Aviones)
+                        {
+                            consultaAviones.SubirAvionBD(avion);
+                        }
+                        ret = true;
+                    }
+                }
+                else
+                {
+                    Registro.Aviones = consultaAviones.ObtenerAvionesBD();
+                    if (Registro.Aviones is not null)
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            return ret;
+        }
+
         private bool LogCredenciales(string usuario, string passwd)
         {
             string excepcion = "";
